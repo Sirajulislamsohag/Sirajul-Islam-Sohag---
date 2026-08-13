@@ -1,6 +1,5 @@
 import { Hero } from '@/components/sections/hero';
 import { TrustedBrands } from '@/components/sections/trusted-brands';
-import { About } from '@/components/sections/about';
 import { Services } from '@/components/sections/services';
 import { VideoShowcase } from '@/components/sections/video-showcase';
 import { HowIBringSuccess } from '@/components/sections/how-i-bring-success';
@@ -10,6 +9,8 @@ import { ClientReviews } from '@/components/sections/client-reviews';
 import { Contact } from '@/components/sections/contact';
 import { Footer } from '@/components/sections/footer';
 import type { Metadata } from 'next';
+import { AboutWithImage } from '@/components/sections/about-with-image';
+import { AboutV2 } from '@/components/sections/about-v2';
 
 export const metadata: Metadata = {
   title: 'Sirajul | Premium Digital Marketing Consultant',
@@ -28,9 +29,9 @@ export default function HomePage() {
     <>
       <Hero />
       <TrustedBrands />
-      <About />
-      <Services />
       <VideoShowcase />
+      <AboutWithImage/>
+      <Services />
       <HowIBringSuccess />
       <PortfolioShowcase />
       <Certificates />

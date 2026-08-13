@@ -158,7 +158,7 @@ export function Contact() {
                       className="w-10 h-10 rounded-xl bg-[var(--bg-card)] border border-[var(--border)] flex items-center justify-center hover:border-primary hover:text-primary transition-all group"
                       title={name.charAt(0).toUpperCase() + name.slice(1)}
                     >
-                      {Icon ? <Icon className="w-4 h-4 group-hover:scale-110 transition-transform" /> : name[0].toUpperCase()}
+                      {Icon ? <Icon className="w-6 h-6 group-hover:scale-110 transition-transform" /> : name[0].toUpperCase()}
                     </a>
                   );
                 })}

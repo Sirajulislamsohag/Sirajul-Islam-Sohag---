@@ -9,7 +9,7 @@ export function TrustedBrands() {
     <section className="py-20 md:py-24 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 mb-12 text-center">
         <TextReveal as="h2" variant="fade-up" className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-[var(--text)] mb-4 tracking-tight">
-          Trusted by <span className="text-gradient">Industry Leaders</span>
+          Trusted by <span className="text-gradient">Leading Companies</span>
         </TextReveal>
         <TextReveal as="p" variant="fade-up" delay={0.1} className="text-base md:text-lg text-[var(--text-secondary)] max-w-2xl mx-auto font-normal">
           Delivering exceptional results for ambitious brands worldwide

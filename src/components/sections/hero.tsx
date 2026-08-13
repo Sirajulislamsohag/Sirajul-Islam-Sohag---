@@ -67,7 +67,7 @@ export function Hero() {
     <section
       ref={sectionRef}
       id="hero"
-      className="relative min-h-screen flex items-center overflow-hidden pt-20"
+      className="relative min-h-screen flex items-center overflow-hidden pt-20 h-auto"
     >
       {/* Background */}
       <AuroraBg />
@@ -81,7 +81,7 @@ export function Hero() {
           <div ref={contentRef} className="space-y-8">
             <Badge variant="glow" className="hero-animate">
               <span className="w-2 h-2 rounded-full bg-success animate-pulse" />
-              Available for Projects
+              Available for New Clients
             </Badge>
 
             <div>
@@ -101,7 +101,7 @@ export function Hero() {
               I help businesses generate leads, scale sales, and build their online presence through data-driven digital marketing strategies that deliver measurable ROI.
             </p>
 
-            <div className="hero-animate flex flex-col sm:flex-row flex-wrap gap-4">
+            <div className="hero-animate flex   gap-4">
               <Link href="#contact" className="w-full sm:w-auto">
                 <Magnetic>
                   <Button 
