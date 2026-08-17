@@ -1,13 +1,15 @@
 'use client';
 
-import { useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Image from 'next/image';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { motion, AnimatePresence } from 'framer-motion';
 import { TiltCard } from '@/components/animations/tilt-card';
 import { TextReveal } from '@/components/animations/text-reveal';
-import { Award, ExternalLink } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Award, ExternalLink, X } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -77,12 +79,11 @@ const CERTIFICATES = [
   },
 ];
 
-import { useEffect, useState } from 'react';
-
 export function Certificates() {
   const sectionRef = useRef<HTMLElement>(null);
   const cardsRef = useRef<HTMLDivElement>(null);
   const [list, setList] = useState<any[]>(CERTIFICATES);
+  const [selectedCert, setSelectedCert] = useState<any | null>(null);
 
   useEffect(() => {
     async function loadDynamicCertificates() {
@@ -109,6 +110,23 @@ export function Certificates() {
     loadDynamicCertificates();
   }, []);
 
+  // Handle Escape key and overflow lock for modal
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setSelectedCert(null);
+    };
+
+    if (selectedCert) {
+      document.addEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'hidden';
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = '';
+    };
+  }, [selectedCert]);
+
   useGSAP(() => {
     if (!cardsRef.current || !sectionRef.current) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -122,7 +140,7 @@ export function Certificates() {
 
       gsap.to(card, {
         scale: 0.9 - (cards.length - index) * 0.02,
-        opacity: 0.5,
+         
         transformOrigin: 'center top',
         ease: 'none',
         scrollTrigger: {
@@ -151,12 +169,18 @@ export function Certificates() {
         {/* Cards */}
         <div ref={cardsRef} className="space-y-6">
           {list.map((cert) => (
-            <a
+            <div
               key={cert.id}
-              href={cert.credentialUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="cert-card sticky top-24 block group text-left"
+              role="button"
+              tabIndex={0}
+              onClick={() => setSelectedCert(cert)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  setSelectedCert(cert);
+                }
+              }}
+              className="cert-card sticky top-24 block group text-left cursor-pointer select-none"
             >
               <TiltCard maxTilt={3}>
                 <div
@@ -200,16 +224,82 @@ export function Certificates() {
                     )}
 
                     {/* External Link Icon */}
-                    <div className="p-2.5 rounded-lg bg-white/5 group-hover:bg-primary/20 group-hover:text-primary transition-all shrink-0 hidden md:flex items-center justify-center">
-                      <ExternalLink className="w-5 h-5 text-[var(--text-muted)] group-hover:text-primary transition-colors" />
-                    </div>
+                    {cert.credentialUrl && cert.credentialUrl !== '#' && (
+                      <a
+                        href={cert.credentialUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="p-2.5 rounded-lg bg-white/5 hover:bg-primary/20 hover:text-primary transition-all shrink-0 hidden md:flex items-center justify-center"
+                        title="Open Credential Verification"
+                      >
+                        <ExternalLink className="w-5 h-5 text-[var(--text-muted)] hover:text-primary transition-colors" />
+                      </a>
+                    )}
                   </div>
                 </div>
               </TiltCard>
-            </a>
+            </div>
           ))}
         </div>
       </div>
+
+      {/* Fullscreen Certificate Image Modal */}
+      <AnimatePresence>
+        {selectedCert && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            onClick={() => setSelectedCert(null)}
+            className="fixed inset-0 z-[99999] flex flex-col items-center justify-center p-4 md:p-8 bg-black/85 backdrop-blur-md cursor-zoom-out"
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.92, y: 15 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.92, y: 15 }}
+              transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative max-w-4xl w-full flex flex-col items-center justify-center cursor-default"
+            >
+              {/* Top Close / Cancel Button */}
+              <button
+                type="button"
+                onClick={() => setSelectedCert(null)}
+                className="absolute -top-12 right-0 md:-top-4 md:-right-14 p-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all backdrop-blur-md border border-white/20 flex items-center justify-center shadow-lg cursor-pointer group"
+                aria-label="Cancel and close"
+                title="Cancel (Esc)"
+              >
+                <X className="w-5 h-5 group-hover:rotate-90 transition-transform duration-200" />
+              </button>
+
+              {/* Certificate Image Only */}
+              <div className="relative w-full max-h-[80vh] flex items-center justify-center overflow-hidden rounded-2xl border border-white/15 bg-black/60 shadow-2xl">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={selectedCert.image}
+                  alt={selectedCert.title || 'Certificate'}
+                  className="max-h-[78vh] w-auto max-w-full object-contain rounded-xl select-none"
+                />
+              </div>
+
+              {/* Bottom Cancel Button */}
+              <div className="mt-4 flex items-center justify-center gap-3">
+                <Button
+                  variant="glass"
+                  size="sm"
+                  onClick={() => setSelectedCert(null)}
+                  icon={<X className="w-4 h-4" />}
+                  className="rounded-full px-6 py-2 bg-white/10 hover:bg-white/20 text-white border-white/20 text-xs font-medium cursor-pointer"
+                >
+                  Cancel
+                </Button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
