@@ -19,7 +19,6 @@ export default function AboutPage() {
       <div className="pt-24 md:pt-32">
         <About />
       </div>
-      <Timeline />
       <Certificates />
       <ClientReviews />
       <Contact />

@@ -1,5 +1,6 @@
 import { PageHeader } from '@/components/sections/page-header';
 import { Services } from '@/components/sections/services';
+import { ToolsPlatforms } from '@/components/sections/tools-platforms';
 import { ClientUnderstanding } from '@/components/sections/client-understanding';
 import { ClientReviews } from '@/components/sections/client-reviews';
 import { Contact } from '@/components/sections/contact';
@@ -49,6 +50,8 @@ export default function ServicesPage() {
       <div className="pt-24 md:pt-32">
         <Services />
       </div>
+
+      <ToolsPlatforms />
 
       {/* 4-Step Process Section */}
       <section className="py-24 relative overflow-hidden bg-[var(--bg-card)]/40 border-y border-[var(--border)]">

@@ -67,7 +67,7 @@ export function AboutWithImage() {
                 About Me
               </TextReveal>
               <TextReveal variant="fade-up" as="h2" className="section-heading">
-                Driving Growth Through Data-Driven Marketing
+                Scaling Businesses with Data-Driven Google Ads 
               </TextReveal>
             </div>
 

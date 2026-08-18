@@ -15,9 +15,8 @@ export default function SettingsPage() {
     siteName: '',
     siteDescription: '',
     contactEmail: '',
-    facebookUrl: '',
     linkedinUrl: '',
-    twitterUrl: '',
+    whatsappUrl: '',
   });
 
   useEffect(() => {
@@ -78,9 +77,8 @@ export default function SettingsPage() {
 
           <div className="space-y-4 pt-4">
             <h2 className="text-lg font-heading font-semibold border-b border-[var(--border)] pb-2">Social Links</h2>
-            <Input label="Facebook URL" value={form.facebookUrl} onChange={(e) => setForm({ ...form, facebookUrl: e.target.value })} />
             <Input label="LinkedIn URL" value={form.linkedinUrl} onChange={(e) => setForm({ ...form, linkedinUrl: e.target.value })} />
-            <Input label="Twitter URL" value={form.twitterUrl} onChange={(e) => setForm({ ...form, twitterUrl: e.target.value })} />
+            <Input label="WhatsApp URL" value={form.whatsappUrl} onChange={(e) => setForm({ ...form, whatsappUrl: e.target.value })} />
           </div>
 
           <div className="pt-4 flex justify-end">

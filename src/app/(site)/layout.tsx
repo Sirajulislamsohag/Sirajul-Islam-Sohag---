@@ -5,6 +5,7 @@ import { ThemeProvider } from '@/providers/theme-provider';
 import { LenisProvider } from '@/providers/lenis-provider';
 import { QueryProvider } from '@/providers/query-provider';
 import { ReduxProvider } from '@/store/provider';
+import { CalendlyProvider } from '@/providers/calendly-provider';
 import { Navbar } from '@/components/layout/navbar';
 import { CursorBlob } from '@/components/effects/cursor-blob';
 import { NoiseOverlay } from '@/components/effects/noise-overlay';
@@ -17,16 +18,18 @@ export default function SiteLayout({ children }: { children: ReactNode }) {
     <ReduxProvider>
       <QueryProvider>
         <ThemeProvider>
-          <LenisProvider>
-            <CursorBlob />
-            <ScrollProgress />
-            <NoiseOverlay />
-            <Navbar />
-            <main className="relative min-h-screen">
-              {children}
-            </main>
-            <WhatsAppButton />
-          </LenisProvider>
+          <CalendlyProvider>
+            <LenisProvider>
+              <CursorBlob />
+              <ScrollProgress />
+              <NoiseOverlay />
+              <Navbar />
+              <main className="relative min-h-screen">
+                {children}
+              </main>
+              <WhatsAppButton />
+            </LenisProvider>
+          </CalendlyProvider>
         </ThemeProvider>
       </QueryProvider>
     </ReduxProvider>

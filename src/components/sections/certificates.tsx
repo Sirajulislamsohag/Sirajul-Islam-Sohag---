@@ -84,7 +84,6 @@ export function Certificates() {
   const cardsRef = useRef<HTMLDivElement>(null);
   const [list, setList] = useState<any[]>(CERTIFICATES);
   const [selectedCert, setSelectedCert] = useState<any | null>(null);
-
   useEffect(() => {
     async function loadDynamicCertificates() {
       try {

@@ -1,16 +1,20 @@
 import { Hero } from '@/components/sections/hero';
 import { TrustedBrands } from '@/components/sections/trusted-brands';
 import { Services } from '@/components/sections/services';
+import { IndustryExpertise } from '@/components/sections/industry-expertise';
 import { VideoShowcase } from '@/components/sections/video-showcase';
 import { HowIBringSuccess } from '@/components/sections/how-i-bring-success';
 import { PortfolioShowcase } from '@/components/sections/portfolio-showcase';
 import { Certificates } from '@/components/sections/certificates';
 import { ClientReviews } from '@/components/sections/client-reviews';
+import { CTASection } from '@/components/sections/cta-section';
 import { Contact } from '@/components/sections/contact';
 import { Footer } from '@/components/sections/footer';
 import type { Metadata } from 'next';
 import { AboutWithImage } from '@/components/sections/about-with-image';
-import { AboutV2 } from '@/components/sections/about-v2';
+import { ToolsPlatformsIcons } from '@/components/sections/tools-platforms-icons';
+import { ServiceVerticalsBento } from '@/components/sections/service-verticals-bento';
+import SpecializedVerticalsGrid from '@/components/sections/specialized-verticals-grid';
 
 export const metadata: Metadata = {
   title: 'Sirajul | Premium Digital Marketing Consultant',
@@ -32,10 +36,14 @@ export default function HomePage() {
       <VideoShowcase />
       <AboutWithImage/>
       <Services />
+      <IndustryExpertise />
+      <SpecializedVerticalsGrid />
+      <ToolsPlatformsIcons/>
       <HowIBringSuccess />
       <PortfolioShowcase />
       <Certificates />
       <ClientReviews />
+      <CTASection />
       <Contact />
       <Footer />
     </>

@@ -109,6 +109,7 @@ export interface Review {
   role: string;
   photo: string;
   rating: number;
+  date?: string;
   text: string;
 }
 

@@ -90,7 +90,7 @@ export function Hero() {
                 ref={headingRef}
                 className="hero-heading"
               >
-                <span className="text-gradient">Sirajul</span>
+                <span className="text-gradient">Sirajul Islam Sohag</span>
               </h1>
               <div className="hero-animate mt-4 text-xl md:text-2xl font-heading text-[var(--text-secondary)]">
                 <Typing words={TYPING_ROLES} />
@@ -98,7 +98,7 @@ export function Hero() {
             </div>
 
             <p className="hero-animate text-[var(--text-secondary)] text-lg leading-relaxed max-w-lg">
-              I help businesses generate leads, scale sales, and build their online presence through data-driven digital marketing strategies that deliver measurable ROI.
+              I help home service, local service, and e-commerce businesses turn ad spend into qualified leads and revenue through data-driven Google Ads strategy.
             </p>
 
             <div className="hero-animate flex   gap-4">

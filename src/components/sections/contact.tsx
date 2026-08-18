@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { Mail, Phone, MapPin, Send, Calendar, CheckCircle } from 'lucide-react';
+import { Mail, Phone, Send, Calendar, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -14,6 +14,7 @@ import { TextReveal } from '@/components/animations/text-reveal';
 import { ScrollReveal } from '@/components/animations/scroll-reveal';
 import { SITE_CONFIG, SERVICE_OPTIONS, BUDGET_OPTIONS, SOCIAL_LINKS } from '@/lib/constants';
 import { SOCIAL_ICON_MAP } from '@/components/ui/social-icons';
+import { useCalendly } from '@/providers/calendly-provider';
 import toast from 'react-hot-toast';
 
 const contactSchema = z.object({
@@ -29,6 +30,7 @@ const contactSchema = z.object({
 type ContactFormData = z.infer<typeof contactSchema>;
 
 export function Contact() {
+  const { openCalendly } = useCalendly();
   const [isSubmitted, setIsSubmitted] = useState(false);
   const {
     register,
@@ -112,40 +114,25 @@ export function Contact() {
             <ScrollReveal delay={0.2}>
               <Card variant="glass" className="hover-glow">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center shrink-0">
-                    <MapPin className="w-5 h-5 text-accent" />
-                  </div>
-                  <div>
-                    <h4 className="font-heading font-semibold mb-1">Location</h4>
-                    <p className="text-sm text-[var(--text-secondary)]">{SITE_CONFIG.address}</p>
-                  </div>
-                </div>
-              </Card>
-            </ScrollReveal>
-
-            <ScrollReveal delay={0.3}>
-              <Card variant="glass" className="hover-glow">
-                <div className="flex items-start gap-4">
                   <div className="w-12 h-12 rounded-xl bg-success/10 flex items-center justify-center shrink-0">
                     <Calendar className="w-5 h-5 text-success" />
                   </div>
                   <div>
                     <h4 className="font-heading font-semibold mb-1">Book a Meeting</h4>
-                    <a
-                      href={SITE_CONFIG.calendlyUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm text-primary hover:underline"
+                    <button
+                      type="button"
+                      onClick={() => openCalendly()}
+                      className="text-sm text-primary hover:underline font-medium text-left cursor-pointer"
                     >
                       Schedule on Calendly →
-                    </a>
+                    </button>
                   </div>
                 </div>
               </Card>
             </ScrollReveal>
 
             {/* Social Links */}
-            <ScrollReveal delay={0.4}>
+            <ScrollReveal delay={0.3}>
               <div className="flex gap-3">
                 {Object.entries(SOCIAL_LINKS).map(([name, url]) => {
                   const Icon = SOCIAL_ICON_MAP[name];
@@ -155,7 +142,7 @@ export function Contact() {
                       href={url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-10 h-10 rounded-xl bg-[var(--bg-card)] border border-[var(--border)] flex items-center justify-center hover:border-primary hover:text-primary transition-all group"
+                      className="w-10 h-10 rounded-xl bg-[var(--bg-card)] border border-[var(--border)] flex items-center justify-center hover:border-primary hover:text-primary transition-all group shadow-inner"
                       title={name.charAt(0).toUpperCase() + name.slice(1)}
                     >
                       {Icon ? <Icon className="w-6 h-6 group-hover:scale-110 transition-transform" /> : name[0].toUpperCase()}
