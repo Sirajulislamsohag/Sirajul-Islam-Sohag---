@@ -18,7 +18,7 @@ export function PartnerCounterBar() {
           className="rounded-2xl sm:rounded-3xl p-6 sm:p-8 bg-[var(--bg-card)]/80 border border-[var(--border)] backdrop-blur-xl shadow-lg flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-10"
         >
           {/* Left: Google Partner Logo Frame */}
-          <div className="shrink-0 flex items-center justify-center p-3 sm:p-4 rounded-xl border-2 border-slate-900 dark:border-white/20 bg-white shadow-sm w-full sm:w-auto min-w-[170px] max-w-[200px] h-[80px]">
+          <div className="shrink-0 flex items-center justify-center p-3 sm:p-4 rounded-xl  bg-white  w-full sm:w-auto min-w-[170px] max-w-[200px] h-[80px] shadow-inner">
             <Image
               src="/google_partner_logo.png"
               alt="Google Partner"

@@ -58,9 +58,6 @@ export function AboutWithImage() {
           <ScrollReveal delay={0.5}>
             <div className="flex flex-wrap gap-4">
               <a href="/certificates/PDF/CV(Sirajul Islam Sohag).pdf" download target="_blank" rel="noopener noreferrer">
-                <Button variant="glass" icon={<Download className="w-4 h-4" />}>
-                  Download Resume
-                </Button>
               </a>
               <Link href="/about">
                 <Button variant="ghost" icon={<ArrowRight className="w-4 h-4" />}>

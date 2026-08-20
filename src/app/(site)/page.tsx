@@ -13,6 +13,7 @@ import { Footer } from '@/components/sections/footer';
 import type { Metadata } from 'next';
 import { AboutWithImage } from '@/components/sections/about-with-image';
 import { ToolsPlatformsIcons } from '@/components/sections/tools-platforms-icons';
+
  
  
 
@@ -33,7 +34,6 @@ export default function HomePage() {
     <>
       <Hero />
       <TrustedBrands />
-      <VideoShowcase />
       <AboutWithImage/>
       <Services />
       <IndustryExpertise />
