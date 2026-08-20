@@ -8,6 +8,7 @@ export interface IBlogSection {
 export interface IBlog extends Document {
   title: string;
   slug: string;
+  category?: string;
   sections: IBlogSection[];
   excerpt?: string;
   thumbnail?: string;
@@ -23,6 +24,7 @@ export interface IBlog extends Document {
 const BlogSchema = new Schema<IBlog>({
   title: { type: String, required: true },
   slug: { type: String, required: true, unique: true },
+  category: { type: String },
   sections: [{
     title: { type: String },
     paragraphs: [{ type: String }]

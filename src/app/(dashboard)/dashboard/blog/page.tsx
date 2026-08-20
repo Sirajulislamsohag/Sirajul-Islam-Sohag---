@@ -18,6 +18,7 @@ interface BlogPost {
   _id: string;
   title: string;
   slug: string;
+  category?: string;
   excerpt: string;
   thumbnail?: string;
   sections: BlogSection[];
@@ -117,6 +118,11 @@ export default function BlogPage() {
                       {item.status}
                     </span>
                   </div>
+                  {item.category && (
+                    <p className="text-[11px] text-primary font-medium uppercase tracking-wider mb-2">
+                      {item.category.replace(/-/g, ' ')}
+                    </p>
+                  )}
                   <p className="text-xs text-[var(--text-muted)] mb-4 line-clamp-2">{item.excerpt}</p>
                 </div>
               </div>

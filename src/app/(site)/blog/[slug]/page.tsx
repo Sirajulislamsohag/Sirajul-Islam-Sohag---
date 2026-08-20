@@ -19,6 +19,7 @@ interface BlogPost {
   _id: string;
   title: string;
   slug: string;
+  category?: string;
   excerpt: string;
   sections: BlogSection[];
   thumbnail?: string;
@@ -200,10 +201,15 @@ export default function BlogDetailsPage({ params }: { params: Promise<{ slug: st
             </div>
           </div>
 
-          {/* Tags */}
+          {/* Tags & Category */}
           <div className="flex flex-wrap gap-2 mb-8">
-            {post.tags?.map((tag) => (
-              <Badge key={tag} variant="primary" className="text-xs">
+            {post.category && (
+              <Badge variant="primary" className="text-xs uppercase font-bold tracking-wider">
+                {post.category.replace(/-/g, ' ')}
+              </Badge>
+            )}
+            {post.tags?.filter((t) => t.toLowerCase() !== post.category?.toLowerCase()).map((tag) => (
+              <Badge key={tag} variant="secondary" className="text-xs">
                 {tag}
               </Badge>
             ))}

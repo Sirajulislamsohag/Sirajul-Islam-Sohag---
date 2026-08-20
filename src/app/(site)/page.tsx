@@ -13,8 +13,8 @@ import { Footer } from '@/components/sections/footer';
 import type { Metadata } from 'next';
 import { AboutWithImage } from '@/components/sections/about-with-image';
 import { ToolsPlatformsIcons } from '@/components/sections/tools-platforms-icons';
-import { ServiceVerticalsBento } from '@/components/sections/service-verticals-bento';
-import SpecializedVerticalsGrid from '@/components/sections/specialized-verticals-grid';
+ 
+ 
 
 export const metadata: Metadata = {
   title: 'Sirajul | Premium Digital Marketing Consultant',
@@ -37,7 +37,6 @@ export default function HomePage() {
       <AboutWithImage/>
       <Services />
       <IndustryExpertise />
-      <SpecializedVerticalsGrid />
       <ToolsPlatformsIcons/>
       <HowIBringSuccess />
       <PortfolioShowcase />

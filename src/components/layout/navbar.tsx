@@ -32,11 +32,11 @@ export function Navbar() {
           isHidden && '-translate-y-full'
         )}
       >
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="relative z-10">
             <Magnetic strength={0.2}>
-              <span className="text-2xl font-heading font-bold text-gradient">
+              <span className="text-xl sm:text-2xl font-heading font-bold text-gradient">
                 Sirajul
               </span>
             </Magnetic>
@@ -57,25 +57,26 @@ export function Navbar() {
           </div>
 
           {/* Right Actions */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
-              className="p-2.5 rounded-xl hover:bg-white/5 transition-colors cursor-pointer"
+              className="p-2 sm:p-2.5 rounded-xl hover:bg-white/5 transition-colors cursor-pointer"
               aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
             >
               {theme === 'dark' ? (
-                <Sun className="w-5 h-5" />
+                <Sun className="w-4 h-4 sm:w-5 sm:h-5" />
               ) : (
-                <Moon className="w-5 h-5" />
+                <Moon className="w-4 h-4 sm:w-5 sm:h-5" />
               )}
             </button>
 
-            {/* CTA Button - Visible on both mobile & desktop */}
-            <div>
+            {/* CTA Button - Responsive on mobile & desktop */}
+            <div className="hidden xs:block sm:block">
               <Link href="/contact">
-                <Button variant="primary" size="sm" className="text-xs md:text-sm px-3 py-1.5 md:px-4 md:py-2">
-                  Free Consultation
+                <Button variant="primary" size="sm" className="text-xs md:text-sm px-2.5 py-1.5 sm:px-4 sm:py-2">
+                  <span className="hidden sm:inline">Free Consultation</span>
+                  <span className="sm:hidden">Consult</span>
                 </Button>
               </Link>
             </div>

@@ -110,7 +110,7 @@ export default function PortfolioPage() {
                   <h3 className="font-heading font-semibold text-sm line-clamp-2">{item.title}</h3>
                   {item.featured && <Star className="w-4 h-4 text-warning fill-warning shrink-0" />}
                 </div>
-                <p className="text-xs text-[var(--text-muted)] mb-3 capitalize">{item.category.replace('-', ' ')}</p>
+                <p className="text-xs text-[var(--text-muted)] mb-3 capitalize">{item.category ? item.category.replace(/-/g, ' ') : ''}</p>
                 {item.description && (
                   <p className="text-xs text-[var(--text-secondary)] line-clamp-2 mb-4">{item.description}</p>
                 )}

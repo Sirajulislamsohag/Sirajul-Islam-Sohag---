@@ -15,8 +15,8 @@ export const metadata: Metadata = {
 export default function PortfolioPage() {
   return (
     <>
-      <div className="pt-24 md:pt-32">
-        <PortfolioShowcase />
+      <div className="pt-20">
+        <PortfolioShowcase enablePagination={true} itemsPerPage={6} />
       </div>
       <TrustedBrands />
       <ClientReviews />

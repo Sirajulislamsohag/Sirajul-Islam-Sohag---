@@ -18,23 +18,34 @@ export const loginSchema = z.object({
 export const portfolioSchema = z.object({
   title: z.string().min(3),
   slug: z.string().min(3),
-  category: z.enum(['google-ads', 'facebook-ads', 'seo', 'analytics', 'branding']),
-  description: z.string().min(10),
-  challenge: z.string().optional(),
-  solution: z.string().optional(),
-  results: z.string().optional(),
-  images: z.array(z.string()).optional(),
+  category: z.string().min(1, 'Category is required'),
+  description: z.string().min(5),
   thumbnail: z.string().optional(),
   client: z.string().optional(),
   metrics: z.array(z.object({ label: z.string(), value: z.string(), change: z.string().optional() })).optional(),
   tags: z.array(z.string()).optional(),
   featured: z.boolean().optional(),
+
+  // Upwork-style Modal Data
+  role: z.string().optional(),
+  modalImages: z.array(z.string()).optional(),
+  descriptionParagraphs: z.array(z.string()).optional(),
+  bulletPoints: z.array(z.string()).optional(),
+  skills: z.array(z.string()).optional(),
+  projectUrl: z.string().optional(),
+
+  // Legacy fields
+  challenge: z.string().optional(),
+  solution: z.string().optional(),
+  results: z.string().optional(),
+  images: z.array(z.string()).optional(),
   seo: z.object({ metaTitle: z.string(), metaDescription: z.string(), ogImage: z.string().optional(), keywords: z.array(z.string()).optional() }).optional(),
 });
 
 export const blogSchema = z.object({
   title: z.string().min(3),
   slug: z.string().min(3),
+  category: z.string().optional(),
   sections: z.array(z.object({
     title: z.string().optional(),
     paragraphs: z.array(z.string())

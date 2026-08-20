@@ -33,7 +33,7 @@ export function Timeline() {
   }, { scope: sectionRef });
 
   return (
-    <section ref={sectionRef} className="py-24 md:py-32 relative">
+    <section ref={sectionRef} className="py-24 md:py-32 relative overflow-hidden">
       <div className="max-w-4xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16">
@@ -63,7 +63,7 @@ export function Timeline() {
                 direction={index % 2 === 0 ? 'left' : 'right'}
                 delay={index * 0.1}
               >
-                <div className={`relative flex items-start gap-8 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} md:text-${index % 2 === 0 ? 'right' : 'left'} pl-8 md:pl-0`}>
+                <div className={`relative flex items-start gap-8 ${index % 2 === 0 ? 'md:flex-row md:text-right' : 'md:flex-row-reverse md:text-left'} pl-8 md:pl-0`}>
                   {/* Content */}
                   <div className={`flex-1 ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'}`}>
                     <div className="glass-card p-6 hover-glow transition-all duration-300">

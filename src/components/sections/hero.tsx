@@ -34,9 +34,9 @@ export function Hero() {
 
   useEffect(() => {
     const handleResize = () => {
-      // Mobile image radius is 150px, Desktop is 200px.
-      // We add ~40px to place icons outside the border.
-      setRadius(window.innerWidth < 768 ? 190 : 240);
+      // Mobile image radius is responsive: <480px: 140px, <768px: 175px, Desktop: 240px.
+      // We scale properly to avoid clipping on small mobile viewports.
+      setRadius(window.innerWidth < 480 ? 140 : window.innerWidth < 768 ? 175 : 240);
     };
     handleResize();
     window.addEventListener('resize', handleResize);
@@ -101,7 +101,7 @@ export function Hero() {
               I help home service, local service, and e-commerce businesses turn ad spend into qualified leads and revenue through data-driven Google Ads strategy.
             </p>
 
-            <div className="hero-animate flex   gap-4">
+            <div className="hero-animate flex flex-col sm:flex-row gap-4">
               <Link href="#contact" className="w-full sm:w-auto">
                 <Magnetic>
                   <Button 
@@ -139,7 +139,7 @@ export function Hero() {
               {/* Image Container */}
               <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-white/10 shadow-2xl">
                 <Image
-                  src="/Siraj.jpeg"
+                  src="/siraj.webp"
                   alt="Sirajul Islam Sohag - Digital Marketing Consultant"
                   fill
                   priority

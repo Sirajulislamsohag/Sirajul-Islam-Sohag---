@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useMemo } from 'react';
 import { PageHeader } from '@/components/sections/page-header';
 import { Contact } from '@/components/sections/contact';
 import { Footer } from '@/components/sections/footer';
@@ -15,6 +15,7 @@ interface BlogPost {
   _id: string;
   title: string;
   slug: string;
+  category?: string;
   excerpt: string;
   thumbnail?: string;
   tags: string[];
@@ -385,7 +386,6 @@ const SAMPLE_BLOGS: BlogPost[] = [
   },
 ];
 
-const CATEGORIES = ['All', 'Google Ads', 'Meta Ads', 'SEO', 'Analytics', 'CRO'];
 const ITEMS_PER_PAGE = 6;
 
 export default function BlogPage() {
@@ -413,12 +413,64 @@ export default function BlogPage() {
     fetchBlogs();
   }, []);
 
+  // Dynamically extract all unique categories present in the blog posts
+  const dynamicCategories = useMemo(() => {
+    const categoryMap = new Map<string, string>();
+
+    const formatCategoryLabel = (raw: string) => {
+      if (!raw) return '';
+      const trimmed = raw.trim();
+      if (trimmed.includes('-')) {
+        return trimmed
+          .split('-')
+          .map((w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
+          .join(' ');
+      }
+      return trimmed.charAt(0).toUpperCase() + trimmed.slice(1);
+    };
+
+    blogs.forEach((b) => {
+      if (b.category && b.category.toLowerCase() !== 'all') {
+        const key = b.category.toLowerCase().trim();
+        if (!categoryMap.has(key)) {
+          categoryMap.set(key, formatCategoryLabel(b.category));
+        }
+      }
+      if (b.tags && Array.isArray(b.tags)) {
+        b.tags.forEach((tag) => {
+          if (tag && tag.toLowerCase() !== 'all') {
+            const key = tag.toLowerCase().trim();
+            if (!categoryMap.has(key)) {
+              categoryMap.set(key, tag.trim());
+            }
+          }
+        });
+      }
+    });
+
+    return [
+      { value: 'All', label: 'All' },
+      ...Array.from(categoryMap.entries()).map(([_, label]) => ({
+        value: label,
+        label,
+      })),
+    ];
+  }, [blogs]);
+
   // Filter blogs according to selected category
   const filteredBlogs = activeCategory === 'All'
     ? blogs
-    : blogs.filter((b) =>
-        b.tags?.some((t) => t.toLowerCase().includes(activeCategory.toLowerCase()))
-      );
+    : blogs.filter((b) => {
+        const catMatch = b.category && (
+          b.category.toLowerCase().trim() === activeCategory.toLowerCase().trim() ||
+          b.category.replace(/-/g, ' ').toLowerCase().trim() === activeCategory.toLowerCase().trim()
+        );
+        const tagMatch = b.tags?.some((t) =>
+          t.toLowerCase().trim() === activeCategory.toLowerCase().trim() ||
+          t.toLowerCase().includes(activeCategory.toLowerCase().trim())
+        );
+        return catMatch || tagMatch;
+      });
 
   // Calculate pagination metrics (6 per page)
   const totalPages = Math.ceil(filteredBlogs.length / ITEMS_PER_PAGE) || 1;
@@ -449,20 +501,20 @@ export default function BlogPage() {
 
       <section ref={gridSectionRef} className="py-16 md:py-24 relative">
         <div className="max-w-7xl mx-auto px-6">
-          {/* Category Filter Tabs */}
+          {/* Dynamic Category Filter Tabs */}
           <ScrollReveal className="mb-12">
             <div className="flex flex-wrap justify-center gap-3">
-              {CATEGORIES.map((cat) => (
+              {dynamicCategories.map((cat) => (
                 <button
-                  key={cat}
-                  onClick={() => handleCategoryChange(cat)}
+                  key={cat.value}
+                  onClick={() => handleCategoryChange(cat.value)}
                   className={`px-5 py-2.5 rounded-full text-xs md:text-sm font-medium transition-all cursor-pointer ${
-                    activeCategory === cat
+                    activeCategory.toLowerCase() === cat.value.toLowerCase()
                       ? 'bg-primary text-white shadow-lg shadow-primary/25 scale-105'
                       : 'bg-[var(--bg-card)] border border-[var(--border)] text-[var(--text-secondary)] hover:border-primary/40'
                   }`}
                 >
-                  {cat}
+                  {cat.label}
                 </button>
               ))}
             </div>
@@ -556,7 +608,7 @@ export default function BlogPage() {
               <span className="text-[var(--text)] font-semibold font-number">{totalPages}</span> ({filteredBlogs.length} total articles)
             </p>
 
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center justify-center gap-2">
               {/* Previous Button */}
               <Button
                 variant="glass"
@@ -564,13 +616,13 @@ export default function BlogPage() {
                 onClick={() => handlePageChange(currentPage - 1)}
                 disabled={currentPage === 1}
                 icon={<ChevronLeft className="w-4 h-4" />}
-                className="rounded-full px-4 disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"
+                className="rounded-full px-3 sm:px-4 text-xs sm:text-sm disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"
               >
-                Previous
+                <span className="hidden xs:inline">Previous</span>
               </Button>
 
               {/* Numbered Page Buttons */}
-              <div className="flex items-center gap-1.5">
+              <div className="flex flex-wrap items-center justify-center gap-1.5">
                 {Array.from({ length: totalPages }).map((_, i) => {
                   const pageNum = i + 1;
                   const isActive = pageNum === currentPage;
@@ -578,7 +630,7 @@ export default function BlogPage() {
                     <button
                       key={pageNum}
                       onClick={() => handlePageChange(pageNum)}
-                      className={`w-9 h-9 rounded-full text-xs font-semibold font-number transition-all cursor-pointer flex items-center justify-center ${
+                      className={`w-8 h-8 sm:w-9 sm:h-9 rounded-full text-xs font-semibold font-number transition-all cursor-pointer flex items-center justify-center ${
                         isActive
                           ? 'bg-primary text-white shadow-lg shadow-primary/30 scale-105'
                           : 'bg-[var(--bg-card)] border border-[var(--border)] text-[var(--text-secondary)] hover:border-primary/50 hover:text-[var(--text)]'
@@ -597,9 +649,9 @@ export default function BlogPage() {
                 onClick={() => handlePageChange(currentPage + 1)}
                 disabled={currentPage === totalPages}
                 icon={<ChevronRight className="w-4 h-4" />}
-                className="rounded-full px-4 disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer flex-row-reverse"
+                className="rounded-full px-3 sm:px-4 text-xs sm:text-sm disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer flex-row-reverse"
               >
-                Next
+                <span className="hidden xs:inline">Next</span>
               </Button>
             </div>
           </div>

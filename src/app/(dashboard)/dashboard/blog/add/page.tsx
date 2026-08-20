@@ -21,6 +21,16 @@ const STATUS_OPTIONS = [
   { value: 'published', label: 'Published' },
 ];
 
+const DEFAULT_BLOG_CATEGORIES = [
+  { value: 'google-ads', label: 'Google Ads' },
+  { value: 'meta-ads', label: 'Meta Ads' },
+  { value: 'seo', label: 'SEO' },
+  { value: 'analytics', label: 'Analytics' },
+  { value: 'cro', label: 'CRO' },
+  { value: 'strategy', label: 'Strategy' },
+  { value: 'branding', label: 'Branding' },
+];
+
 function AddBlogContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -29,17 +39,53 @@ function AddBlogContent() {
   const [saving, setSaving] = useState(false);
   const [loadingEdit, setLoadingEdit] = useState(!!editId);
   const [uploading, setUploading] = useState(false);
+  const [categoryList, setCategoryList] = useState<{ value: string; label: string }[]>(DEFAULT_BLOG_CATEGORIES);
+  const [isCustomCategory, setIsCustomCategory] = useState(false);
+  const [customCategoryInput, setCustomCategoryInput] = useState('');
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const [form, setForm] = useState({
     title: '',
     slug: '',
+    category: 'google-ads',
     excerpt: '',
     tags: '',
     status: 'draft',
     thumbnail: '',
     sections: [{ title: '', paragraphs: [''] }] as BlogSection[],
   });
+
+  // Fetch unique categories across existing blog posts
+  useEffect(() => {
+    async function fetchCategories() {
+      try {
+        const res = await fetch('/api/blogs?limit=100');
+        const data = await res.json();
+        if (data.success && Array.isArray(data.data)) {
+          const map = new Map<string, string>();
+          DEFAULT_BLOG_CATEGORIES.forEach((c) => map.set(c.value.toLowerCase().trim(), c.label));
+
+          data.data.forEach((item: any) => {
+            if (item.category) {
+              const val = item.category.trim();
+              const key = val.toLowerCase();
+              if (!map.has(key)) {
+                const label = val.includes('-')
+                  ? val.split('-').map((w: string) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join(' ')
+                  : val.charAt(0).toUpperCase() + val.slice(1);
+                map.set(key, label);
+              }
+            }
+          });
+
+          setCategoryList(Array.from(map.entries()).map(([value, label]) => ({ value, label })));
+        }
+      } catch (err) {
+        console.warn('Could not load blog categories:', err);
+      }
+    }
+    fetchCategories();
+  }, []);
 
   // Fetch item for editing if editId exists
   useEffect(() => {
@@ -50,15 +96,31 @@ function AddBlogContent() {
         const data = await res.json();
         if (data.success && data.data) {
           const item = data.data;
+          const loadedCat = item.category || 'google-ads';
+          
           setForm({
             title: item.title || '',
             slug: item.slug || '',
+            category: loadedCat,
             excerpt: item.excerpt || '',
             thumbnail: item.thumbnail || '',
             sections: item.sections?.length > 0 ? item.sections : [{ title: '', paragraphs: [''] }],
             tags: (item.tags || []).join(', '),
             status: item.status || 'draft',
           });
+
+          const existsInDefaults = DEFAULT_BLOG_CATEGORIES.some(
+            (c) => c.value.toLowerCase() === loadedCat.toLowerCase()
+          );
+          if (!existsInDefaults) {
+            setCategoryList((prev) => {
+              if (prev.some((c) => c.value.toLowerCase() === loadedCat.toLowerCase())) return prev;
+              const formatted = loadedCat.includes('-')
+                ? loadedCat.split('-').map((w: string) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join(' ')
+                : loadedCat.charAt(0).toUpperCase() + loadedCat.slice(1);
+              return [...prev, { value: loadedCat, label: formatted }];
+            });
+          }
         } else {
           toast.error('Failed to load blog post for editing');
         }
@@ -126,6 +188,7 @@ function AddBlogContent() {
     try {
       const body = {
         ...form,
+        category: form.category.trim(),
         tags: form.tags.split(',').map((t) => t.trim()).filter(Boolean),
         sections: form.sections.map((s) => ({
           ...s,
@@ -212,21 +275,84 @@ function AddBlogContent() {
             />
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-6 items-start">
+            {!isCustomCategory ? (
+              <div className="space-y-1.5">
+                <div className="flex items-center justify-between">
+                  <label className="text-sm font-medium text-[var(--text-secondary)]">
+                    Category *
+                  </label>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setIsCustomCategory(true);
+                      setCustomCategoryInput('');
+                    }}
+                    className="text-xs font-semibold text-primary hover:underline flex items-center gap-1 cursor-pointer"
+                  >
+                    <Plus className="w-3.5 h-3.5" /> Custom Category
+                  </button>
+                </div>
+                <Select
+                  options={[
+                    ...categoryList,
+                    { value: '__custom__', label: '+ Add Custom Category...' },
+                  ]}
+                  value={form.category}
+                  onChange={(e) => {
+                    if (e.target.value === '__custom__') {
+                      setIsCustomCategory(true);
+                      setCustomCategoryInput('');
+                    } else {
+                      setForm({ ...form, category: e.target.value });
+                    }
+                  }}
+                />
+              </div>
+            ) : (
+              <div className="space-y-1.5">
+                <div className="flex items-center justify-between">
+                  <label className="text-sm font-medium text-[var(--text-secondary)]">
+                    Custom Category *
+                  </label>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setIsCustomCategory(false);
+                      setForm({ ...form, category: categoryList[0]?.value || 'google-ads' });
+                    }}
+                    className="text-xs font-semibold text-primary hover:underline flex items-center gap-1 cursor-pointer"
+                  >
+                    Choose From List
+                  </button>
+                </div>
+                <Input
+                  placeholder="e.g. Performance Max, Email Marketing, CRO..."
+                  value={customCategoryInput}
+                  onChange={(e) => {
+                    const val = e.target.value;
+                    setCustomCategoryInput(val);
+                    setForm({ ...form, category: val });
+                  }}
+                  required
+                />
+              </div>
+            )}
+
             <Select
               label="Status *"
               options={STATUS_OPTIONS}
               value={form.status}
               onChange={(e) => setForm({ ...form, status: e.target.value })}
             />
-
-            <Input
-              label="Tags (comma separated)"
-              placeholder="Google Ads, PPC, Marketing Strategy"
-              value={form.tags}
-              onChange={(e) => setForm({ ...form, tags: e.target.value })}
-            />
           </div>
+
+          <Input
+            label="Tags (comma separated)"
+            placeholder="Google Ads, PPC, Marketing Strategy"
+            value={form.tags}
+            onChange={(e) => setForm({ ...form, tags: e.target.value })}
+          />
 
           <Textarea
             label="Excerpt (Summary) *"

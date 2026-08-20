@@ -75,7 +75,7 @@ export function ClientUnderstanding() {
   return (
     <section
       ref={sectionRef}
-      className="relative h-screen flex items-center justify-center overflow-hidden bg-dark"
+      className="relative min-h-[100dvh] h-screen flex items-center justify-center overflow-hidden bg-dark"
     >
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-dark via-primary/5 to-dark" />
@@ -87,7 +87,7 @@ export function ClientUnderstanding() {
       </div>
 
       {/* Content */}
-      <div ref={containerRef} className="relative z-10 text-center px-6">
+      <div ref={containerRef} className="relative z-10 text-center px-6 w-full h-full flex items-center justify-center">
         {STAGES.map((stage, index) => (
           <div
             key={index}

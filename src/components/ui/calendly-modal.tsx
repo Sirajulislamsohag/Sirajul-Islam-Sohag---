@@ -31,12 +31,15 @@ export function CalendlyModal({
   // Lock body scroll when modal is open
   useEffect(() => {
     if (isOpen) {
+      document.documentElement.style.overflow = 'hidden';
       document.body.style.overflow = 'hidden';
       setLoading(true);
     } else {
+      document.documentElement.style.overflow = '';
       document.body.style.overflow = '';
     }
     return () => {
+      document.documentElement.style.overflow = '';
       document.body.style.overflow = '';
     };
   }, [isOpen]);
@@ -55,7 +58,7 @@ export function CalendlyModal({
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[9999] flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center p-3 sm:p-6 overflow-y-auto overflow-x-hidden">
           {/* Backdrop Blur Overlay */}
           <motion.div
             initial={{ opacity: 0 }}
