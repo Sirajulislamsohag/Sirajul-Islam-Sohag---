@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from 'next';
+import Script from 'next/script';
 import { Space_Grotesk, Inter, Sora } from 'next/font/google';
 import { Toaster } from 'react-hot-toast';
+import { GTM_ID } from '@/lib/gtm';
 import './globals.css';
 
 const spaceGrotesk = Space_Grotesk({
@@ -62,6 +64,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className="light" suppressHydrationWarning>
       <head>
+        {/* Google Tag Manager - Head Script */}
+        <Script
+          id="google-tag-manager"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','${GTM_ID}');`,
+          }}
+        />
         <link rel="icon" href="/favicon.png" type="image/png" sizes="any" />
         <link rel="apple-touch-icon" href="/favicon.png" />
         <script
@@ -95,6 +109,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className={`${spaceGrotesk.variable} ${inter.variable} ${sora.variable} font-body antialiased bg-[var(--bg)] text-[var(--text)]`}>
+        {/* Google Tag Manager (noscript fallback) */}
+        <noscript>
+          <iframe
+            src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
+            title="Google Tag Manager"
+          />
+        </noscript>
         {children}
         <Toaster
           position="bottom-right"

@@ -15,6 +15,7 @@ import { ScrollReveal } from '@/components/animations/scroll-reveal';
 import { SITE_CONFIG, SERVICE_OPTIONS, BUDGET_OPTIONS, SOCIAL_LINKS } from '@/lib/constants';
 import { SOCIAL_ICON_MAP } from '@/components/ui/social-icons';
 import { useCalendly } from '@/providers/calendly-provider';
+import { analyticsEvents } from '@/lib/gtm';
 import toast from 'react-hot-toast';
 
 const contactSchema = z.object({
@@ -52,6 +53,7 @@ export function Contact() {
       if (!res.ok) throw new Error('Failed to send message');
 
       setIsSubmitted(true);
+      analyticsEvents.leadFormSubmitted({ service: data.service, budget: data.budget });
       reset();
       toast.success('Message sent successfully!');
       setTimeout(() => setIsSubmitted(false), 5000);

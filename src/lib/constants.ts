@@ -10,6 +10,7 @@ export const SITE_CONFIG = {
   address: 'Dhaka, Bangladesh',
   calendlyUrl: process.env.NEXT_PUBLIC_CALENDLY_URL || 'https://calendly.com/siraj',
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://sirajmarketing.com',
+  gtmId: process.env.NEXT_PUBLIC_GTM_ID || 'GTM-NJDTVNS8',
 } as const;
 
 export const NAV_ITEMS: NavItem[] = [

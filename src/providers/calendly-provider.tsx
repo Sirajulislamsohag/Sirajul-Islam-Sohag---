@@ -2,6 +2,7 @@
 
 import React, { createContext, useContext, useState } from 'react';
 import { CalendlyModal } from '@/components/ui/calendly-modal';
+import { analyticsEvents } from '@/lib/gtm';
 
 interface CalendlyModalOptions {
   title?: string;
@@ -28,6 +29,7 @@ export function CalendlyProvider({ children }: { children: React.ReactNode }) {
   const openCalendly = (modalOptions?: CalendlyModalOptions) => {
     setOptions(modalOptions);
     setIsOpen(true);
+    analyticsEvents.calendlyBookingClicked(modalOptions?.title || 'general_modal');
   };
 
   const closeCalendly = () => {

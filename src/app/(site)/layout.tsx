@@ -1,5 +1,4 @@
 'use client';
-
 import { ReactNode } from 'react';
 import { ThemeProvider } from '@/providers/theme-provider';
 import { LenisProvider } from '@/providers/lenis-provider';

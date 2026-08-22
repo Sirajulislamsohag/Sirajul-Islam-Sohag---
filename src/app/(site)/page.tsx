@@ -2,7 +2,6 @@ import { Hero } from '@/components/sections/hero';
 import { TrustedBrands } from '@/components/sections/trusted-brands';
 import { Services } from '@/components/sections/services';
 import { IndustryExpertise } from '@/components/sections/industry-expertise';
-import { VideoShowcase } from '@/components/sections/video-showcase';
 import { HowIBringSuccess } from '@/components/sections/how-i-bring-success';
 import { PortfolioShowcase } from '@/components/sections/portfolio-showcase';
 import { Certificates } from '@/components/sections/certificates';

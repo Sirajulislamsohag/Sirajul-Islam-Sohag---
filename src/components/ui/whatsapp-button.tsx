@@ -1,6 +1,7 @@
 'use client';
 
 import { SOCIAL_LINKS } from '@/lib/constants';
+import { analyticsEvents } from '@/lib/gtm';
 
 export function WhatsAppButton() {
   const whatsappUrl = SOCIAL_LINKS.whatsapp || 'https://wa.me/8801234567890';
@@ -18,6 +19,7 @@ export function WhatsAppButton() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat on WhatsApp"
+        onClick={() => analyticsEvents.whatsappChatClicked()}
         className="w-14 h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-[0_0_25px_rgba(37,211,102,0.6)] hover:shadow-[0_0_35px_rgba(37,211,102,0.9)] hover:scale-110 active:scale-95 transition-all duration-300 cursor-pointer animate-pulse-glow"
       >
         <svg

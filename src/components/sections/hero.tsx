@@ -107,7 +107,7 @@ export function Hero() {
               >
                 <span className="text-gradient">Sirajul Islam Sohag</span>
               </h1>
-              <div className="hero-animate mt-4 text-xl md:text-2xl font-heading text-[var(--text-secondary)]">
+              <div className="hero-animate mt-4 text-xl md:text-2xl font-heading text-[var(--text-secondary)] font-semibold">
                 <Typing words={TYPING_ROLES} />
               </div>
             </div>
