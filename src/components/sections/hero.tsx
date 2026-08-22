@@ -145,7 +145,7 @@ export function Hero() {
           </div>
 
           {/* Right Column (Profile Image & Orbit) */}
-          <div className="order-1 lg:order-2 relative flex items-center justify-center py-4 sm:py-6 lg:py-0 w-full overflow-visible">
+          <div className="order-1 lg:order-2 relative flex items-center justify-center py-4 sm:py-6 lg:py-0 w-full overflow-visible my-10 lg:my-0 ">
             {/* Profile Image with Orbit */}
             <div 
               ref={imageRef} 
