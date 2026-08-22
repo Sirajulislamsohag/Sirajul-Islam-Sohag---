@@ -24,13 +24,17 @@ export function AboutWithImage() {
 
           <ScrollReveal delay={0.2}>
             <p className="text-[var(--text-secondary)] text-lg leading-relaxed">
-              With over 5 years of experience in digital marketing, I've helped 200+ businesses across 30+ countries scale their revenue through strategic Google Ads, Facebook Ads, and SEO campaigns. My data-driven approach ensures every dollar spent generates maximum ROI.
+              I help businesses turn Google Ads into a predictable and profitable growth channel through strategic campaign planning, precise targeting, and continuous optimization.
+<br/>
+With 5+ years of experience, I’ve helped 100+ businesses worldwide generate qualified leads, increase sales, improve conversion rates, and maximize their return on ad spend.
             </p>
           </ScrollReveal>
 
           <ScrollReveal delay={0.3}>
             <p className="text-[var(--text-secondary)] leading-relaxed">
-              I specialize in performance marketing, combining deep analytical skills with creative strategy to build marketing engines that consistently deliver results. From startups to established brands, I create customized growth frameworks that scale.
+               My expertise covers Google Search Ads, Performance Max, Google Shopping, Lead Generation, eCommerce Advertising, Keyword Research, Conversion Tracking, and Google Ads Optimization.
+ <br/>
+Every campaign starts with a clear understanding of the business and its customers. From campaign structure and targeting to bidding, ad performance, and conversion tracking, I focus on every detail that can make ad spend work harder and deliver better results.
             </p>
           </ScrollReveal>
 

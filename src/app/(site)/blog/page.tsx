@@ -10,6 +10,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Clock, ArrowUpRight, ChevronLeft, ChevronRight, FileText } from 'lucide-react';
 import Link from 'next/link';
+import { CTASection } from '@/components/sections/cta-section';
 
 interface BlogPost {
   _id: string;
@@ -657,7 +658,7 @@ export default function BlogPage() {
           </div>
         </div>
       </section>
-
+      <CTASection />
       <Contact />
       <Footer />
     </>

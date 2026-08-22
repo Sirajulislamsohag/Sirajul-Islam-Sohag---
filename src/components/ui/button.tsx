@@ -67,7 +67,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           else if (ref) ref.current = node;
         }}
         className={cn(
-          'relative overflow-hidden inline-flex items-center justify-center font-medium',
+          'relative overflow-hidden inline-flex items-center justify-center font-medium whitespace-nowrap',
           'transition-all duration-300 ease-out',
           'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg)]',
           'disabled:opacity-50 disabled:pointer-events-none',

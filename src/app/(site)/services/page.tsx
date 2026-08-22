@@ -1,7 +1,6 @@
 import { PageHeader } from '@/components/sections/page-header';
 import { Services } from '@/components/sections/services';
 import { ToolsPlatforms } from '@/components/sections/tools-platforms';
-import { ClientUnderstanding } from '@/components/sections/client-understanding';
 import { ClientReviews } from '@/components/sections/client-reviews';
 import { Contact } from '@/components/sections/contact';
 import { Footer } from '@/components/sections/footer';
@@ -10,6 +9,7 @@ import { TextReveal } from '@/components/animations/text-reveal';
 import { Card } from '@/components/ui/card';
 import { Search, Target, TrendingUp, ShieldCheck } from 'lucide-react';
 import type { Metadata } from 'next';
+import { CTASection } from '@/components/sections/cta-section';
 
 export const metadata: Metadata = {
   title: 'Services | Sirajul - Performance Marketing Solutions',
@@ -91,8 +91,8 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <ClientUnderstanding />
       <ClientReviews />
+      <CTASection />
       <Contact />
       <Footer />
     </>

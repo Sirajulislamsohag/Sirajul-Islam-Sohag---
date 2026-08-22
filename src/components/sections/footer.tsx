@@ -52,7 +52,7 @@ export function Footer() {
 
           {/* Column 2 - Services */}
           <div className="footer-item">
-            <h3 className="text-xs uppercase tracking-[0.2em] text-white/70 mb-4 font-semibold">Services</h3>
+            <h3 className="text-xs uppercase tracking-[0.2em] text-amber-500 font-bold mb-4">Services</h3>
             <ul className="space-y-3">
               {SERVICES.slice(0, 6).map((service) => (
                 <li key={service.id}>
@@ -69,7 +69,7 @@ export function Footer() {
 
           {/* Column 3 - Navigation */}
           <div className="footer-item">
-            <h3 className="text-xs uppercase tracking-[0.2em] text-white/70 mb-4 font-semibold">Navigation</h3>
+            <h3 className="text-xs uppercase tracking-[0.2em] text-amber-500 font-bold mb-4 ">Navigation</h3>
             <ul className="space-y-3">
               {NAV_ITEMS.map((item) => (
                 <li key={item.href}>

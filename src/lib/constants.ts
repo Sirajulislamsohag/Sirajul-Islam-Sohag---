@@ -34,7 +34,7 @@ export const ORBIT_SKILLS = [
   { label: 'Meta Ads', iconUrl: 'https://cdn.simpleicons.org/meta/0668E1', color: '#0668E1' },
   { label: 'Google Analytics', iconUrl: 'https://cdn.simpleicons.org/googleanalytics/F59E0B', color: '#F59E0B' },
   { label: 'SEO', iconUrl: 'https://cdn.simpleicons.org/google/22C55E', color: '#22C55E' },
-  { label: 'Mailchimp', iconUrl: 'https://cdn.simpleicons.org/mailchimp/FFE01B', color: '#FFE01B' },
+  { label: 'Google Tag Manager', iconUrl: 'https://cdn.simpleicons.org/googletagmanager/246FDB', color: '#246FDB' },
   { label: 'HubSpot', iconUrl: 'https://cdn.simpleicons.org/hubspot/FF7A59', color: '#FF7A59' },
 ];
 
