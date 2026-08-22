@@ -1,14 +1,13 @@
-'use client';
-
-import { useEffect, useState, use } from 'react';
+import type { Metadata } from 'next';
 import Link from 'next/link';
-import { PageHeader } from '@/components/sections/page-header';
+import { connectDB } from '@/lib/db';
+import { BlogModel } from '@/models/blog';
 import { Contact } from '@/components/sections/contact';
 import { Footer } from '@/components/sections/footer';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Clock, Calendar, User, ArrowLeft, Share2 } from 'lucide-react';
-import toast from 'react-hot-toast';
+import { ShareButton } from '@/components/ui/share-button';
+import { Clock, Calendar, User, ArrowLeft } from 'lucide-react';
 
 interface BlogSection {
   title?: string;
@@ -27,6 +26,12 @@ interface BlogPost {
   author: string;
   readTime: number;
   createdAt: string;
+  seo?: {
+    metaTitle?: string;
+    metaDescription?: string;
+    ogImage?: string;
+    keywords?: string[];
+  };
 }
 
 const SAMPLE_ARTICLES_MAP: Record<string, BlogPost> = {
@@ -96,75 +101,91 @@ const SAMPLE_ARTICLES_MAP: Record<string, BlogPost> = {
   }
 };
 
-export default function BlogDetailsPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = use(params);
-  const [post, setPost] = useState<BlogPost | null>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    async function loadArticle() {
-      setLoading(true);
-      try {
-        const res = await fetch(`/api/blogs?status=published`);
-        const data = await res.json();
-        if (data.success && Array.isArray(data.data)) {
-          const found = data.data.find((b: BlogPost) => b.slug === slug || b._id === slug);
-          if (found) {
-            setPost(found);
-            setLoading(false);
-            return;
-          }
-        }
-      } catch (err) {
-        console.warn('API lookup failed, checking static map:', err);
+async function getBlogPost(slug: string): Promise<BlogPost> {
+  try {
+    if (process.env.MONGODB_URI) {
+      await connectDB();
+      const blog = await BlogModel.findOne({ slug, status: 'published' }).lean();
+      if (blog) {
+        return {
+          _id: blog._id.toString(),
+          title: blog.title,
+          slug: blog.slug,
+          category: blog.category,
+          excerpt: blog.excerpt || '',
+          sections: blog.sections || [],
+          thumbnail: blog.thumbnail,
+          tags: blog.tags || [],
+          author: blog.author || 'Sirajul Islam Sohag',
+          readTime: blog.readTime || 5,
+          createdAt: blog.createdAt ? new Date(blog.createdAt).toISOString() : new Date().toISOString(),
+          seo: blog.seo,
+        };
       }
-
-      // Check sample map fallback
-      if (SAMPLE_ARTICLES_MAP[slug]) {
-        setPost(SAMPLE_ARTICLES_MAP[slug]);
-      } else {
-        // Fallback default
-        setPost({
-          _id: 'default',
-          title: slug.replace(/-/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase()),
-          slug,
-          excerpt: 'Comprehensive growth guide and strategic analysis for performance marketing campaigns.',
-          sections: [
-            {
-              title: 'Strategic Growth Framework',
-              paragraphs: ['Scaling digital marketing performance requires continuous optimization, accurate conversion tracking, and high-converting ad copy.']
-            }
-          ],
-          tags: ['Digital Marketing', 'Growth', 'Strategy'],
-          author: 'Sirajul Islam Sohag',
-          readTime: 5,
-          createdAt: new Date().toISOString().split('T')[0],
-        });
-      }
-      setLoading(false);
     }
-    loadArticle();
-  }, [slug]);
-
-  const handleShare = () => {
-    if (navigator.clipboard) {
-      navigator.clipboard.writeText(window.location.href);
-      toast.success('Link copied to clipboard!');
-    }
-  };
-
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-[var(--bg)]">
-        <div className="text-center">
-          <span className="text-2xl font-heading font-bold text-gradient">Sirajul</span>
-          <div className="mt-4 w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin mx-auto" />
-        </div>
-      </div>
-    );
+  } catch (error) {
+    console.warn('Database blog lookup error, falling back to static map:', error);
   }
 
-  if (!post) return null;
+  if (SAMPLE_ARTICLES_MAP[slug]) {
+    return SAMPLE_ARTICLES_MAP[slug];
+  }
+
+  return {
+    _id: 'default',
+    title: slug.replace(/-/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase()),
+    slug,
+    excerpt: 'Comprehensive growth guide and strategic analysis for performance marketing campaigns.',
+    sections: [
+      {
+        title: 'Strategic Growth Framework',
+        paragraphs: ['Scaling digital marketing performance requires continuous optimization, accurate conversion tracking, and high-converting ad copy.']
+      }
+    ],
+    tags: ['Digital Marketing', 'Growth', 'Strategy'],
+    author: 'Sirajul Islam Sohag',
+    readTime: 5,
+    createdAt: new Date().toISOString().split('T')[0],
+  };
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const post = await getBlogPost(slug);
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://sirajmarketing.com';
+  const url = `${siteUrl}/blog/${post.slug}`;
+  const title = post.seo?.metaTitle || `${post.title} | Sirajul`;
+  const description = post.seo?.metaDescription || post.excerpt;
+  const image = post.seo?.ogImage || post.thumbnail || `${siteUrl}/avatar.png`;
+
+  return {
+    title,
+    description,
+    keywords: post.tags,
+    openGraph: {
+      title,
+      description,
+      url,
+      type: 'article',
+      publishedTime: post.createdAt ? new Date(post.createdAt).toISOString() : undefined,
+      authors: [post.author || 'Sirajul Islam Sohag'],
+      images: image ? [{ url: image }] : [],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: image ? [image] : [],
+    },
+    alternates: {
+      canonical: url,
+    },
+  };
+}
+
+export default async function BlogDetailsPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const post = await getBlogPost(slug);
 
   return (
     <>
@@ -191,13 +212,7 @@ export default function BlogDetailsPage({ params }: { params: Promise<{ slug: st
                 <Clock className="w-4 h-4 text-primary" />
                 {post.readTime} min read
               </span>
-              <button
-                onClick={handleShare}
-                className="p-2 rounded-lg bg-[var(--bg-card)] border border-[var(--border)] hover:border-primary text-[var(--text)] transition-colors cursor-pointer"
-                title="Share Article"
-              >
-                <Share2 className="w-4 h-4" />
-              </button>
+              <ShareButton title={post.title} />
             </div>
           </div>
 

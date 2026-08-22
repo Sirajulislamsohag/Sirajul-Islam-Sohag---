@@ -10,7 +10,17 @@ export async function GET(req: NextRequest) {
     await connectDB();
     const contacts = await ContactModel.find().sort({ createdAt: -1 });
     const headers = ['Name', 'Email', 'Phone', 'Company', 'Service', 'Budget', 'Message', 'Status', 'Date'];
-    const rows = contacts.map((c) => [c.name, c.email, c.phone || '', c.company || '', c.service, c.budget, c.message.replace(/,/g, ';'), c.status, new Date(c.createdAt).toLocaleDateString()]);
+    const rows = contacts.map((c) => [
+      c.name || '',
+      c.email || '',
+      c.phone || '',
+      c.company || '',
+      c.service || '',
+      c.budget || '',
+      (c.message || '').replace(/"/g, '""').replace(/,/g, ';'),
+      c.status || '',
+      c.createdAt ? new Date(c.createdAt).toLocaleDateString() : '',
+    ]);
     const csv = [headers.join(','), ...rows.map((r) => r.map((v) => `"${v}"`).join(','))].join('\n');
     return new NextResponse(csv, { headers: { 'Content-Type': 'text/csv', 'Content-Disposition': 'attachment; filename=contacts.csv' } });
   } catch (error) {

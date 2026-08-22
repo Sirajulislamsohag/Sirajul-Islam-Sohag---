@@ -5,9 +5,8 @@ import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Modal } from '@/components/ui/modal';
-import { Badge } from '@/components/ui/badge';
 import { ConfirmModal } from '@/components/ui/confirm-modal';
-import { Search, Download, Trash2, Eye, Mail, Filter, UserPlus } from 'lucide-react';
+import { Download, Trash2, Eye, Mail, UserPlus } from 'lucide-react';
 import toast from 'react-hot-toast';
 
 interface Contact {
@@ -30,7 +29,6 @@ export default function ContactsPage() {
   const closeConfirm = () => setConfirmConfig(prev => ({ ...prev, isOpen: false }));
 
   const fetchContacts = useCallback(async () => {
-    setLoading(true);
     try {
       const params = new URLSearchParams({ page: page.toString(), limit: '20' });
       if (search) params.set('search', search);
@@ -45,7 +43,29 @@ export default function ContactsPage() {
     finally { setLoading(false); }
   }, [page, search, statusFilter]);
 
-  useEffect(() => { fetchContacts(); }, [fetchContacts]);
+  useEffect(() => {
+    let isMounted = true;
+    const load = async () => {
+      setLoading(true);
+      try {
+        const params = new URLSearchParams({ page: page.toString(), limit: '20' });
+        if (search) params.set('search', search);
+        if (statusFilter) params.set('status', statusFilter);
+        const res = await fetch(`/api/contacts?${params}`);
+        const data = await res.json();
+        if (isMounted && data.success) {
+          setContacts(data.data);
+          setTotalPages(data.pagination.totalPages);
+        }
+      } catch {
+        if (isMounted) toast.error('Failed to load contacts');
+      } finally {
+        if (isMounted) setLoading(false);
+      }
+    };
+    load();
+    return () => { isMounted = false; };
+  }, [page, search, statusFilter]);
 
   const updateStatus = async (id: string, status: string) => {
     try {

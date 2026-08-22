@@ -34,7 +34,6 @@ export default function BlogPage() {
   const [itemToDelete, setItemToDelete] = useState<string | null>(null);
 
   const fetchItems = useCallback(async () => {
-    setLoading(true);
     try {
       const res = await fetch('/api/blogs?limit=50');
       const data = await res.json();
@@ -47,8 +46,22 @@ export default function BlogPage() {
   }, []);
 
   useEffect(() => {
-    fetchItems();
-  }, [fetchItems]);
+    let isMounted = true;
+    const load = async () => {
+      setLoading(true);
+      try {
+        const res = await fetch('/api/blogs?limit=50');
+        const data = await res.json();
+        if (isMounted && data.success) setItems(data.data);
+      } catch {
+        if (isMounted) toast.error('Failed to load blog posts');
+      } finally {
+        if (isMounted) setLoading(false);
+      }
+    };
+    load();
+    return () => { isMounted = false; };
+  }, []);
 
   const confirmDelete = (id: string) => {
     setItemToDelete(id);

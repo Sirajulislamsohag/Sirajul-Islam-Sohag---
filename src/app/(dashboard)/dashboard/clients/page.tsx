@@ -7,7 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Modal } from '@/components/ui/modal';
 import { Select } from '@/components/ui/select';
 import { ConfirmModal } from '@/components/ui/confirm-modal';
-import { Plus, Trash2, Edit, Users, Eye, Mail, Download } from 'lucide-react';
+import { Plus, Trash2, Edit, Users, Mail } from 'lucide-react';
 import toast from 'react-hot-toast';
 
 interface Client {
@@ -49,7 +49,6 @@ export default function ClientsPage() {
   const [form, setForm] = useState({ name: '', company: '', email: '', phone: '', status: 'new', projectStatus: 'pending' });
 
   const fetchItems = useCallback(async () => {
-    setLoading(true);
     try {
       const params = new URLSearchParams({ page: page.toString(), limit: '20' });
       if (search) params.set('search', search);
@@ -65,7 +64,30 @@ export default function ClientsPage() {
     finally { setLoading(false); }
   }, [page, search, statusFilter]);
 
-  useEffect(() => { fetchItems(); }, [fetchItems]);
+  useEffect(() => {
+    let isMounted = true;
+    const load = async () => {
+      setLoading(true);
+      try {
+        const params = new URLSearchParams({ page: page.toString(), limit: '20' });
+        if (search) params.set('search', search);
+        if (statusFilter) params.set('status', statusFilter);
+        
+        const res = await fetch(`/api/clients?${params}`);
+        const data = await res.json();
+        if (isMounted && data.success) {
+          setItems(data.data);
+          setTotalPages(data.pagination.totalPages);
+        }
+      } catch {
+        if (isMounted) toast.error('Failed to load clients');
+      } finally {
+        if (isMounted) setLoading(false);
+      }
+    };
+    load();
+    return () => { isMounted = false; };
+  }, [page, search, statusFilter]);
 
   const handleSubmit = async () => {
     try {

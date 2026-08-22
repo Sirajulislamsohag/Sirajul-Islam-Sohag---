@@ -133,6 +133,16 @@ export function Footer() {
                 Available for New Clients
               </div>
             </div>
+            {/* Log In  */}
+                 {/* Log In  */}
+            <div className="admin">
+              <Link
+                href="/login"
+                className="text-sm text-primary transition-colors"
+              >
+                Admin Login
+              </Link>
+            </div>
           </div>
         </motion.div>
 
