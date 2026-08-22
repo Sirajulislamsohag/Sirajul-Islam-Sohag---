@@ -10,6 +10,17 @@ export const contactSchema = z.object({
   message: z.string().optional(),
 });
 
+export const contactPatchSchema = z.object({
+  name: z.string().min(2).optional(),
+  email: z.string().email().optional(),
+  phone: z.string().optional(),
+  company: z.string().optional(),
+  service: z.string().min(1).optional(),
+  budget: z.string().min(1).optional(),
+  message: z.string().optional(),
+  status: z.enum(['new', 'read', 'replied', 'archived']).optional(),
+});
+
 export const loginSchema = z.object({
   email: z.string().trim().toLowerCase().pipe(z.string().email('Valid email is required')),
   password: z.string().min(1, 'Password is required'),
@@ -80,6 +91,11 @@ export const clientSchema = z.object({
   status: z.enum(['new', 'active', 'inactive']).optional(),
   projectStatus: z.enum(['pending', 'in-progress', 'completed', 'on-hold']).optional(),
   notes: z.string().optional(),
+  timeline: z.array(z.object({
+    date: z.string(),
+    event: z.string(),
+    description: z.string()
+  })).optional(),
 });
 
 export const settingsSchema = z.object({
@@ -87,6 +103,12 @@ export const settingsSchema = z.object({
   siteDescription: z.string().optional(),
   logo: z.string().optional(),
   favicon: z.string().optional(),
+  seo: z.object({
+    metaTitle: z.string().optional(),
+    metaDescription: z.string().optional(),
+    ogImage: z.string().optional(),
+    keywords: z.array(z.string()).optional(),
+  }).optional(),
   socialLinks: z.object({
     facebook: z.string().optional(),
     instagram: z.string().optional(),

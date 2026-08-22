@@ -1,14 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server';
+import mongoose from 'mongoose';
 import { connectDB } from '@/lib/db';
 import { ClientModel } from '@/models/client';
 import { authenticateRequest } from '@/lib/auth';
+import { clientSchema } from '@/lib/validations';
 
 export async function GET(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
     const auth = authenticateRequest(req);
     if (!auth) return NextResponse.json({ success: false, error: 'Unauthorized' }, { status: 401 });
-    await connectDB();
     const { id } = await params;
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return NextResponse.json({ success: false, error: 'Invalid ID format' }, { status: 400 });
+    }
+    await connectDB();
     const item = await ClientModel.findById(id);
     if (!item) return NextResponse.json({ success: false, error: 'Not found' }, { status: 404 });
     return NextResponse.json({ success: true, data: item });
@@ -21,10 +26,17 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id
   try {
     const auth = authenticateRequest(req);
     if (!auth) return NextResponse.json({ success: false, error: 'Unauthorized' }, { status: 401 });
-    await connectDB();
     const { id } = await params;
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return NextResponse.json({ success: false, error: 'Invalid ID format' }, { status: 400 });
+    }
     const body = await req.json();
-    const item = await ClientModel.findByIdAndUpdate(id, body, { new: true });
+    const parsed = clientSchema.partial().safeParse(body);
+    if (!parsed.success) {
+      return NextResponse.json({ success: false, error: parsed.error.issues[0]?.message || 'Invalid input data' }, { status: 400 });
+    }
+    await connectDB();
+    const item = await ClientModel.findByIdAndUpdate(id, { $set: parsed.data }, { new: true, runValidators: true });
     if (!item) return NextResponse.json({ success: false, error: 'Not found' }, { status: 404 });
     return NextResponse.json({ success: true, data: item });
   } catch (error) {
@@ -36,8 +48,11 @@ export async function DELETE(req: NextRequest, { params }: { params: Promise<{ i
   try {
     const auth = authenticateRequest(req);
     if (!auth) return NextResponse.json({ success: false, error: 'Unauthorized' }, { status: 401 });
-    await connectDB();
     const { id } = await params;
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return NextResponse.json({ success: false, error: 'Invalid ID format' }, { status: 400 });
+    }
+    await connectDB();
     const item = await ClientModel.findByIdAndDelete(id);
     if (!item) return NextResponse.json({ success: false, error: 'Not found' }, { status: 404 });
     return NextResponse.json({ success: true, message: 'Deleted' });

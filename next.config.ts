@@ -25,12 +25,20 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        source: '/api/:path*',
+        source: '/:path*',
         headers: [
           { key: 'X-Content-Type-Options', value: 'nosniff' },
           { key: 'X-Frame-Options', value: 'DENY' },
           { key: 'X-XSS-Protection', value: '1; mode=block' },
           { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+          {
+            key: 'Permissions-Policy',
+            value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()',
+          },
+          {
+            key: 'Content-Security-Policy',
+            value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://assets.calendly.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://assets.calendly.com; img-src 'self' blob: data: https://res.cloudinary.com https://fiverr-res.cloudinary.com https://images.unsplash.com https://ui-avatars.com https://cdn.simpleicons.org https://assets.calendly.com; font-src 'self' data: https://fonts.gstatic.com; frame-src 'self' https://calendly.com https://assets.calendly.com; connect-src 'self' https://calendly.com https://assets.calendly.com https://cdn.simpleicons.org; media-src 'self' https://res.cloudinary.com; object-src 'none'; base-uri 'self'; form-action 'self';",
+          },
         ],
       },
     ];

@@ -13,7 +13,6 @@ export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
-  console.log(email, password);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -26,9 +25,6 @@ export default function LoginPage() {
       });
       const data = await res.json();
       if (data.success) {
-        if (data.data?.token) {
-          localStorage.setItem('token', data.data.token);
-        }
         toast.success('Welcome back!');
         router.push('/dashboard');
       } else {

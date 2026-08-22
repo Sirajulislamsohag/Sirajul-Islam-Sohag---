@@ -165,17 +165,6 @@ export function About() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 shrink-0 w-full md:w-auto">
-              <a
-                href="/certificates/PDF/CV(Sirajul Islam Sohag).pdf"
-                download
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto"
-              >
-                <Button variant="glass" size="lg" icon={<Download className="w-4 h-4" />} className="w-full sm:w-auto rounded-full">
-                  Download Resume
-                </Button>
-              </a>
               <Link href="#contact" className="w-full sm:w-auto">
                 <Button variant="primary" size="lg" icon={<ArrowRight className="w-4 h-4" />} className="w-full sm:w-auto rounded-full">
                   Get In Touch

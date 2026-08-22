@@ -3,39 +3,62 @@ import { connectDB } from '@/lib/db';
 import { UserModel } from '@/models/user';
 import { comparePassword, signToken } from '@/lib/auth';
 import { loginSchema } from '@/lib/validations';
+import { checkRateLimit } from '@/lib/rate-limit';
 
 export async function POST(req: NextRequest) {
   try {
-    await connectDB();
+    const ip = req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') || 'unknown';
+    
+    // Rate limit: Max 5 attempts per IP per 15 minutes
+    if (!checkRateLimit(`login_${ip}`, 5, 15 * 60 * 1000)) {
+      return NextResponse.json(
+        { success: false, error: 'Too many login attempts. Please try again in 15 minutes.' },
+        { status: 429 }
+      );
+    }
+
     const body = await req.json();
-    console.log('🔑 Login attempt received for email:', body.email, '| Password length:', body.password ? body.password.length : 0);
     const parsed = loginSchema.safeParse(body);
     if (!parsed.success) {
       const issue = parsed.error.issues[0]?.message || 'Invalid input';
       return NextResponse.json({ success: false, error: issue }, { status: 400 });
     }
     const cleanEmail = parsed.data.email.trim().toLowerCase();
-    console.log('🔍 Looking up user in DB for cleanEmail:', cleanEmail);
-    let user = await UserModel.findOne({ email: cleanEmail }).select('+password');
+    await connectDB();
+    const user = await UserModel.findOne({ email: cleanEmail }).select('+password');
     if (!user) {
-      console.log('⚠️ Exact email match not found, looking up fallback admin user...');
-      user = await UserModel.findOne({ role: 'admin' }).select('+password');
-    }
-    if (!user) {
-      console.log('❌ No admin user found in DB');
       return NextResponse.json({ success: false, error: 'Invalid email or password' }, { status: 401 });
     }
-    console.log('✅ User identified:', user.email);
+
+    // Check account lockout
+    if (user.lockUntil && user.lockUntil > new Date()) {
+      const remainingMinutes = Math.ceil((user.lockUntil.getTime() - Date.now()) / (60 * 1000));
+      return NextResponse.json(
+        { success: false, error: `Account is temporarily locked. Please try again in ${remainingMinutes} minute(s).` },
+        { status: 423 }
+      );
+    }
+
     const isValid = await comparePassword(parsed.data.password, user.password);
-    console.log('🔑 Password match result:', isValid);
     if (!isValid) {
-      console.log('❌ Password comparison failed');
+      user.failedLoginAttempts = (user.failedLoginAttempts || 0) + 1;
+      if (user.failedLoginAttempts >= 10) {
+        user.lockUntil = new Date(Date.now() + 30 * 60 * 1000);
+      }
+      await user.save();
       return NextResponse.json({ success: false, error: 'Invalid email or password' }, { status: 401 });
+    }
+
+    // Reset failed login counter on success
+    if (user.failedLoginAttempts || user.lockUntil) {
+      user.failedLoginAttempts = 0;
+      user.lockUntil = undefined;
+      await user.save();
     }
     const token = signToken({ userId: user._id.toString(), email: user.email });
     const response = NextResponse.json({
       success: true,
-      data: { user: { _id: user._id, email: user.email, name: user.name, role: user.role }, token },
+      data: { user: { _id: user._id, email: user.email, name: user.name, role: user.role } },
     });
     const isHttps = req.nextUrl.protocol === 'https:';
     response.cookies.set('token', token, {

