@@ -77,10 +77,8 @@ export async function sendCustomerConfirmation(email: string, name: string) {
     subject: 'Thank You for Reaching Out! - Sirajul',
     html: `
       <div style="font-family: 'Inter', sans-serif; max-width: 600px; margin: 0 auto; background: #050816; color: #F9FAFB; padding: 40px; border-radius: 16px;">
-        <div style="text-align: center; margin-bottom: 32px;">
-          <h1 style="background: linear-gradient(135deg, #4F46E5, #8B5CF6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 28px;">Sirajul</h1>
-        </div>
-        <h2 style="font-size: 22px; margin-bottom: 16px;">Hi ${safeName}! 👋</h2>
+ 
+        <h2 style="font-size: 22px; margin-bottom: 16px;">Hi ${safeName}! </h2>
         <p style="color: #CBD5E1; line-height: 1.8; margin-bottom: 16px;">
           Thank you for reaching out! I've received your message and will review it carefully. I typically respond within 24 hours.
         </p>

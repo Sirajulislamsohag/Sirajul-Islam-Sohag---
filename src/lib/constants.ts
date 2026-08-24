@@ -4,7 +4,7 @@ export const SITE_CONFIG = {
   name: 'Sirajul',
   fullName: 'Sirajul Islam Sohag',
   title: 'Digital Marketing Consultant',
-  description: 'Premium digital marketing consultant helping businesses generate leads, scale sales, and build their online presence through data-driven strategies.',
+  description: 'Digital marketing consultant helping businesses generate leads, scale sales, and build their online presence through data-driven strategies.',
   email: 'sirajulislamshoag697@gmail.com',
   phone: '+880 1793859694',
   address: 'Dhaka, Bangladesh',

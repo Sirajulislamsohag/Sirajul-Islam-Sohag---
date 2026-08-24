@@ -25,7 +25,7 @@ const sora = Sora({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Sirajul | Premium Digital Marketing Consultant',
+    default: 'Sirajul | Digital Marketing Consultant',
     template: '%s | Sirajul Marketing',
   },
   description: 'Expert Google Ads, Facebook Ads, SEO & Analytics specialist helping businesses scale through data-driven digital marketing strategies.',

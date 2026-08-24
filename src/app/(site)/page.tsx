@@ -17,11 +17,11 @@ import { ToolsPlatformsIcons } from '@/components/sections/tools-platforms-icons
  
 
 export const metadata: Metadata = {
-  title: 'Sirajul | Premium Digital Marketing Consultant',
+  title: 'Sirajul | Digital Marketing Consultant',
   description: 'Expert Google Ads, Facebook Ads, SEO & Analytics specialist. Helping businesses generate leads, scale sales, and build their online presence through data-driven strategies.',
   keywords: ['digital marketing', 'google ads', 'facebook ads', 'seo', 'analytics', 'ppc', 'consultant'],
   openGraph: {
-    title: 'Sirajul | Premium Digital Marketing Consultant',
+    title: 'Sirajul | Digital Marketing Consultant',
     description: 'Expert Google Ads, Facebook Ads, SEO & Analytics specialist.',
     type: 'website',
     locale: 'en_US',
