@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { SITE_CONFIG, NAV_ITEMS, SERVICES, SOCIAL_LINKS } from '@/lib/constants';
+import { SITE_CONFIG, NAV_ITEMS, SOCIAL_LINKS } from '@/lib/constants';
 import { Heart } from 'lucide-react';
 import { SOCIAL_ICON_MAP } from '@/components/ui/social-icons';
 import { useCalendly } from '@/providers/calendly-provider';
@@ -36,7 +36,7 @@ export function Footer() {
               Sirajul Islam Sohag
             </Link>
             <p className="text-sm text-white/60 leading-relaxed mb-6">
-              {SITE_CONFIG.description}
+               Google Ads Specialist and PPC Consultant helping local service and e-commerce businesses generate qualified leads, scale sales, and maximize ROAS through data-driven Google  ads strategy.
             </p>
             <div className="flex gap-3 pt-1">
               {Object.entries(SOCIAL_LINKS).map(([name, url]) => {

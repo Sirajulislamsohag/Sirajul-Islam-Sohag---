@@ -35,10 +35,10 @@ export default function HomePage() {
       <TrustedBrands />
       <AboutWithImage/>
       <Services />
+      <PortfolioShowcase />
       <IndustryExpertise />
       <ToolsPlatformsIcons/>
       <HowIBringSuccess />
-      <PortfolioShowcase />
       <Certificates />
       <ClientReviews />
       <CTASection />
