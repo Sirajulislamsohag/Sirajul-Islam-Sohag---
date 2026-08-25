@@ -141,26 +141,26 @@ export default function ClientsPage() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between flex-wrap gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-heading font-bold">Clients</h1>
-          <p className="text-sm text-[var(--text-secondary)]">Manage your clients and leads</p>
+          <h1 className="text-xl sm:text-2xl font-heading font-bold">Clients</h1>
+          <p className="text-xs sm:text-sm text-[var(--text-secondary)]">Manage your clients and leads</p>
         </div>
-        <Button variant="primary" size="sm" icon={<Plus className="w-4 h-4" />} onClick={() => { resetForm(); setEditItem(null); setModalOpen(true); }}>Add Client</Button>
+        <Button variant="primary" size="sm" icon={<Plus className="w-4 h-4" />} onClick={() => { resetForm(); setEditItem(null); setModalOpen(true); }} className="w-fit">Add Client</Button>
       </div>
 
       {/* Filters */}
-      <Card variant="default">
-        <div className="flex flex-wrap gap-4">
-          <div className="flex-1 min-w-[200px]">
+      <Card variant="default" className="p-4 sm:p-5">
+        <div className="flex flex-col md:flex-row gap-3 items-stretch md:items-center">
+          <div className="flex-1 min-w-0">
             <Input placeholder="Search by name, email, or phone..." value={search} onChange={(e) => { setSearch(e.target.value); setPage(1); }} />
           </div>
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-1.5 sm:gap-2">
             {['', 'new', 'active', 'inactive'].map((s) => (
               <button 
                 key={s} 
                 onClick={() => { setStatusFilter(s); setPage(1); }} 
-                className={`px-3 py-2 rounded-lg text-xs font-medium transition-all cursor-pointer ${statusFilter === s ? 'bg-primary text-white' : 'bg-white/5 text-[var(--text-secondary)] hover:bg-white/10'}`}
+                className={`px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-lg text-xs font-medium transition-all cursor-pointer ${statusFilter === s ? 'bg-primary text-slate-950 font-bold' : 'bg-white/5 text-[var(--text-secondary)] hover:bg-white/10'}`}
               >
                 {s ? s.charAt(0).toUpperCase() + s.slice(1) : 'All'}
               </button>
@@ -172,7 +172,7 @@ export default function ClientsPage() {
       {/* Table */}
       <Card variant="default" className="overflow-hidden p-0">
         <div className="overflow-x-auto">
-          <table className="w-full">
+          <table className="w-full min-w-[600px]">
             <thead>
               <tr className="border-b border-[var(--border)] bg-white/[0.02]">
                 <th className="text-left py-3 px-4 text-xs font-medium text-[var(--text-muted)] uppercase">Client</th>
@@ -237,7 +237,7 @@ export default function ClientsPage() {
 
         {/* Pagination */}
         {totalPages > 1 && (
-          <div className="flex items-center justify-between px-4 py-3 border-t border-[var(--border)]">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 px-4 py-3 border-t border-[var(--border)]">
             <p className="text-xs text-[var(--text-muted)]">Page {page} of {totalPages}</p>
             <div className="flex gap-2">
               <Button variant="outline" size="sm" onClick={() => setPage((p) => Math.max(1, p - 1))} disabled={page === 1}>Previous</Button>
@@ -250,22 +250,22 @@ export default function ClientsPage() {
       {/* Add/Edit Modal */}
       <Modal isOpen={modalOpen} onClose={() => { setModalOpen(false); setEditItem(null); }} title={editItem ? 'Edit Client' : 'Add Client'} size="md">
         <div className="space-y-4">
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Input label="Client Name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} required />
             <Input label="Company" value={form.company} onChange={(e) => setForm({ ...form, company: e.target.value })} required />
           </div>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Input label="Email Address" type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
             <Input label="Phone Number (Optional)" type="tel" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} />
           </div>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Select label="Client Status" options={STATUS_OPTIONS} value={form.status} onChange={(e) => setForm({ ...form, status: e.target.value })} />
             <Select label="Project Status" options={PROJECT_STATUS_OPTIONS} value={form.projectStatus} onChange={(e) => setForm({ ...form, projectStatus: e.target.value })} />
           </div>
           
-          <div className="flex gap-3 pt-4 border-t border-[var(--border)]">
-            <Button variant="primary" onClick={handleSubmit}>{editItem ? 'Update Client' : 'Create Client'}</Button>
-            <Button variant="ghost" onClick={() => { setModalOpen(false); setEditItem(null); }}>Cancel</Button>
+          <div className="flex flex-col-reverse sm:flex-row gap-2.5 pt-4 border-t border-[var(--border)]">
+            <Button variant="ghost" onClick={() => { setModalOpen(false); setEditItem(null); }} className="w-full sm:w-auto">Cancel</Button>
+            <Button variant="primary" onClick={handleSubmit} className="w-full sm:w-auto">{editItem ? 'Update Client' : 'Create Client'}</Button>
           </div>
         </div>
       </Modal>

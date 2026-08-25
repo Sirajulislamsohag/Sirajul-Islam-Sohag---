@@ -4,12 +4,13 @@ import { cn } from '@/lib/utils';
 interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   label?: string;
   error?: string;
+  wrapperClassName?: string;
 }
 
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
-  ({ className, label, error, id, ...props }, ref) => {
+  ({ className, wrapperClassName, label, error, id, ...props }, ref) => {
     return (
-      <div className="space-y-1.5">
+      <div className={cn('w-full space-y-1.5', wrapperClassName)}>
         {label && (
           <label htmlFor={id} className="text-sm font-medium text-[var(--text-secondary)]">
             {label}

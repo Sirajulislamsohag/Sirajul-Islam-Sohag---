@@ -60,30 +60,30 @@ export default function NotificationsPage() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-heading font-bold">Notifications</h1>
-          <p className="text-sm text-[var(--text-secondary)]">Stay updated with system alerts</p>
+          <h1 className="text-xl sm:text-2xl font-heading font-bold">Notifications</h1>
+          <p className="text-xs sm:text-sm text-[var(--text-secondary)]">Stay updated with system alerts</p>
         </div>
-        <Button variant="outline" size="sm" onClick={markAllAsRead} icon={<Check className="w-4 h-4" />}>Mark All as Read</Button>
+        <Button variant="outline" size="sm" onClick={markAllAsRead} icon={<Check className="w-4 h-4" />} className="w-fit">Mark All as Read</Button>
       </div>
 
-      <div className="space-y-4">
+      <div className="space-y-3 sm:space-y-4">
         {loading ? Array.from({ length: 4 }).map((_, i) => (<div key={i} className="h-24 rounded-2xl bg-[var(--bg-card)] border border-[var(--border)] animate-pulse" />)) :
           items.length === 0 ? (
             <p className="text-[var(--text-muted)] text-sm py-8 text-center">No notifications found.</p>
           ) : items.map((item) => (
-            <Card key={item._id} variant="default" className={`flex gap-4 ${!item.read ? 'bg-primary/5 border-primary/20' : ''}`}>
-              <div className={`w-10 h-10 rounded-full flex items-center justify-center shrink-0 ${!item.read ? 'bg-primary/20 text-primary' : 'bg-white/5 text-[var(--text-muted)]'}`}>
-                <Bell className="w-5 h-5" />
+            <Card key={item._id} variant="default" className={`flex items-start gap-3 sm:gap-4 p-4 sm:p-5 ${!item.read ? 'bg-primary/5 border-primary/20' : ''}`}>
+              <div className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center shrink-0 ${!item.read ? 'bg-primary/20 text-primary' : 'bg-white/5 text-[var(--text-muted)]'}`}>
+                <Bell className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
-              <div className="flex-1">
-                <div className="flex items-start justify-between">
-                  <h3 className={`font-medium ${!item.read ? 'text-[var(--text)]' : 'text-[var(--text-secondary)]'}`}>{item.title}</h3>
-                  <span className="text-xs text-[var(--text-muted)]">{new Date(item.createdAt).toLocaleDateString()}</span>
+              <div className="flex-1 min-w-0">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                  <h3 className={`font-medium text-sm sm:text-base ${!item.read ? 'text-[var(--text)]' : 'text-[var(--text-secondary)]'}`}>{item.title}</h3>
+                  <span className="text-[11px] sm:text-xs text-[var(--text-muted)]">{new Date(item.createdAt).toLocaleDateString()}</span>
                 </div>
-                <p className="text-sm text-[var(--text-secondary)] mt-1">{item.message}</p>
-                <div className="flex gap-2 mt-3">
+                <p className="text-xs sm:text-sm text-[var(--text-secondary)] mt-1">{item.message}</p>
+                <div className="flex flex-wrap gap-2 mt-3">
                   {!item.read && <Button variant="ghost" size="sm" onClick={() => markAsRead(item._id)} icon={<Check className="w-3 h-3" />}>Mark Read</Button>}
                   <Button variant="ghost" size="sm" onClick={() => confirmDelete(item._id)} className="text-danger" icon={<Trash2 className="w-3 h-3" />}>Delete</Button>
                 </div>

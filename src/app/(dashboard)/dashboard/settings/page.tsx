@@ -62,27 +62,27 @@ export default function SettingsPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-heading font-bold">Settings</h1>
-        <p className="text-sm text-[var(--text-secondary)]">Manage your site settings and preferences</p>
+        <h1 className="text-xl sm:text-2xl font-heading font-bold">Settings</h1>
+        <p className="text-xs sm:text-sm text-[var(--text-secondary)]">Manage your site settings and preferences</p>
       </div>
 
-      <Card variant="default">
+      <Card variant="default" className="p-4 sm:p-6 md:p-8">
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-4">
-            <h2 className="text-lg font-heading font-semibold border-b border-[var(--border)] pb-2">General Info</h2>
+            <h2 className="text-base sm:text-lg font-heading font-semibold border-b border-[var(--border)] pb-2">General Info</h2>
             <Input label="Site Name" value={form.siteName} onChange={(e) => setForm({ ...form, siteName: e.target.value })} />
             <Textarea label="Site Description" value={form.siteDescription} onChange={(e) => setForm({ ...form, siteDescription: e.target.value })} />
             <Input label="Contact Email" type="email" value={form.contactEmail} onChange={(e) => setForm({ ...form, contactEmail: e.target.value })} />
           </div>
 
           <div className="space-y-4 pt-4">
-            <h2 className="text-lg font-heading font-semibold border-b border-[var(--border)] pb-2">Social Links</h2>
+            <h2 className="text-base sm:text-lg font-heading font-semibold border-b border-[var(--border)] pb-2">Social Links</h2>
             <Input label="LinkedIn URL" value={form.linkedinUrl} onChange={(e) => setForm({ ...form, linkedinUrl: e.target.value })} />
             <Input label="WhatsApp URL" value={form.whatsappUrl} onChange={(e) => setForm({ ...form, whatsappUrl: e.target.value })} />
           </div>
 
-          <div className="pt-4 flex justify-end">
-            <Button type="submit" variant="primary" isLoading={saving} icon={<Save className="w-4 h-4" />}>Save Settings</Button>
+          <div className="pt-4 flex flex-col sm:flex-row justify-end">
+            <Button type="submit" variant="primary" size="lg" isLoading={saving} icon={<Save className="w-4 h-4" />} className="w-full sm:w-auto">Save Settings</Button>
           </div>
         </form>
       </Card>

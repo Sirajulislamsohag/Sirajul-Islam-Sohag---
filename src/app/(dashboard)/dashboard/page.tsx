@@ -54,14 +54,14 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="space-y-8">
-      <div className="flex items-center justify-between">
+    <div className="space-y-6 sm:space-y-8">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-heading font-bold">Dashboard</h1>
-          <p className="text-[var(--text-secondary)] text-sm mt-1">Welcome back! Here's your overview.</p>
+          <h1 className="text-xl sm:text-2xl font-heading font-bold">Dashboard</h1>
+          <p className="text-[var(--text-secondary)] text-xs sm:text-sm mt-0.5 sm:mt-1">Welcome back! Here's your overview.</p>
         </div>
         {stats && stats.unreadNotifications > 0 && (
-          <Link href="/dashboard/notifications" className="flex items-center gap-2 px-4 py-2 rounded-xl bg-primary/10 text-primary text-sm font-medium hover:bg-primary/20 transition-colors">
+          <Link href="/dashboard/notifications" className="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl bg-primary/10 text-primary text-xs sm:text-sm font-medium hover:bg-primary/20 transition-colors w-fit">
             <Bell className="w-4 h-4" />
             {stats.unreadNotifications} new notifications
           </Link>
@@ -69,17 +69,17 @@ export default function DashboardPage() {
       </div>
 
       {/* Stat Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         {STAT_CARDS.map((card) => (
           <Link key={card.key} href={card.href}>
-            <Card variant="default" className="group cursor-pointer hover:border-[var(--border-hover)] transition-all">
+            <Card variant="default" className="group cursor-pointer hover:border-[var(--border-hover)] transition-all p-5 sm:p-6">
               <div className="flex items-start justify-between">
                 <div>
-                  <p className="text-sm text-[var(--text-muted)] mb-1">{card.label}</p>
-                  <p className="text-3xl font-number font-bold">{stats ? stats[card.key as keyof DashboardStats] as number : 0}</p>
+                  <p className="text-xs sm:text-sm text-[var(--text-muted)] mb-1">{card.label}</p>
+                  <p className="text-2xl sm:text-3xl font-number font-bold">{stats ? stats[card.key as keyof DashboardStats] as number : 0}</p>
                 </div>
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center" style={{ backgroundColor: `${card.color}15` }}>
-                  <card.icon className="w-6 h-6" style={{ color: card.color }} />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center shrink-0" style={{ backgroundColor: `${card.color}15` }}>
+                  <card.icon className="w-5 h-5 sm:w-6 sm:h-6" style={{ color: card.color }} />
                 </div>
               </div>
             </Card>
@@ -88,16 +88,16 @@ export default function DashboardPage() {
       </div>
 
       {/* Recent Contacts */}
-      <Card variant="default">
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="text-lg font-heading font-semibold">Recent Contacts</h2>
-          <Link href="/dashboard/contacts" className="text-sm text-primary hover:underline">View All →</Link>
+      <Card variant="default" className="p-0 overflow-hidden">
+        <div className="flex items-center justify-between p-4 sm:p-6 border-b border-[var(--border)]">
+          <h2 className="text-base sm:text-lg font-heading font-semibold">Recent Contacts</h2>
+          <Link href="/dashboard/contacts" className="text-xs sm:text-sm text-primary hover:underline font-medium">View All →</Link>
         </div>
         {stats?.recentContacts && stats.recentContacts.length > 0 ? (
           <div className="overflow-x-auto">
-            <table className="w-full">
+            <table className="w-full min-w-[550px]">
               <thead>
-                <tr className="border-b border-[var(--border)]">
+                <tr className="border-b border-[var(--border)] bg-white/[0.02]">
                   <th className="text-left py-3 px-4 text-xs font-medium text-[var(--text-muted)] uppercase tracking-wider">Name</th>
                   <th className="text-left py-3 px-4 text-xs font-medium text-[var(--text-muted)] uppercase tracking-wider">Email</th>
                   <th className="text-left py-3 px-4 text-xs font-medium text-[var(--text-muted)] uppercase tracking-wider">Service</th>

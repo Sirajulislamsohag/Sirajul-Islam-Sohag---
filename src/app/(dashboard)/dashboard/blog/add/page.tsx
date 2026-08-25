@@ -231,18 +231,18 @@ function AddBlogContent() {
   return (
     <div className="max-w-4xl mx-auto space-y-6">
       {/* Back Button & Header */}
-      <div className="flex items-center justify-between border-b border-[var(--border)] pb-4">
-        <div className="flex items-center gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-[var(--border)] pb-4 gap-4">
+        <div className="flex items-start sm:items-center gap-3 sm:gap-4">
           <Link href="/dashboard/blog">
             <Button variant="ghost" size="sm" icon={<ArrowLeft className="w-4 h-4" />}>
               Back to Blogs
             </Button>
           </Link>
           <div>
-            <h1 className="text-2xl font-heading font-bold">
+            <h1 className="text-xl sm:text-2xl font-heading font-bold">
               {editId ? 'Edit Blog Post' : 'Add New Blog Post'}
             </h1>
-            <p className="text-sm text-[var(--text-secondary)]">
+            <p className="text-xs sm:text-sm text-[var(--text-secondary)]">
               Create and publish articles for your audience.
             </p>
           </div>
@@ -505,15 +505,15 @@ function AddBlogContent() {
           </div>
 
           {/* Actions */}
-          <div className="flex items-center gap-4 pt-4 border-t border-[var(--border)]">
-            <Button type="submit" variant="primary" size="lg" isLoading={saving} icon={<Save className="w-4 h-4" />}>
-              {editId ? 'Save Blog Changes' : 'Publish Blog Article'}
-            </Button>
-            <Link href="/dashboard/blog">
-              <Button type="button" variant="ghost" size="lg">
+          <div className="flex flex-col-reverse sm:flex-row sm:items-center gap-3 pt-4 border-t border-[var(--border)]">
+            <Link href="/dashboard/blog" className="w-full sm:w-auto">
+              <Button type="button" variant="ghost" size="lg" className="w-full sm:w-auto">
                 Cancel
               </Button>
             </Link>
+            <Button type="submit" variant="primary" size="lg" isLoading={saving} icon={<Save className="w-4 h-4" />} className="w-full sm:w-auto">
+              {editId ? 'Save Blog Changes' : 'Publish Blog Article'}
+            </Button>
           </div>
         </form>
       </Card>

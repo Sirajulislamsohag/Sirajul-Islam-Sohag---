@@ -59,24 +59,24 @@ export function Modal({ isOpen, onClose, title, children, className, size = 'md'
             className={cn(
               'relative w-full rounded-2xl',
               'bg-[var(--bg-card)] border border-[var(--border)]',
-              'shadow-2xl max-h-[85vh] overflow-y-auto',
+              'shadow-2xl max-h-[90vh] overflow-y-auto',
               sizes[size],
               className
             )}
           >
             {title && (
-              <div className="flex items-center justify-between p-6 border-b border-[var(--border)]">
-                <h2 className="text-xl font-heading font-semibold">{title}</h2>
+              <div className="flex items-center justify-between p-4 sm:p-6 border-b border-[var(--border)]">
+                <h2 className="text-lg sm:text-xl font-heading font-semibold">{title}</h2>
                 <button
                   onClick={onClose}
-                  className="p-2 rounded-lg hover:bg-white/5 transition-colors cursor-pointer"
+                  className="p-1.5 sm:p-2 rounded-lg hover:bg-white/5 transition-colors cursor-pointer text-[var(--text-muted)] hover:text-[var(--text)]"
                   aria-label="Close modal"
                 >
                   <X className="w-5 h-5" />
                 </button>
               </div>
             )}
-            <div className="p-6">{children}</div>
+            <div className="p-4 sm:p-6">{children}</div>
           </motion.div>
         </motion.div>
       )}

@@ -111,13 +111,21 @@ function DashboardContent({ children }: { children: ReactNode }) {
 
       {/* Sidebar */}
       <aside className={cn(
-        'fixed top-0 left-0 z-50 h-screen w-64 bg-[var(--bg-card)] border-r border-[var(--border)] transition-transform duration-300 lg:sticky lg:translate-x-0',
-        sidebarOpen ? 'translate-x-0' : '-translate-x-full'
+        'fixed top-0 left-0 z-50 h-[100dvh] w-64 bg-[var(--bg-card)] border-r border-[var(--border)] transition-transform duration-300 lg:sticky lg:translate-x-0',
+        sidebarOpen ? 'translate-x-0 shadow-2xl' : '-translate-x-full'
       )}>
         <div className="flex flex-col h-full">
-          {/* Logo */}
-          <div className="p-5 border-b border-[var(--border)]">
+          {/* Logo & Mobile Close */}
+          <div className="p-5 border-b border-[var(--border)] flex items-center justify-between">
             <Link href="/dashboard" className="text-xl font-heading font-bold text-gradient">Sirajul CMS</Link>
+            <button
+              type="button"
+              onClick={() => setSidebarOpen(false)}
+              className="p-1.5 rounded-lg text-[var(--text-muted)] hover:text-[var(--text)] hover:bg-white/5 lg:hidden cursor-pointer"
+              title="Close menu"
+            >
+              <X className="w-5 h-5" />
+            </button>
           </div>
 
           {/* Nav Items */}
@@ -167,21 +175,22 @@ function DashboardContent({ children }: { children: ReactNode }) {
       </aside>
 
       {/* Main Content */}
-      <div className="flex-1 flex flex-col min-h-screen">
+      <div className="flex-1 flex flex-col min-h-screen min-w-0 overflow-x-hidden">
         {/* Top Bar */}
-        <header className="sticky top-0 z-30 bg-[var(--bg)]/80 backdrop-blur-xl border-b border-[var(--border)] px-6 py-4 flex items-center justify-between">
+        <header className="sticky top-0 z-30 bg-[var(--bg)]/80 backdrop-blur-xl border-b border-[var(--border)] px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
           <button
             onClick={() => setSidebarOpen(!sidebarOpen)}
             className="p-2 rounded-lg hover:bg-white/5 lg:hidden cursor-pointer"
+            aria-label="Toggle navigation menu"
           >
             <Menu className="w-5 h-5" />
           </button>
 
-          <div className="flex items-center gap-3 ml-auto">
-            <button onClick={toggleTheme} className="p-2 rounded-lg hover:bg-white/5 transition-colors cursor-pointer">
+          <div className="flex items-center gap-2 sm:gap-3 ml-auto">
+            <button onClick={toggleTheme} className="p-2 rounded-lg hover:bg-white/5 transition-colors cursor-pointer" aria-label="Toggle theme">
               {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
             </button>
-            <Link href="/dashboard/notifications" className="p-2 rounded-lg hover:bg-white/5 relative">
+            <Link href="/dashboard/notifications" className="p-2 rounded-lg hover:bg-white/5 relative" aria-label="View notifications">
               <Bell className="w-5 h-5" />
               {realtimeData?.data?.unreadCount > 0 && (
                 <span className="absolute top-1.5 right-1.5 flex h-2.5 w-2.5">
@@ -190,12 +199,12 @@ function DashboardContent({ children }: { children: ReactNode }) {
                 </span>
               )}
             </Link>
-            <Link href="/" target="_blank" className="text-sm text-primary hover:underline">View Site →</Link>
+            <Link href="/" target="_blank" className="text-xs sm:text-sm text-primary hover:underline font-medium">View Site →</Link>
           </div>
         </header>
 
         {/* Page Content */}
-        <main className="flex-1 p-6">
+        <main className="flex-1 p-4 sm:p-6 lg:p-8 max-w-full overflow-x-hidden">
           {children}
         </main>
       </div>

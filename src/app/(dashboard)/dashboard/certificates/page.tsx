@@ -81,12 +81,12 @@ export default function CertificatesPage() {
   return (
     <div className="space-y-6">
       {/* Header with Link to Dedicated Add Page */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-heading font-bold">Certifications</h1>
-          <p className="text-sm text-[var(--text-secondary)]">Manage your professional certifications and awards</p>
+          <h1 className="text-xl sm:text-2xl font-heading font-bold">Certifications</h1>
+          <p className="text-xs sm:text-sm text-[var(--text-secondary)]">Manage your professional certifications and awards</p>
         </div>
-        <Link href="/dashboard/certificates/add">
+        <Link href="/dashboard/certificates/add" className="w-fit">
           <Button variant="primary" size="sm" icon={<Plus className="w-4 h-4" />}>
             Add Certificate
           </Button>
@@ -94,7 +94,7 @@ export default function CertificatesPage() {
       </div>
 
       {/* Grid List */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         {loading ? (
           Array.from({ length: 6 }).map((_, i) => (
             <div key={i} className="h-64 rounded-2xl bg-[var(--bg-card)] border border-[var(--border)] animate-pulse" />

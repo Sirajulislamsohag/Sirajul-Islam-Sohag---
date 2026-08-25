@@ -385,18 +385,18 @@ function AddPortfolioContent() {
   return (
     <div className="max-w-5xl mx-auto space-y-6">
       {/* Header */}
-      <div className="flex items-center justify-between border-b border-[var(--border)] pb-4">
-        <div className="flex items-center gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-[var(--border)] pb-4 gap-4">
+        <div className="flex items-start sm:items-center gap-3 sm:gap-4">
           <Link href="/dashboard/portfolio">
             <Button variant="ghost" size="sm" icon={<ArrowLeft className="w-4 h-4" />}>
               Back
             </Button>
           </Link>
           <div>
-            <h1 className="text-2xl font-heading font-bold text-[var(--text)]">
+            <h1 className="text-xl sm:text-2xl font-heading font-bold text-[var(--text)]">
               {editId ? 'Edit Portfolio Case Study' : 'Create New Portfolio Case Study'}
             </h1>
-            <p className="text-sm text-[var(--text-secondary)]">
+            <p className="text-xs sm:text-sm text-[var(--text-secondary)]">
               Manage both the showcase card preview and the Upwork-style detail modal.
             </p>
           </div>
@@ -404,11 +404,11 @@ function AddPortfolioContent() {
       </div>
 
       {/* Tabs for Separate Card & Modal Management */}
-      <div className="flex items-center gap-3 p-1.5 rounded-2xl bg-[var(--bg-card)] border border-[var(--border)] w-fit">
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3 p-1.5 rounded-2xl bg-[var(--bg-card)] border border-[var(--border)] w-full sm:w-fit">
         <button
           type="button"
           onClick={() => setActiveTab('card')}
-          className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-heading font-bold transition-all cursor-pointer ${
+          className={`flex items-center justify-center gap-2 px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-heading font-bold transition-all cursor-pointer ${
             activeTab === 'card'
               ? 'bg-primary text-slate-950 shadow-md shadow-primary/25'
               : 'text-[var(--text-secondary)] hover:text-[var(--text)]'
@@ -421,7 +421,7 @@ function AddPortfolioContent() {
         <button
           type="button"
           onClick={() => setActiveTab('modal')}
-          className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-heading font-bold transition-all cursor-pointer ${
+          className={`flex items-center justify-center gap-2 px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-heading font-bold transition-all cursor-pointer ${
             activeTab === 'modal'
               ? 'bg-primary text-slate-950 shadow-md shadow-primary/25'
               : 'text-[var(--text-secondary)] hover:text-[var(--text)]'
@@ -622,21 +622,28 @@ function AddPortfolioContent() {
                 </div>
 
                 {metrics.map((metric, idx) => (
-                  <div key={idx} className="flex gap-3 items-center">
-                    <Input
-                      placeholder="Label (e.g. Revenue Increase)"
-                      value={metric.label}
-                      onChange={(e) => updateMetric(idx, 'label', e.target.value)}
-                    />
-                    <Input
-                      placeholder="Value (e.g. 1400%)"
-                      value={metric.value}
-                      onChange={(e) => updateMetric(idx, 'value', e.target.value)}
-                    />
+                  <div key={idx} className="flex gap-3 items-center w-full">
+                    <div className="flex-1 min-w-0">
+                      <Input
+                        placeholder="Label (e.g. Revenue Increase)"
+                        value={metric.label}
+                        onChange={(e) => updateMetric(idx, 'label', e.target.value)}
+                        className="w-full"
+                      />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <Input
+                        placeholder="Value (e.g. 1400%)"
+                        value={metric.value}
+                        onChange={(e) => updateMetric(idx, 'value', e.target.value)}
+                        className="w-full"
+                      />
+                    </div>
                     <button
                       type="button"
                       onClick={() => removeMetric(idx)}
-                      className="p-2.5 text-danger hover:bg-danger/10 rounded-xl shrink-0 mt-6 transition-colors"
+                      className="p-2.5 text-danger hover:bg-danger/10 rounded-xl shrink-0 transition-colors cursor-pointer"
+                      title="Remove metric"
                     >
                       <X className="w-4 h-4" />
                     </button>
@@ -788,18 +795,22 @@ function AddPortfolioContent() {
                 </div>
 
                 {paragraphs.map((p, idx) => (
-                  <div key={idx} className="flex gap-2 items-start">
-                    <Textarea
-                      placeholder={`Paragraph ${idx + 1}...`}
-                      value={p}
-                      onChange={(e) => updateParagraph(idx, e.target.value)}
-                      rows={3}
-                    />
+                  <div key={idx} className="flex gap-2 items-start w-full">
+                    <div className="flex-1 w-full min-w-0">
+                      <Textarea
+                        placeholder={`Paragraph ${idx + 1}...`}
+                        value={p}
+                        onChange={(e) => updateParagraph(idx, e.target.value)}
+                        rows={3}
+                        className="w-full"
+                      />
+                    </div>
                     {paragraphs.length > 1 && (
                       <button
                         type="button"
                         onClick={() => removeParagraph(idx)}
-                        className="p-2.5 text-danger hover:bg-danger/10 rounded-xl shrink-0 mt-2 transition-colors"
+                        className="p-2.5 text-danger hover:bg-danger/10 rounded-xl shrink-0 mt-2 transition-colors cursor-pointer"
+                        title="Remove paragraph"
                       >
                         <X className="w-4 h-4" />
                       </button>
@@ -824,16 +835,20 @@ function AddPortfolioContent() {
                 </div>
 
                 {bulletPoints.map((bp, idx) => (
-                  <div key={idx} className="flex gap-2 items-center">
-                    <Input
-                      placeholder={`Deliverable bullet point ${idx + 1}...`}
-                      value={bp}
-                      onChange={(e) => updateBulletPoint(idx, e.target.value)}
-                    />
+                  <div key={idx} className="flex gap-2 items-center w-full">
+                    <div className="flex-1 w-full min-w-0">
+                      <Input
+                        placeholder={`Deliverable bullet point ${idx + 1}...`}
+                        value={bp}
+                        onChange={(e) => updateBulletPoint(idx, e.target.value)}
+                        className="w-full"
+                      />
+                    </div>
                     <button
                       type="button"
                       onClick={() => removeBulletPoint(idx)}
-                      className="p-2.5 text-danger hover:bg-danger/10 rounded-xl shrink-0 mt-6 transition-colors"
+                      className="p-2.5 text-danger hover:bg-danger/10 rounded-xl shrink-0 transition-colors cursor-pointer"
+                      title="Remove bullet point"
                     >
                       <X className="w-4 h-4" />
                     </button>
@@ -850,11 +865,11 @@ function AddPortfolioContent() {
               />
             </Card>
 
-            <div className="flex items-center justify-between">
-              <Button type="button" variant="ghost" onClick={() => setActiveTab('card')}>
+            <div className="flex flex-col-reverse sm:flex-row sm:items-center justify-between gap-3 pt-2">
+              <Button type="button" variant="ghost" onClick={() => setActiveTab('card')} className="w-full sm:w-auto">
                 ← Back to Card Overview
               </Button>
-              <Button type="submit" variant="primary" size="lg" isLoading={saving} icon={<Save className="w-4 h-4" />}>
+              <Button type="submit" variant="primary" size="lg" isLoading={saving} icon={<Save className="w-4 h-4" />} className="w-full sm:w-auto">
                 {editId ? 'Save Changes' : 'Publish Portfolio Case Study'}
               </Button>
             </div>
@@ -862,14 +877,14 @@ function AddPortfolioContent() {
         )}
 
         {/* Global Save Bar */}
-        <div className="flex items-center justify-between pt-4 border-t border-[var(--border)]">
-          <Link href="/dashboard/portfolio">
-            <Button type="button" variant="ghost" size="md">
+        <div className="flex flex-col-reverse sm:flex-row sm:items-center justify-between gap-3 pt-4 border-t border-[var(--border)]">
+          <Link href="/dashboard/portfolio" className="w-full sm:w-auto">
+            <Button type="button" variant="ghost" size="md" className="w-full sm:w-auto">
               Cancel
             </Button>
           </Link>
 
-          <Button type="submit" variant="primary" size="lg" isLoading={saving} icon={<Save className="w-4 h-4" />}>
+          <Button type="submit" variant="primary" size="lg" isLoading={saving} icon={<Save className="w-4 h-4" />} className="w-full sm:w-auto">
             {editId ? 'Save Changes' : 'Publish Portfolio Case Study'}
           </Button>
         </div>
