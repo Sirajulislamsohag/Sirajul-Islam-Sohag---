@@ -95,7 +95,7 @@ export function CTASection({ className = '' }: CTASectionProps) {
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
-                <span>No Sales Pressure or Lock-in</span>
+                <span>Flexible, Client-First Partnerships</span>
               </div>
             </div>
           </div>

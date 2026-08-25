@@ -40,9 +40,6 @@ const CORE_PILLARS = [
 
 const SKILLS_BADGES = [
   'Google Ads (PMax & Search)',
-  'Facebook & Meta Ads',
-  'Server-Side Meta CAPI',
-  'Technical SEO & Audit',
   'GA4 & GTM Analytics',
   'Conversion Rate Optimization (CRO)',
   'B2B Lead Generation',

@@ -320,7 +320,7 @@ export function IndustryExpertise() {
                   </h3>
 
                   <p className="text-xs md:text-sm text-indigo-100 leading-relaxed mb-6 max-w-lg">
-                    I manage Google Ads across a wide range of service and e-commerce verticals. Book a free consultation call and I'll walk you through verified benchmarks and what's actually possible in your specific market.
+                    I manage Google Ads across a wide range of service and E-commerce Business. Book a free consultation call and I'll walk you through verified benchmarks and what's actually possible in your specific market.
                   </p>
                 </div>
 
