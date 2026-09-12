@@ -9,7 +9,7 @@ export const SITE_CONFIG = {
   phone: '+880 1793859694',
   address: 'Dhaka, Bangladesh',
   calendlyUrl: process.env.NEXT_PUBLIC_CALENDLY_URL || 'https://calendly.com/siraj',
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://sirajmarketing.com',
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://www.sirajulislamsohag.com',
   gtmId: process.env.NEXT_PUBLIC_GTM_ID || 'GTM-NJDTVNS8',
 } as const;
 

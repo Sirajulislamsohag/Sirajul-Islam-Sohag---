@@ -152,7 +152,7 @@ async function getBlogPost(slug: string): Promise<BlogPost> {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const post = await getBlogPost(slug);
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://sirajmarketing.com';
+  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.sirajulislamsohag.com').replace(/\/+$/, '');
   const url = `${siteUrl}/blog/${post.slug}`;
   const title = post.seo?.metaTitle || `${post.title} | Sirajul`;
   const description = post.seo?.metaDescription || post.excerpt;

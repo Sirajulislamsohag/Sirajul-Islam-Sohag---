@@ -2,62 +2,76 @@ import { MetadataRoute } from 'next';
 import { connectDB } from '@/lib/db';
 import { BlogModel } from '@/models/blog';
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://sirajmarketing.com';
+// Revalidate sitemap at most every hour (ISR) for fast responses & fresh indexation
+export const revalidate = 3600;
 
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const rawUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.sirajulislamsohag.com';
+  // Strip trailing slashes to guarantee clean canonical URLs without double slashes
+  const baseUrl = rawUrl.replace(/\/+$/, '');
+  const now = new Date();
+
+  // Core Static Pages with calculated SEO priority hierarchy
   const staticPages: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: 'weekly',
       priority: 1.0,
     },
     {
-      url: `${baseUrl}/about`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
       url: `${baseUrl}/services`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
       url: `${baseUrl}/portfolio`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/blog`,
-      lastModified: new Date(),
-      changeFrequency: 'daily',
-      priority: 0.8,
-    },
-    {
       url: `${baseUrl}/contact`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.9,
     },
+    {
+      url: `${baseUrl}/about`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: now,
+      changeFrequency: 'daily',
+      priority: 0.8,
+    },
   ];
 
+  // Dynamic Blog Posts from Database
   let blogPages: MetadataRoute.Sitemap = [];
   try {
     if (process.env.MONGODB_URI) {
       await connectDB();
-      const blogs = await BlogModel.find({ status: 'published' }).select('slug updatedAt createdAt');
-      blogPages = blogs.map((blog) => ({
-        url: `${baseUrl}/blog/${blog.slug}`,
-        lastModified: blog.updatedAt || blog.createdAt || new Date(),
-        changeFrequency: 'monthly',
-        priority: 0.7,
-      }));
+      const blogs = await BlogModel.find({ status: 'published' })
+        .select('slug updatedAt createdAt')
+        .sort({ updatedAt: -1, createdAt: -1 })
+        .lean();
+
+      blogPages = blogs
+        .filter((blog) => blog.slug && typeof blog.slug === 'string')
+        .map((blog) => ({
+          url: `${baseUrl}/blog/${encodeURIComponent(blog.slug.trim())}`,
+          lastModified: blog.updatedAt ? new Date(blog.updatedAt) : (blog.createdAt ? new Date(blog.createdAt) : now),
+          changeFrequency: 'monthly',
+          priority: 0.7,
+        }));
     }
   } catch (error) {
-    console.warn('Sitemap blog fetching error:', error);
+    console.warn('Sitemap dynamic blog fetching error:', error);
   }
 
   return [...staticPages, ...blogPages];

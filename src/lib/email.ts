@@ -86,7 +86,7 @@ export async function sendCustomerConfirmation(email: string, name: string) {
         <div style="background: rgba(79,70,229,0.1); padding: 20px; border-radius: 12px; border: 1px solid rgba(79,70,229,0.2); margin-bottom: 24px;">
           <ul style="list-style: none; padding: 0; margin: 0;">
             <li style="padding: 8px 0; color: #CBD5E1;">✅ Book a free strategy call on <a href="${process.env.NEXT_PUBLIC_CALENDLY_URL || 'https://calendly.com'}" style="color: #4F46E5;">Calendly</a></li>
-            <li style="padding: 8px 0; color: #CBD5E1;">✅ Check out my <a href="${process.env.NEXT_PUBLIC_SITE_URL || 'https://sirajmarketing.com'}/portfolio" style="color: #4F46E5;">case studies</a></li>
+            <li style="padding: 8px 0; color: #CBD5E1;">✅ Check out my <a href="${process.env.NEXT_PUBLIC_SITE_URL || 'https://www.sirajulislamsohag.com'}/portfolio" style="color: #4F46E5;">case studies</a></li>
             <li style="padding: 8px 0; color: #CBD5E1;">✅ Follow me on <a href="https://linkedin.com/in/sirajul-islam-sohag-04996428a/" style="color: #4F46E5;">LinkedIn</a></li>
           </ul>
         </div>
