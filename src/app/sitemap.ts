@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next';
 import { connectDB } from '@/lib/db';
 import { BlogModel } from '@/models/blog';
+import { INDUSTRY_PAGES } from '@/lib/industries';
 
 // Revalidate sitemap at most every hour (ISR) for fast responses & fresh indexation
 export const revalidate = 3600;
@@ -49,6 +50,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'daily',
       priority: 0.8,
     },
+    {
+      url: `${baseUrl}/industries`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    ...INDUSTRY_PAGES.map((page) => ({
+      url: `${baseUrl}/industries/${page.slug}`,
+      lastModified: now,
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    })),
   ];
 
   // Dynamic Blog Posts from Database

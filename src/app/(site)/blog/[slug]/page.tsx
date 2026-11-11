@@ -154,7 +154,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const post = await getBlogPost(slug);
   const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.sirajulislamsohag.com').replace(/\/+$/, '');
   const url = `${siteUrl}/blog/${post.slug}`;
-  const title = post.seo?.metaTitle || `${post.title} | Sirajul`;
+  const title = post.seo?.metaTitle || post.title;
   const description = post.seo?.metaDescription || post.excerpt;
   const image = post.seo?.ogImage || post.thumbnail || `${siteUrl}/avatar.png`;
 

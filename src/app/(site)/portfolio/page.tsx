@@ -5,12 +5,14 @@ import { ClientReviews } from '@/components/sections/client-reviews';
 import { Contact } from '@/components/sections/contact';
 import { Footer } from '@/components/sections/footer';
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Portfolio & Case Studies | Sirajul - Digital Marketing Results',
-  description: 'Explore real digital marketing case studies and campaign results across Google Ads, Meta Ads, SEO, and Analytics scaling e-commerce and B2B brands.',
-  keywords: ['digital marketing portfolio', 'google ads case study', 'facebook ads results', 'seo success stories'],
-};
+export const metadata: Metadata = pageMetadata({
+  title: 'Google Ads Case Studies & Results',
+  description:
+    'Google Ads case studies and campaign results across Search, Performance Max, Shopping and conversion tracking for lead generation and e-commerce businesses.',
+  path: '/portfolio',
+});
 
 export default function PortfolioPage() {
   return (

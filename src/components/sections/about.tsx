@@ -58,7 +58,7 @@ export function About() {
           <TextReveal variant="fade-up" as="p" className="text-primary font-medium text-sm uppercase tracking-wider mb-3">
             About My Work & Philosophy
           </TextReveal>
-          <TextReveal variant="fade-up" delay={0.1} as="h2" className="section-heading mb-6">
+          <TextReveal variant="fade-up" delay={0.1} as="h1" className="section-heading mb-6">
             Driving Scalable Growth Through <span className="text-gradient">Data-Driven Strategy</span>
           </TextReveal>
           <TextReveal variant="fade-up" delay={0.2} as="p" className="section-subheading text-lg leading-relaxed">

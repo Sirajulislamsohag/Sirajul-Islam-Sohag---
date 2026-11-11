@@ -88,6 +88,14 @@ export function Footer() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link
+                  href="/industries"
+                  className="text-sm text-white/60 hover:text-primary transition-colors"
+                >
+                  Industries
+                </Link>
+              </li>
             </ul>
           </div>
 

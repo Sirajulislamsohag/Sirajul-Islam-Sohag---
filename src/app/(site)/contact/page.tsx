@@ -2,12 +2,14 @@ import { PageHeader } from '@/components/sections/page-header';
 import { Contact } from '@/components/sections/contact';
 import { Footer } from '@/components/sections/footer';
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Contact | Sirajul - Digital Marketing Consultant',
-  description: 'Get in touch with Sirajul Islam Sohag for Google Ads management, Meta Ads scaling, SEO audits, and custom performance marketing strategies.',
-  keywords: ['contact sirajul', 'book marketing consultation', 'hire google ads expert', 'ppc consultant contact'],
-};
+export const metadata: Metadata = pageMetadata({
+  title: 'Contact - Book a Free Google Ads Audit',
+  description:
+    'Book a free Google Ads account audit or strategy call with Sirajul Islam Sohag. Get a clear plan to cut wasted spend and get more qualified leads.',
+  path: '/contact',
+});
 
 export default function ContactPage() {
   return (

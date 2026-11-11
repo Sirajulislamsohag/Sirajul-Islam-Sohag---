@@ -10,23 +10,20 @@ import { CTASection } from '@/components/sections/cta-section';
 import { Contact } from '@/components/sections/contact';
 import { Footer } from '@/components/sections/footer';
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 import { AboutWithImage } from '@/components/sections/about-with-image';
 import { ToolsPlatformsIcons } from '@/components/sections/tools-platforms-icons';
 
  
  
 
-export const metadata: Metadata = {
-  title: 'Sirajul | Digital Marketing Consultant -Google Ads Expert ',
-  description: 'Expert Google Ads, Facebook Ads, SEO & Analytics specialist. Helping businesses generate leads, scale sales, and build their online presence through data-driven strategies.',
-  keywords: ['digital marketing', 'google ads', 'facebook ads', 'seo', 'analytics', 'ppc', 'consultant'],
-  openGraph: {
-    title: 'Sirajul | Digital Marketing Consultant',
-    description: 'Expert Google Ads, Facebook Ads, SEO & Analytics specialist.',
-    type: 'website',
-    locale: 'en_US',
-  },
-};
+export const metadata: Metadata = pageMetadata({
+  title: 'Google Ads Consultant & PPC Specialist | Sirajul Islam Sohag',
+  absoluteTitle: true,
+  description:
+    'Certified Google Ads consultant for home service, local service and e-commerce businesses. Search, Performance Max, Shopping and conversion tracking built to lower cost per lead. Free account audit.',
+  path: '/',
+});
 
 export default function HomePage() {
   return (

@@ -9,13 +9,15 @@ import { TextReveal } from '@/components/animations/text-reveal';
 import { Card } from '@/components/ui/card';
 import { Search, Target, TrendingUp, ShieldCheck } from 'lucide-react';
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 import { CTASection } from '@/components/sections/cta-section';
 
-export const metadata: Metadata = {
-  title: 'Services | Sirajul - Performance Marketing Solutions',
-  description: 'Explore full-funnel digital marketing services: Google Ads management, Meta Ads, SEO optimization, GA4 analytics setup, and CRO to maximize ROI.',
-  keywords: ['google ads management', 'facebook ads service', 'seo optimization service', 'ga4 tracking', 'ppc consultant'],
-};
+export const metadata: Metadata = pageMetadata({
+  title: 'Google Ads Management Services',
+  description:
+    'Google Ads management services: Search campaigns, Performance Max and Shopping, Display and YouTube, GA4 and GTM conversion tracking, reporting dashboards and CRO.',
+  path: '/services',
+});
 
 const PROCESS_STEPS = [
   {

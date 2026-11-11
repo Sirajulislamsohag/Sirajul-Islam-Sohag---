@@ -19,6 +19,8 @@ import {
 import { TextReveal } from '@/components/animations/text-reveal';
 import { ScrollReveal } from '@/components/animations/scroll-reveal';
 import { useCalendly } from '@/providers/calendly-provider';
+import Link from 'next/link';
+import { industryHrefForSection } from '@/lib/industries';
 
 // Top Row Featured Industries
 const FEATURED_INDUSTRIES = [
@@ -219,19 +221,26 @@ export function IndustryExpertise() {
                         </span>
                       </div>
 
-                      <button
-                        type="button"
-                        onClick={() =>
-                          openCalendly({
-                            title: `Strategy Call: ${item.title}`,
-                            subtitle: `Let's discuss proven benchmarks and a scaling roadmap for your business.`,
-                          })
-                        }
-                        className="inline-flex items-center gap-1.5 text-xs font-heading font-semibold text-primary hover:text-primary-hover group-hover:translate-x-1 transition-all cursor-pointer"
-                      >
-                        <span>Learn the strategy</span>
-                        <ArrowRight className="w-3.5 h-3.5" />
-                      </button>
+                      {industryHrefForSection(item.id) ? (
+                        <Link href={industryHrefForSection(item.id)!} className="inline-flex items-center gap-1.5 text-xs font-heading font-semibold text-primary hover:text-primary-hover group-hover:translate-x-1 transition-all cursor-pointer">
+                          <span>Learn the strategy</span>
+                          <ArrowRight className="w-3.5 h-3.5" />
+                        </Link>
+                      ) : (
+                        <button
+                          type="button"
+                          onClick={() =>
+                            openCalendly({
+                              title: `Strategy Call: ${item.title}`,
+                              subtitle: `Let's discuss proven benchmarks and a scaling roadmap for your business.`,
+                            })
+                          }
+                          className="inline-flex items-center gap-1.5 text-xs font-heading font-semibold text-primary hover:text-primary-hover group-hover:translate-x-1 transition-all cursor-pointer"
+                        >
+                          <span>Learn the strategy</span>
+                          <ArrowRight className="w-3.5 h-3.5" />
+                        </button>
+                      )}
                     </div>
                   </div>
                 </ScrollReveal>
@@ -283,19 +292,26 @@ export function IndustryExpertise() {
                         </span>
                       </div>
 
-                      <button
-                        type="button"
-                        onClick={() =>
-                          openCalendly({
-                            title: `Strategy Call: ${item.title}`,
-                            subtitle: `Let's discuss proven benchmarks and a scaling roadmap for your market.`,
-                          })
-                        }
-                        className="inline-flex items-center gap-1 text-xs font-heading font-semibold text-primary hover:text-primary-hover group-hover:translate-x-1 transition-all cursor-pointer"
-                      >
-                        <span>Learn the strategy</span>
-                        <ArrowRight className="w-3 h-3" />
-                      </button>
+                      {industryHrefForSection(item.id) ? (
+                        <Link href={industryHrefForSection(item.id)!} className="inline-flex items-center gap-1 text-xs font-heading font-semibold text-primary hover:text-primary-hover group-hover:translate-x-1 transition-all cursor-pointer">
+                          <span>Learn the strategy</span>
+                          <ArrowRight className="w-3 h-3" />
+                        </Link>
+                      ) : (
+                        <button
+                          type="button"
+                          onClick={() =>
+                            openCalendly({
+                              title: `Strategy Call: ${item.title}`,
+                              subtitle: `Let's discuss proven benchmarks and a scaling roadmap for your market.`,
+                            })
+                          }
+                          className="inline-flex items-center gap-1 text-xs font-heading font-semibold text-primary hover:text-primary-hover group-hover:translate-x-1 transition-all cursor-pointer"
+                        >
+                          <span>Learn the strategy</span>
+                          <ArrowRight className="w-3 h-3" />
+                        </button>
+                      )}
                     </div>
                   </div>
                 </ScrollReveal>
