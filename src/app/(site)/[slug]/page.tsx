@@ -21,7 +21,6 @@ import {
   Thermometer,
   Wrench,
   Zap,
-  ShieldOff,
 } from 'lucide-react';
 import { Contact } from '@/components/sections/contact';
 import { Footer } from '@/components/sections/footer';
@@ -220,25 +219,18 @@ export default async function IndustryLandingPage({ params }: { params: Promise<
         </div>
       </Section>
 
-      {/* E. Negative keywords + F. Location targeting */}
+      {/* F. Location targeting */}
       <Section tone="card">
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16">
-          <div>
-            <h2 className="text-3xl md:text-4xl font-heading font-bold tracking-tight mb-4">Negative keyword examples</h2>
-            <p className="text-[var(--text-secondary)] leading-relaxed mb-6">
-              These searches look related but rarely become customers for {page.noun}. Every negative is checked against your real search
-              terms before it is applied, so valuable searches are never blocked by accident.
-            </p>
-            <div className="flex flex-wrap gap-2">
-              {page.negativeKeywords.map((kw) => (
-                <span key={kw} className="inline-flex items-center gap-1.5 text-sm px-3 py-1.5 rounded-full bg-[var(--bg-card)] border border-[var(--border)] text-[var(--text-secondary)]">
-                  <ShieldOff className="w-3.5 h-3.5 text-red-400" />
-                  {kw}
-                </span>
-              ))}
-            </div>
-          </div>
-          <div>
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          {page.sectionImage && (
+            <PageImageBlock
+              image={page.sectionImage}
+              fallbackIcon={Icon}
+              fallbackLabel={page.h1}
+              className="aspect-[4/3] order-last lg:order-first"
+            />
+          )}
+          <div className={page.sectionImage ? '' : 'lg:col-span-2 max-w-3xl'}>
             <h2 className="text-3xl md:text-4xl font-heading font-bold tracking-tight mb-4">Location targeting</h2>
             <p className="text-[var(--text-secondary)] leading-relaxed mb-6">{page.locationTargeting.intro}</p>
             <ul className="space-y-3">
@@ -342,23 +334,8 @@ export default async function IndustryLandingPage({ params }: { params: Promise<
         <TitledGrid items={WORK_PROCESS} numbered />
       </Section>
 
-      {/* K. Subcategories */}
-      <Section tone="card">
-        <SectionHeading title={<>Types of {page.noun} I work with</>} subtitle="Each segment searches differently and gets its own campaign approach." />
-        {page.sectionImage && (
-          <PageImageBlock
-            image={page.sectionImage}
-            fallbackIcon={Icon}
-            fallbackLabel={page.h1}
-            sizes="(max-width: 1280px) 100vw, 1280px"
-            className="aspect-[16/9] md:aspect-[21/8] mb-10"
-          />
-        )}
-        <TitledGrid items={page.subcategories} />
-      </Section>
-
       {/* L. FAQs */}
-      <Section>
+      <Section tone="card">
         <div className="max-w-4xl mx-auto">
           <SectionHeading title={<>Google Ads for {page.name.toLowerCase()}: frequently asked questions</>} center />
           <FaqList faqs={page.faqs} />
@@ -366,7 +343,7 @@ export default async function IndustryLandingPage({ params }: { params: Promise<
       </Section>
 
       {/* Related */}
-      <Section tone="card">
+      <Section>
         <div className="space-y-12">
           <RelatedServices slugs={page.relatedServices} />
           <RelatedIndustries slugs={page.relatedIndustries} />
