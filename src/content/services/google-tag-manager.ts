@@ -21,6 +21,8 @@ export const googleTagManager: ServicePage = {
   heroHeadline: 'A clean, documented GTM setup for every tag your marketing depends on',
   heroText:
     'Google Tag Manager is where your Google Ads, GA4, Meta and other tags live. When it is messy, every platform gets bad data. I audit, build and document GTM containers for web and server-side tracking, with a proper data layer, consistent naming and tests for every tag, so your marketing data is reliable and easy to maintain.',
+  overview:
+    'A Google Tag Manager consultant makes sure every tag fires once, at the right moment, with the right data. As a Google Tag Manager expert and GTM consultant, I set up and clean up containers for web and server-side tracking. My Google Tag Manager setup service covers events, forms, dataLayer work and conversion tags for Google Ads, GA4 and Meta.',
   valueProps: [
     'Data layer design and implementation for forms, calls, bookings and e-commerce',
     'Consistent naming, folders and documentation so the container stays maintainable',

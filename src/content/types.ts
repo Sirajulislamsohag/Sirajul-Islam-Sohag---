@@ -81,6 +81,8 @@ export interface IndustryPage {
   h1: string;
   heroHeadline: string;
   heroText: string;
+  /** Short intro paragraph that works the sheet's sub keywords into natural copy. */
+  overview?: string;
   valueProps: string[];
   heroImage: PageImage;
   /** Second, different industry photo shown further down the page. */
@@ -120,6 +122,8 @@ export interface ServicePage {
   h1: string;
   heroHeadline: string;
   heroText: string;
+  /** Short intro paragraph that works the sheet's sub keywords into natural copy. */
+  overview?: string;
   valueProps: string[];
   heroImage: PageImage;
 

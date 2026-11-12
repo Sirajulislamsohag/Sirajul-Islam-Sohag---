@@ -495,8 +495,8 @@ export default function BlogPage() {
     <>
       <PageHeader
         badge="Insights & Performance"
-        title="Marketing Articles & Growth Guides"
-        subtitle="Data-driven strategies, PPC case studies, and actionable tutorials on Google Ads, Meta Ads, SEO, and Analytics."
+        title="Google Ads Blog: PPC Tips & Strategy"
+        subtitle="A Google Ads blog with practical Google Ads tips, PPC blog guides and Google Ads strategy blog posts on Search, PMax, tracking and lead generation."
         breadcrumbCurrent="Blog"
       />
 

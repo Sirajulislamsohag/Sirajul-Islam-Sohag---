@@ -23,6 +23,8 @@ export const dentists: IndustryPage = {
   heroHeadline: 'Dental PPC built around high-value treatments and booked appointments',
   heroText:
     'A new patient searching "dentist near me" and a patient searching "dental implants cost" are worth very different amounts to your practice. I build dental campaigns that separate general, emergency and high-value treatment searches, target the neighborhoods around your office, and track calls and appointment requests so you know what each new patient costs.',
+  overview:
+    'Google Ads for dentists should fill the chair with the treatments that matter most to your practice. Dental Google Ads campaigns for implants, Invisalign, emergency visits and new patients each need their own budget. PPC for dentists works when appointment requests are tracked from the click to the booked visit.',
   valueProps: [
     'Separate campaigns for implants, Invisalign, cosmetic, emergency and new patient searches',
     'Call tracking with duration filters and online booking tracking',

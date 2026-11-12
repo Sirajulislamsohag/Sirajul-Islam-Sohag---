@@ -18,7 +18,11 @@ export default function ContactPage() {
   return (
     <>
       <div className="pt-20">
-        <Contact headingAs="h1" />
+        <Contact
+          headingAs="h1"
+          heading="Book a Google Ads Consultation"
+          subheading="Send a message or book a free Google Ads consultation call. In a short PPC consultation or Google Ads strategy call, we review your campaigns, tracking and goals."
+        />
       </div>
       <Footer />
     </>

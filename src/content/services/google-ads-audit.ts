@@ -21,6 +21,8 @@ export const googleAdsAudit: ServicePage = {
   heroHeadline: 'Find out where your Google Ads budget is going and what to fix first',
   heroText:
     'A Google Ads audit is a line-by-line review of your account: structure, keywords, search terms, bidding, ads, tracking and landing pages. You get a written report that ranks every issue by how much money it is costing you, so you know exactly what to fix first, whether I do the work or your team does.',
+  overview:
+    'A Google Ads audit shows you exactly where money is leaking and which fixes matter most. Whether you call it a PPC audit or a Google Ads account audit, the goal is the same: a clear, prioritized list of changes based on your own account data, not a generic checklist.',
   valueProps: [
     'Every finding ranked by estimated impact on wasted spend or missed leads',
     'Conversion tracking verified, not assumed',

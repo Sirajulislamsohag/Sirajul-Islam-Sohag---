@@ -23,6 +23,8 @@ export const lawFirms: IndustryPage = {
   heroHeadline: 'Legal PPC that controls cost per case inquiry in the most expensive keywords on Google',
   heroText:
     'Legal keywords are among the costliest clicks anywhere. A loosely managed law firm account can spend a month of budget in a week on searches that never become clients. I build practice-area campaigns around high-intent searches, qualify leads before they count as conversions, and track every call and intake form so you know exactly what a signed case costs.',
+  overview:
+    'Google Ads for law firms is one of the most expensive advertising markets online, so every click needs a purpose. Law firm PPC is organized by practice area, with intake tracking that separates real case inquiries from unqualified calls. PPC for lawyers works when bids follow case value, and that is the focus of my legal PPC management.',
   valueProps: [
     'Separate campaigns per practice area with their own budgets and intake goals',
     'Call tracking with qualification so only real case inquiries count',

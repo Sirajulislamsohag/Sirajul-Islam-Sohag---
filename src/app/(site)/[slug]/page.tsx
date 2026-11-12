@@ -162,6 +162,14 @@ export default async function IndustryLandingPage({ params }: { params: Promise<
         </div>
       </section>
 
+      {page.overview && (
+        <section className="py-12 md:py-16 border-b border-[var(--border)]">
+          <div className="max-w-4xl mx-auto px-6">
+            <p className="text-lg md:text-xl leading-relaxed text-[var(--text-secondary)]">{page.overview}</p>
+          </div>
+        </section>
+      )}
+
       {/* B. Challenges */}
       <Section>
         <SectionHeading

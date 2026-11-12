@@ -21,7 +21,11 @@ export default function PortfolioPage() {
   return (
     <>
       <div className="pt-20">
-        <PortfolioShowcase enablePagination={true} itemsPerPage={6} headingAs="h1" />
+        <PortfolioShowcase enablePagination={true} itemsPerPage={6}
+          headingAs="h1"
+          heading="Google Ads Case Studies & PPC Results"
+          subheading="PPC case studies and Google Ads results from real campaigns: performance marketing case studies across lead generation and e-commerce. Click any case study for the strategy and deliverables."
+        />
       </div>
       <TrustedBrands />
       <ClientReviews />

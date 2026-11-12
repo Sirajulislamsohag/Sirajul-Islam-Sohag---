@@ -30,7 +30,11 @@ const contactSchema = z.object({
 
 type ContactFormData = z.infer<typeof contactSchema>;
 
-export function Contact({ headingAs = 'h2' }: { headingAs?: 'h1' | 'h2' } = {}) {
+export function Contact({
+  headingAs = 'h2',
+  heading = "Let's Grow Your Business",
+  subheading = "Ready to scale? Send me a message and let's discuss your marketing goals.",
+}: { headingAs?: 'h1' | 'h2'; heading?: string; subheading?: string } = {}) {
   const { openCalendly } = useCalendly();
   const [isSubmitted, setIsSubmitted] = useState(false);
   const {
@@ -71,10 +75,10 @@ export function Contact({ headingAs = 'h2' }: { headingAs?: 'h1' | 'h2' } = {}) 
             Get In Touch
           </TextReveal>
           <TextReveal as={headingAs} variant="char-reveal" className="section-heading mb-4">
-            Let's Grow Your Business
+            {heading}
           </TextReveal>
           <TextReveal as="p" variant="fade-up" delay={0.2} className="section-subheading">
-            Ready to scale? Send me a message and let's discuss your marketing goals.
+            {subheading}
           </TextReveal>
         </div>
 

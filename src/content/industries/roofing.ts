@@ -30,6 +30,8 @@ export const roofing: IndustryPage = {
   heroHeadline: 'Roofing PPC that books inspections, not just clicks',
   heroText:
     'I run Google Ads for roofing contractors in the US. Campaigns are built around roof repair, roof replacement and storm damage searches in the ZIP codes you serve, with call tracking and lead filtering so you know exactly which jobs your ad spend paid for.',
+  overview:
+    'Google Ads for roofers only pays off when ads reach homeowners who need a roof repaired or replaced now. I manage roofing Google Ads accounts with service-split campaigns, tight ZIP code targeting and call tracking. Good PPC for roofing companies is less about spending more and more about blocking the clicks that never become inspections.',
   valueProps: [
     'Repair, replacement and storm campaigns kept separate so budget follows job value',
     'Call and form tracking that counts booked inspections, not every click',

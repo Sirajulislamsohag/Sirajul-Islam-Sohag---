@@ -24,6 +24,8 @@ export const homeServices: IndustryPage = {
   heroHeadline: 'Home service PPC built around booked jobs and crew capacity',
   heroText:
     'I manage Google Ads for US home service companies: roofing, HVAC, plumbing, electrical, remodeling, chimney and exteriors, cleaning and more. The goal is simple: more booked jobs at a cost that works for your margins, with tracking that shows which campaigns actually produce revenue.',
+  overview:
+    'Google Ads for home services rewards companies that separate high-value jobs from small ones. My home services PPC work covers roofing, HVAC, plumbing, remodeling and other trades. Home service Google Ads campaigns are built around your services, service area and crew capacity, which is what makes PPC for home service companies profitable instead of just busy.',
   valueProps: [
     'Service-specific campaigns so budget follows job value, not click volume',
     'Call, form and booking tracking tied to real jobs through your CRM',

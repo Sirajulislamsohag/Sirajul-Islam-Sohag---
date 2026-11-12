@@ -22,6 +22,8 @@ export const contractors: IndustryPage = {
   heroHeadline: 'Contractor PPC that targets kitchen remodels and additions, not handyman calls',
   heroText:
     'Contractors win on Google Ads when the campaign is built around project types and project values. I structure contractor accounts so remodels, additions, basements and commercial work each have their own budget, targeting and landing page, with tracking that shows which searches become signed projects.',
+  overview:
+    'Google Ads for contractors works when campaigns are built around the projects you want, in the areas you serve. Contractor Google Ads campaigns for remodels, additions and repairs need different keywords and budgets. As a Google Ads contractor specialist, I track calls, forms and project inquiries so you can see which projects your ad spend produced.',
   valueProps: [
     'Campaigns by project type so budget follows project value',
     'Negative keywords that block handyman, DIY, supplier and job-seeker searches',

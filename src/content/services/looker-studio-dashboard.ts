@@ -21,6 +21,8 @@ export const lookerStudioDashboard: ServicePage = {
   heroHeadline: 'One dashboard that shows spend, leads, sales and cost per result, updated automatically',
   heroText:
     'Reporting should take minutes, not a day of exporting spreadsheets. I build Looker Studio dashboards that pull Google Ads, GA4, Search Console, Meta and CRM data into one place, so you see what you spent, what you got and what it cost per lead or sale, by campaign, by channel and over time.',
+  overview:
+    'As a Looker Studio consultant, I build reports that answer business questions in one view. My Looker Studio dashboard service combines Google Ads, GA4 and CRM data into a Google Ads dashboard showing spend, leads, cost per lead, ROAS and revenue. A good PPC reporting dashboard updates itself, so nobody has to rebuild spreadsheets every month.',
   valueProps: [
     'Google Ads, GA4, CRM and other sources combined in one view',
     'Metrics that matter: cost per lead, cost per sale, ROAS, revenue, not just clicks',

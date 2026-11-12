@@ -113,7 +113,7 @@ export function Hero() {
             </div>
 
             <p className="hero-animate text-[var(--text-secondary)] text-lg leading-relaxed max-w-lg">
-              I help home service, local service, and e-commerce businesses turn ad spend into qualified leads and revenue through data-driven Google Ads strategy.
+              Google Ads expert and PPC consultant for home service, local service and e-commerce businesses across the USA and beyond. I work hands-on as your Google Ads consultant and PPC expert, turning ad spend into qualified leads and revenue.
             </p>
 
             <div className="hero-animate flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 sm:gap-4 pt-1">

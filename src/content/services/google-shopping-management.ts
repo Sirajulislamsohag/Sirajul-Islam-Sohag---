@@ -17,10 +17,12 @@ export const googleShoppingManagement: ServicePage = {
   ],
   searchIntent: 'Commercial: online store owners who want Shopping campaigns and Merchant Center managed by a specialist.',
 
-  h1: 'Google Shopping Ads Management',
+  h1: 'Google Shopping Management',
   heroHeadline: 'Shopping campaigns and a product feed built to sell at a profitable ROAS',
   heroText:
     'Shopping ads put your product, price and image in front of people searching to buy. The results depend on three things: feed quality, campaign structure and bidding. I manage all three, starting with Merchant Center, so your products show for the right searches and your budget goes to the products that make money.',
+  overview:
+    'Google Shopping management starts with the product feed and ends with profit, not just ROAS. As a Google Shopping consultant, I handle Merchant Center, feed optimization, campaign structure and bidding, so your Google Shopping Ads management is built around the products that actually make you money.',
   valueProps: [
     'Feed optimization: titles, attributes, product types, custom labels and disapproval fixes',
     'Campaigns segmented by margin and performance',

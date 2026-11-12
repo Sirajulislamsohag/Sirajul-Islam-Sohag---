@@ -21,6 +21,8 @@ export const conversionTracking: ServicePage = {
   heroHeadline: 'Conversion tracking you can trust, so every bidding decision is based on real leads and sales',
   heroText:
     'Smart Bidding is only as good as the conversion data behind it. I set up and verify Google Ads conversion tracking through Google Tag Manager and GA4 for calls, forms, bookings and purchases, add enhanced conversions and offline conversion imports, and document everything so you know exactly what each number means.',
+  overview:
+    'Google Ads conversion tracking decides what Smart Bidding learns from, so errors here cost money every day. As a conversion tracking specialist, I handle the full Google Ads tracking setup with GA4 and GTM: calls, forms, purchases and offline conversions. Accurate PPC conversion tracking is often the fastest way to improve results without raising your budget.',
   valueProps: [
     'Every conversion action defined, tested and documented',
     'Calls, forms, bookings and purchases tracked separately with correct values',

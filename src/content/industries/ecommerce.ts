@@ -24,6 +24,8 @@ export const ecommerce: IndustryPage = {
   heroHeadline: 'Shopping, Performance Max and Search built to grow sales at a ROAS you can live with',
   heroText:
     'For an online store, Google Ads is about selling the right products at a profitable return, not about traffic. I manage Shopping and Performance Max campaigns, fix the product feed in Merchant Center, and make sure purchase tracking is accurate so Smart Bidding is learning from real revenue.',
+  overview:
+    'Google Ads for e-commerce has to answer one question first: which products are profitable to advertise? My e-commerce PPC management combines Shopping, Performance Max, Search and feed optimization to grow sales while protecting your target ROAS. As a Google Ads e-commerce expert, I focus on margin and new customers, not just revenue.',
   valueProps: [
     'Products segmented by margin and performance so budget follows profit',
     'Merchant Center feed optimization: titles, attributes, custom labels, disapprovals',

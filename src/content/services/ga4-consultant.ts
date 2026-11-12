@@ -21,6 +21,8 @@ export const ga4Consultant: ServicePage = {
   heroHeadline: 'Google Analytics 4 that answers real questions about leads, sales and marketing',
   heroText:
     'Most GA4 properties are installed but not configured. Events are default, key events are missing or wrong, and the reports do not answer the questions a business owner actually has. I set up, audit and fix GA4 so you can see where leads and sales come from, how your funnel performs and which channels deserve more budget.',
+  overview:
+    'A GA4 consultant turns Google Analytics 4 from a confusing report into data you can trust. As a Google Analytics 4 consultant and GA4 expert, I audit and fix event tracking, e-commerce measurement, funnels and attribution. If you have worked with a Google Analytics consultant before and still don\'t trust your numbers, that is usually where I start.',
   valueProps: [
     'Key events that match your real conversions, aligned with Google Ads',
     'E-commerce and lead funnels you can read without a data analyst',

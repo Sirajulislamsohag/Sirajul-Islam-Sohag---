@@ -423,7 +423,9 @@ export function PortfolioShowcase({
   enablePagination = false,
   itemsPerPage = 6,
   headingAs = 'h2',
-}: PortfolioShowcaseProps & { headingAs?: 'h1' | 'h2' }) {
+  heading = 'Featured Case Studies',
+  subheading = 'Real results from real campaigns. Click any case study for deep-dive strategy & deliverables.',
+}: PortfolioShowcaseProps & { headingAs?: 'h1' | 'h2'; heading?: string; subheading?: string }) {
   const [activeCategory, setActiveCategory] = useState('all');
   const [currentPage, setCurrentPage] = useState(1);
   const [items, setItems] = useState<PortfolioItemData[]>(ENRICHED_PORTFOLIO_ITEMS);
@@ -547,10 +549,10 @@ export function PortfolioShowcase({
               My Work
             </TextReveal>
             <TextReveal as={headingAs} variant="char-reveal" className="section-heading mb-4">
-              Featured Case Studies
+              {heading}
             </TextReveal>
             <TextReveal as="p" variant="fade-up" delay={0.2} className="section-subheading">
-              Real results from real campaigns. Click any case study for deep-dive strategy & deliverables.
+              {subheading}
             </TextReveal>
           </div>
         )}

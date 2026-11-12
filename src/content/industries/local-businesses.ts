@@ -24,6 +24,8 @@ export const localBusinesses: IndustryPage = {
   heroHeadline: 'Local PPC that reaches nearby customers at the moment they need you',
   heroText:
     'Local businesses win on Google when they show up for people nearby who are ready to call, book or visit. I build local campaigns with tight service-area targeting, call and direction tracking, and ad copy that makes your business the obvious choice in your area, without the wasted clicks that come from default settings.',
+  overview:
+    'Google Ads for local businesses works best when campaigns are built around a real service area and real customer intent. Local business PPC is different from national campaigns: tighter targeting, more phone calls and less room for wasted clicks. Whether you run a shop, a clinic or a service company, I set up local service Google Ads that focus on booked customers.',
   valueProps: [
     'Presence-only targeting so you pay for people in your area, not people reading about it',
     'Call, form, booking and direction-request tracking',

@@ -22,6 +22,8 @@ export const googleAdsManagement: ServicePage = {
   heroHeadline: 'Done-for-you Google Ads management from a certified specialist, not an agency account queue',
   heroText:
     'I manage Google Ads accounts for lead generation and e-commerce businesses, mostly in the US. You get one person who builds, tracks and optimizes your campaigns every week, with reporting that shows leads, sales and cost per result instead of clicks and impressions.',
+  overview:
+    'Google Ads management is the ongoing work of running your account: strategy, keyword research, bidding, ad testing, tracking and reporting. My PPC management services cover all of it, done by me personally rather than handed to a junior account manager. If you are comparing Google PPC management options, look for one thing first: decisions based on qualified leads and revenue, not clicks.',
   valueProps: [
     'One specialist on your account, with direct communication',
     'Conversion tracking set up and verified before scaling spend',

@@ -24,6 +24,8 @@ export const hvac: IndustryPage = {
   heroHeadline: 'HVAC PPC built for the days your phones need to ring',
   heroText:
     'When an air conditioner dies in July or a furnace fails in January, homeowners call the first HVAC company they trust on Google. I build HVAC campaigns around those emergency searches, schedule ads around your dispatch hours, and track every call so you see the real cost of each booked service call and installation.',
+  overview:
+    'Google Ads for HVAC companies has to handle two very different kinds of demand: emergency repairs and planned installations. Effective PPC for HVAC companies keeps them separate, with schedules and budgets that follow the weather and your dispatch capacity.',
   valueProps: [
     'Emergency repair, installation and maintenance campaigns run with separate budgets',
     'Ad schedules and bids matched to when your office can actually answer',

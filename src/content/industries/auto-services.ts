@@ -24,6 +24,8 @@ export const autoServices: IndustryPage = {
   heroHeadline: 'Automotive PPC that fills your bays and booking calendar',
   heroText:
     'Drivers search Google when a warning light comes on, a tire goes flat or a service is due. I build auto repair and tire campaigns around specific services and the area around your shop, so you show up for urgent and planned searches and every call or booking is tracked back to the ad that produced it.',
+  overview:
+    'Google Ads for auto repair works when campaigns match the service the driver needs, from brakes to diagnostics. I set up auto repair PPC with service-specific ad groups and local targeting, and Google Ads for tire shops with campaigns for tire replacement, repair and installation. The goal of PPC for auto repair shops is simple: more booked appointments, not more clicks.',
   valueProps: [
     'Service-specific campaigns: tires, brakes, diagnostics, oil changes, mobile tire service',
     'Radius and ZIP targeting around your shop or mobile service area',

@@ -21,6 +21,8 @@ export const performanceMaxManagement: ServicePage = {
   heroHeadline: 'Performance Max that is structured, measured and accountable, not a black box',
   heroText:
     'Performance Max can scale results across Search, Shopping, YouTube, Display, Gmail and Maps. It can also quietly take credit for brand demand and spend on placements that never convert. I set up and manage PMax with clear segmentation, accurate conversion data, strong assets and the exclusions that keep it honest.',
+  overview:
+    'Performance Max management needs more control than Google\'s defaults give you. As a Performance Max consultant, I handle PMax management directly: asset groups, audience signals, feed quality, exclusions and conversion data. You get the attention of a specialist instead of a large Performance Max agency where your account is one of hundreds.',
   valueProps: [
     'Asset groups and listing groups segmented by product or service, not one catch-all campaign',
     'Brand exclusions and search theme controls so PMax does not cannibalize Search',

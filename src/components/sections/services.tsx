@@ -109,7 +109,7 @@ export function Services({ headingAs = 'h2' }: { headingAs?: 'h1' | 'h2' } = {})
             Google Ads Services That Scale Businesses
           </TextReveal>
           <TextReveal as="p" variant="fade-up" delay={0.2} className="section-subheading">
-            End-to-end Google Ads management, from strategy and campaign build to tracking and optimization, designed to lower your cost per lead and maximize return on ad spend.
+            End-to-end Google Ads management and PPC services, from strategy and campaign build to tracking and optimization. Google advertising services designed to lower your cost per lead and maximize return on ad spend.
           </TextReveal>
         </div>
 

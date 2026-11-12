@@ -23,6 +23,8 @@ export const plumbers: IndustryPage = {
   heroHeadline: 'Plumbing PPC that turns emergency searches into booked calls',
   heroText:
     'A burst pipe or a backed-up drain is not a research project. The homeowner calls the first plumber that looks trustworthy on Google. I build plumbing campaigns around that urgency, target only the areas your trucks can reach, and track calls so you know which searches are paying for themselves.',
+  overview:
+    'Google Ads for plumbers is built on urgency. Plumber Google Ads campaigns need to show up fast for burst pipes, clogs and water heater failures, and stay quiet when nobody can answer the phone. PPC for plumbers works when every call is tracked and every wasted search term is blocked.',
   valueProps: [
     'Emergency, drain, water heater and repipe campaigns kept separate',
     'Call tracking with duration filters so spam and misdials do not count',

@@ -21,6 +21,8 @@ export const googleSearchAds: ServicePage = {
   heroHeadline: 'Search campaigns built on the searches that mean someone is ready to buy',
   heroText:
     'Search is where intent lives. Someone typing "emergency plumber near me" or "dental implants cost" is telling you exactly what they need. I build and manage Search campaigns that capture those searches with tight keyword groups, strong ads, aggressive negatives and tracking that shows which keywords produce leads.',
+  overview:
+    'Google Search Ads management focuses on the campaigns that reach people at the moment they search for what you sell. Good Google Search campaign management is mostly discipline: tight keyword groups, weekly search term reviews and ads that match intent. That is the core of the paid search management I provide.',
   valueProps: [
     'Keyword research by intent, not just volume',
     'Tight ad groups so every ad matches the search',

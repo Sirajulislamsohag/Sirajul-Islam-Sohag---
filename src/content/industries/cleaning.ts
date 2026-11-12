@@ -24,6 +24,8 @@ export const cleaning: IndustryPage = {
   heroHeadline: 'Cleaning PPC that fills your schedule with the right customers',
   heroText:
     'Cleaning is a comparison market. People request two or three quotes and book the company that responds fastest and looks most trustworthy. I build cleaning campaigns that separate residential and commercial searches, target only the ZIP codes you serve, and make it easy for the right customers to book or request a quote.',
+  overview:
+    'Google Ads for cleaning businesses works best when residential and commercial searches are handled separately. Cleaning business Google Ads campaigns should target only the areas your crews cover and filter out job seekers. PPC for cleaning companies succeeds when quote requests and recurring bookings are tracked, not just clicks.',
   valueProps: [
     'Residential, commercial and specialty cleaning campaigns with separate budgets',
     'Negative keywords that block cleaning jobs, supplies and DIY traffic',
