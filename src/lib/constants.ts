@@ -43,7 +43,7 @@ export const ORBIT_SKILLS = [
 export const STATS = [
   { label: 'Years Experience', value: 4, suffix: '+' },
   { label: 'Projects Completed', value: 200, suffix: '+' },
-  { label: 'Happy Clients', value: 150, suffix: '+' },
+  { label: 'Happy Clients', value: 100, suffix: '+' },
   { label: 'Revenue Generated', value: 2.5, suffix: 'M+', prefix: '$' },
 ];
 

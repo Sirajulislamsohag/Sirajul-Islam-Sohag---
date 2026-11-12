@@ -246,7 +246,7 @@ export function Hero() {
                   ))}
                 </div>
                 <p className="text-[11px] sm:text-xs text-[var(--text-secondary)]">
-                  <Counter value={15000} suffix="+" className="font-bold text-[var(--text)]" /> Happy Clients
+                  <Counter value={100} suffix="+" className="font-bold text-[var(--text)]" /> Happy Clients
                 </p>
               </div>
             </div>
