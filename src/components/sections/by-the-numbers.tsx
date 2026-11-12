@@ -23,7 +23,7 @@ interface StatItem {
 const STATS: StatItem[] = [
   {
     id: 'experience',
-    value: 5,
+    value: 4,
     suffix: '+',
     label: 'Years Experience',
     description: 'Continuous campaign scaling & algorithmic optimization across Google Ads.',

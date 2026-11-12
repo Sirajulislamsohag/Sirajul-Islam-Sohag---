@@ -24,7 +24,7 @@ export const NAV_ITEMS: NavItem[] = [
 ];
 
 export const TYPING_ROLES = [
-  'Certified Google Ads Expert & PPC Consultant',
+  'Certified PPC Consultant',
   'Google Ads Specialist',
   'Performance Marketer',
   'Marketing Strategist',
@@ -41,7 +41,7 @@ export const ORBIT_SKILLS = [
 ];
 
 export const STATS = [
-  { label: 'Years Experience', value: 5, suffix: '+' },
+  { label: 'Years Experience', value: 4, suffix: '+' },
   { label: 'Projects Completed', value: 200, suffix: '+' },
   { label: 'Happy Clients', value: 150, suffix: '+' },
   { label: 'Revenue Generated', value: 2.5, suffix: 'M+', prefix: '$' },

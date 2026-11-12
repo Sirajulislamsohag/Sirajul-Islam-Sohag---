@@ -106,6 +106,9 @@ export function Hero() {
                 className="hero-heading"
               >
                 <span className="text-gradient">Sirajul Islam Sohag</span>
+                <span className="block mt-3 text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-[var(--text)] tracking-tight">
+                  Google Ads Expert
+                </span>
               </h1>
               <div className="hero-animate mt-4 text-xl md:text-2xl font-heading text-[var(--text-secondary)] font-semibold">
                 <Typing words={TYPING_ROLES} />

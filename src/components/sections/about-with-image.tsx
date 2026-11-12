@@ -26,7 +26,7 @@ export function AboutWithImage() {
             <p className="text-[var(--text-secondary)] text-lg leading-relaxed">
               I help businesses turn Google Ads into a predictable and profitable growth channel through strategic campaign planning, precise targeting, and continuous optimization.
 <br/>
-With 5+ years of experience, I’ve helped 100+ businesses worldwide generate qualified leads, increase sales, improve conversion rates, and maximize their return on ad spend.
+With 4+ years of experience, I’ve helped 100+ businesses worldwide generate qualified leads, increase sales, improve conversion rates, and maximize their return on ad spend.
             </p>
           </ScrollReveal>
 

@@ -62,7 +62,7 @@ export function About() {
             Driving Scalable Growth Through <span className="text-gradient">Data-Driven Strategy</span>
           </TextReveal>
           <TextReveal variant="fade-up" delay={0.2} as="p" className="section-subheading text-lg leading-relaxed">
-            I'm Sirajul Islam Sohag (Sirajul Sohag), a Google Ads and analytics specialist. With over 5 years of hands-on experience in performance marketing, I combine deep data analytics with creative strategy to build marketing engines that generate consistent, high-ROI revenue for 200+ brands worldwide.
+            I'm Sirajul Islam Sohag (Sirajul Sohag), a Google Ads and analytics specialist. With 4+ years of hands-on experience in performance marketing, I combine deep data analytics with creative strategy to build marketing engines that generate consistent, high-ROI revenue for 200+ brands worldwide.
           </TextReveal>
         </div>
 
