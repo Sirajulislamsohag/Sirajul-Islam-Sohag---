@@ -158,7 +158,7 @@ export function Hero() {
               <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-white/10 shadow-2xl">
                 <Image
                   src="/siraj.webp"
-                  alt="Sirajul Islam Sohag - Digital Marketing Consultant"
+                  alt="Sirajul Islam Sohag Google Ads expert and PPC consultant"
                   fill
                   priority
                   className="object-cover"

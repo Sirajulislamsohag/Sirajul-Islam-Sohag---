@@ -422,7 +422,8 @@ export function PortfolioShowcase({
   hideHeader = false,
   enablePagination = false,
   itemsPerPage = 6,
-}: PortfolioShowcaseProps) {
+  headingAs = 'h2',
+}: PortfolioShowcaseProps & { headingAs?: 'h1' | 'h2' }) {
   const [activeCategory, setActiveCategory] = useState('all');
   const [currentPage, setCurrentPage] = useState(1);
   const [items, setItems] = useState<PortfolioItemData[]>(ENRICHED_PORTFOLIO_ITEMS);
@@ -545,7 +546,7 @@ export function PortfolioShowcase({
             <TextReveal as="p" variant="fade-up" className="text-primary font-medium text-sm uppercase tracking-wider mb-3">
               My Work
             </TextReveal>
-            <TextReveal as="h2" variant="char-reveal" className="section-heading mb-4">
+            <TextReveal as={headingAs} variant="char-reveal" className="section-heading mb-4">
               Featured Case Studies
             </TextReveal>
             <TextReveal as="p" variant="fade-up" delay={0.2} className="section-subheading">

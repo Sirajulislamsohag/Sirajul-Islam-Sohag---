@@ -30,7 +30,7 @@ const contactSchema = z.object({
 
 type ContactFormData = z.infer<typeof contactSchema>;
 
-export function Contact() {
+export function Contact({ headingAs = 'h2' }: { headingAs?: 'h1' | 'h2' } = {}) {
   const { openCalendly } = useCalendly();
   const [isSubmitted, setIsSubmitted] = useState(false);
   const {
@@ -70,7 +70,7 @@ export function Contact() {
           <TextReveal as="p" variant="fade-up" className="text-primary font-medium text-sm uppercase tracking-wider mb-3">
             Get In Touch
           </TextReveal>
-          <TextReveal as="h2" variant="char-reveal" className="section-heading mb-4">
+          <TextReveal as={headingAs} variant="char-reveal" className="section-heading mb-4">
             Let's Grow Your Business
           </TextReveal>
           <TextReveal as="p" variant="fade-up" delay={0.2} className="section-subheading">

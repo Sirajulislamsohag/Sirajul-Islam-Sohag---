@@ -5,17 +5,20 @@ import type { Metadata } from 'next';
 import { pageMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = pageMetadata({
-  title: 'Contact - Book a Free Google Ads Audit',
+  title: 'Book a Google Ads Consultation | Sirajul Islam Sohag',
+  absoluteTitle: true,
   description:
-    'Book a free Google Ads account audit or strategy call with Sirajul Islam Sohag. Get a clear plan to cut wasted spend and get more qualified leads.',
+    'Book a Google Ads consultation with Sirajul Islam Sohag to review campaign structure, tracking, wasted spend, lead quality and growth opportunities.',
   path: '/contact',
+  imageAlt: 'Book a Google Ads consultation with Sirajul Islam Sohag',
+  keywords: ['Google Ads consultation', 'PPC consultation', 'account review', 'campaign strategy', 'Sirajul Sohag'],
 });
 
 export default function ContactPage() {
   return (
     <>
       <div className="pt-20">
-        <Contact />
+        <Contact headingAs="h1" />
       </div>
       <Footer />
     </>

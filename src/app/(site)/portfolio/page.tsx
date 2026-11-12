@@ -8,17 +8,20 @@ import type { Metadata } from 'next';
 import { pageMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = pageMetadata({
-  title: 'Google Ads Case Studies & Results',
+  title: 'Google Ads Case Studies & PPC Results | Sirajul Sohag',
+  absoluteTitle: true,
   description:
-    'Google Ads case studies and campaign results across Search, Performance Max, Shopping and conversion tracking for lead generation and e-commerce businesses.',
+    'See Google Ads and PPC case studies showing lead growth, ROAS gains, lower CPL and campaign scaling across local services and e-commerce brands.',
   path: '/portfolio',
+  imageAlt: 'Google Ads case studies and PPC campaign performance results',
+  keywords: ['Google Ads case studies', 'PPC results', 'ROAS', 'lead generation', 'portfolio'],
 });
 
 export default function PortfolioPage() {
   return (
     <>
       <div className="pt-20">
-        <PortfolioShowcase enablePagination={true} itemsPerPage={6} />
+        <PortfolioShowcase enablePagination={true} itemsPerPage={6} headingAs="h1" />
       </div>
       <TrustedBrands />
       <ClientReviews />

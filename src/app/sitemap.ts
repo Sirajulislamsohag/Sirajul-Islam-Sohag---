@@ -1,7 +1,8 @@
 import { MetadataRoute } from 'next';
 import { connectDB } from '@/lib/db';
 import { BlogModel } from '@/models/blog';
-import { INDUSTRY_PAGES } from '@/lib/industries';
+import { INDUSTRY_PAGES, industryHref } from '@/content/industries';
+import { SERVICE_PAGES, serviceHref } from '@/content/services';
 
 // Revalidate sitemap at most every hour (ISR) for fast responses & fresh indexation
 export const revalidate = 3600;
@@ -57,7 +58,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     },
     ...INDUSTRY_PAGES.map((page) => ({
-      url: `${baseUrl}/industries/${page.slug}`,
+      url: `${baseUrl}${industryHref(page.slug)}`,
+      lastModified: now,
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    })),
+    ...SERVICE_PAGES.map((page) => ({
+      url: `${baseUrl}${serviceHref(page.slug)}`,
       lastModified: now,
       changeFrequency: 'monthly' as const,
       priority: 0.8,

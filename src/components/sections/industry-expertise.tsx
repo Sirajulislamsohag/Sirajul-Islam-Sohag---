@@ -20,7 +20,7 @@ import { TextReveal } from '@/components/animations/text-reveal';
 import { ScrollReveal } from '@/components/animations/scroll-reveal';
 import { useCalendly } from '@/providers/calendly-provider';
 import Link from 'next/link';
-import { industryHrefForSection } from '@/lib/industries';
+import { industryHrefForSection } from '@/content/industries';
 
 // Top Row Featured Industries
 const FEATURED_INDUSTRIES = [

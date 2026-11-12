@@ -12,11 +12,13 @@ import type { Metadata } from 'next';
 import { pageMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = pageMetadata({
-  title: 'About Sirajul Islam Sohag - Certified Google Ads Expert',
+  title: 'About Sirajul Islam Sohag | Certified Google Ads Expert',
   absoluteTitle: true,
   description:
-    'Meet Sirajul Islam Sohag, a certified Google Ads expert and web analyst managing Search, Performance Max and conversion tracking for businesses in the USA, Australia, UK and Europe.',
+    'Meet Sirajul Islam Sohag, a certified Google Ads and analytics specialist with 4+ years running Search, PMax and tracking for clients worldwide.',
   path: '/about',
+  imageAlt: 'Sirajul Islam Sohag certified Google Ads and analytics specialist',
+  keywords: ['Sirajul Islam Sohag', 'Google Ads specialist', 'PPC expert Bangladesh', 'certifications', 'performance marketer'],
 });
 
 export default function AboutPage() {

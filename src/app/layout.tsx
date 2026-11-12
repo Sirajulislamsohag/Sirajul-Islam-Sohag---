@@ -26,11 +26,11 @@ const sora = Sora({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Google Ads Consultant & PPC Specialist | Sirajul Islam Sohag',
+    default: 'Google Ads Expert & PPC Consultant | Sirajul Islam Sohag',
     template: '%s | Sirajul Islam Sohag',
   },
   description:
-    'Certified Google Ads consultant helping home service, local service and e-commerce businesses get more qualified leads and sales from Search, Performance Max and Shopping campaigns.',
+    'Certified Google Ads expert with 4+ years managing PPC for home service, local and e-commerce brands. More qualified leads, less wasted spend. Book a call.',
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://www.sirajulislamsohag.com'),
   applicationName: 'Sirajul Islam Sohag',
   authors: [{ name: 'Sirajul Islam Sohag', url: 'https://www.sirajulislamsohag.com/about' }],

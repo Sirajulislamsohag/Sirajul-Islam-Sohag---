@@ -18,11 +18,13 @@ import { ToolsPlatformsIcons } from '@/components/sections/tools-platforms-icons
  
 
 export const metadata: Metadata = pageMetadata({
-  title: 'Google Ads Consultant & PPC Specialist | Sirajul Islam Sohag',
+  title: 'Google Ads Expert & PPC Consultant | Sirajul Islam Sohag',
   absoluteTitle: true,
   description:
-    'Certified Google Ads consultant for home service, local service and e-commerce businesses. Search, Performance Max, Shopping and conversion tracking built to lower cost per lead. Free account audit.',
+    'Certified Google Ads expert with 4+ years managing PPC for home service, local and e-commerce brands. More qualified leads, less wasted spend. Book a call.',
   path: '/',
+  imageAlt: 'Sirajul Islam Sohag Google Ads expert and PPC consultant',
+  keywords: ['Google Ads expert', 'PPC consultant', 'Google Ads specialist', 'performance marketing', 'Sirajul Islam Sohag'],
 });
 
 export default function HomePage() {

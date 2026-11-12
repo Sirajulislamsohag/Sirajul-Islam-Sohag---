@@ -20,6 +20,10 @@ interface PageSeoInput {
   path: string;
   /** Use when the title should not receive the site suffix. */
   absoluteTitle?: boolean;
+  /** Alt text for the share (Open Graph) image, from the SEO sheet. */
+  imageAlt?: string;
+  /** Meta keywords (tags column of the SEO sheet). */
+  keywords?: string[];
 }
 
 const OG_IMAGE = {
@@ -33,11 +37,13 @@ const OG_IMAGE = {
  * Builds consistent page metadata: title, description, canonical URL,
  * Open Graph and Twitter tags. The shared OG image comes from app/opengraph-image.tsx.
  */
-export function pageMetadata({ title, description, path, absoluteTitle }: PageSeoInput): Metadata {
+export function pageMetadata({ title, description, path, absoluteTitle, imageAlt, keywords }: PageSeoInput): Metadata {
   const url = absoluteUrl(path);
+  const ogImage = imageAlt ? { ...OG_IMAGE, alt: imageAlt } : OG_IMAGE;
   return {
     title: absoluteTitle ? { absolute: title } : title,
     description,
+    ...(keywords?.length ? { keywords } : {}),
     alternates: { canonical: url },
     openGraph: {
       title,
@@ -46,7 +52,7 @@ export function pageMetadata({ title, description, path, absoluteTitle }: PageSe
       type: 'website',
       siteName: BRAND_NAME,
       locale: 'en_US',
-      images: [OG_IMAGE],
+      images: [ogImage],
     },
     twitter: {
       card: 'summary_large_image',
