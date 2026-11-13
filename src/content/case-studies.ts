@@ -35,7 +35,8 @@ export interface CaseStudy {
   thumbnail: CaseStudyImage;
   /** One or two sentences for cards */
   summary: string;
-  location: string;
+  /** Country only (e.g. USA). Omitted when not a US account. */
+  location?: string;
   role: string;
   campaignTypes: string[];
   period: { before?: string; after: string };
@@ -70,17 +71,17 @@ const thumb = (file: string, alt: string): CaseStudyImage => ({
 
 export const CASE_STUDIES: CaseStudy[] = [
   {
-    slug: 'chimney-home-service-google-ads',
-    title: 'Chimney & Fireplace Company: Phone Calls Up From 67 to 282 a Month',
-    seoTitle: 'Chimney Company Google Ads Case Study | 4x More Calls',
+    slug: 'home-services-company-google-ads',
+    title: 'Home Services Company: Phone Calls Up From 67 to 282 a Month',
+    seoTitle: 'Home Services Google Ads Case Study | 4x More Calls',
     metaDescription:
-      'A US chimney and fireplace company grew Google Ads phone calls from 67 to 282 a month and form leads from 54 to 117, while cost per conversion fell from $104 to $92.53.',
+      'A US home services company grew Google Ads phone calls from 67 to 282 a month and form leads from 54 to 117, while cost per conversion fell from $104 to $92.53.',
     industry: 'Home Services',
     relatedIndustries: ['google-ads-for-home-services', 'google-ads-for-local-businesses', 'google-ads-for-contractors'],
-    thumbnail: thumb('chimney-home-service', 'Google Ads results for a chimney and home service business: 282 phone calls and 117 lead forms'),
+    thumbnail: thumb('home-services-company', 'Google Ads results for a home services company: 282 phone calls and 117 lead forms'),
     summary:
-      'Restructured a chimney and fireplace account by service and city. Monthly phone calls grew from 67 to 282 and cost per conversion dropped 11%.',
-    location: 'United States (Georgia and North Carolina)',
+      'Restructured a home services account by service and city. Monthly phone calls grew from 67 to 282 and cost per conversion dropped 11%.',
+    location: 'USA',
     role: ROLE,
     campaignTypes: ['Search', 'Performance Max', 'Call tracking'],
     period: { before: 'October 2025', after: 'December 2025' },
@@ -100,7 +101,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     goals:
       'Increase high-quality phone calls and form leads, lower the cost per conversion, and build an account structure that could take more budget without losing efficiency.',
     workDone: [
-      'Restructured campaigns by service (chimney cleaning, repair, inspection, fireplace installation) and by city',
+      'Restructured campaigns by service and by city',
       'Optimized for high-intent local service keywords',
       'Rewrote ad copy around calls, offers and trust signals',
       'Adjusted bid strategy and budgets campaign by campaign',
@@ -119,10 +120,8 @@ export const CASE_STUDIES: CaseStudy[] = [
       'Monthly ad spend increased from $9.88K to $27.6K over this period, so part of the lead growth came from a larger budget. Cost per conversion still went down while spend scaled.',
     ],
     screenshots: [
-      shot('chimney-home-service-google-ads', 1, 1600, 605, 'Google Ads overview for December 2025 showing 282 phone calls, 117 lead forms and $92.53 cost per conversion', 'December 2025 (after): 282 phone calls, 117 lead forms, $92.53 cost per conversion, $27.6K spend.'),
-      shot('chimney-home-service-google-ads', 2, 1464, 432, 'Google Ads overview for October 2025 showing 67 phone calls, 54 lead forms and $104 cost per conversion', 'October 2025 (before): 67 phone calls, 54 lead forms, $104 cost per conversion, $9.88K spend.'),
-      shot('chimney-home-service-google-ads', 3, 1600, 708, 'Google Ads campaigns list split by service and city with optimization scores between 88.6% and 100%', 'Campaigns split by service and city, with optimization scores between 88.6% and 100%.'),
-      shot('chimney-home-service-google-ads', 4, 1449, 517, 'Google Ads keyword report for chimney and fireplace service keywords in December 2025', 'Keyword report, December 2025: service keywords such as chimney repair and fireplace repair drive the conversions.'),
+      shot('home-services-company-google-ads', 1, 1600, 605, 'Google Ads overview for December 2025 showing 282 phone calls, 117 lead forms and $92.53 cost per conversion', 'December 2025 (after): 282 phone calls, 117 lead forms, $92.53 cost per conversion, $27.6K spend.'),
+      shot('home-services-company-google-ads', 2, 1464, 432, 'Google Ads overview for October 2025 showing 67 phone calls, 54 lead forms and $104 cost per conversion', 'October 2025 (before): 67 phone calls, 54 lead forms, $104 cost per conversion, $9.88K spend.'),
     ],
   },
   {
@@ -136,7 +135,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     thumbnail: thumb('roofing-construction', 'Google Ads results for a roofing and construction company: 38 lead forms, 21 phone calls, $36.67 cost per conversion'),
     summary:
       'Rebuilt Search and Performance Max around roofing services. In one month, form leads doubled, calls grew from 6 to 21 and cost per conversion fell 79%.',
-    location: 'United States',
+    location: 'USA',
     role: ROLE,
     campaignTypes: ['Search', 'Performance Max', 'Call and form tracking'],
     period: { before: 'November 2025', after: 'December 2025' },
@@ -170,7 +169,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       { label: 'Clicks', before: '187', after: '1.03K' },
     ],
     outcome:
-      'Within a month the account was producing twice the form leads and more than three times the phone calls at a fraction of the previous cost per conversion, with conversions coming from roofing searches such as roof replacement and roof repair.',
+      'Within a month the account was producing twice the form leads and more than three times the phone calls at a fraction of the previous cost per conversion, from high-intent roofing searches.',
     screenshots: [
       shot('roofing-construction-google-ads-lead-growth', 1, 1600, 522, 'Google Ads overview for December 2025 showing 38 lead forms, 21 phone calls and $36.67 cost per conversion', 'December 2025 (after): 1.03K clicks, 38 lead forms, 21 phone calls, $36.67 cost per conversion.'),
       shot('roofing-construction-google-ads-lead-growth', 2, 1552, 430, 'Google Ads overview for November 2025 showing 19 lead forms, 6 phone calls and $176 cost per conversion', 'November 2025 (before): 187 clicks, 19 lead forms, 6 phone calls, $176 cost per conversion.'),
@@ -181,13 +180,13 @@ export const CASE_STUDIES: CaseStudy[] = [
     title: 'Roofing Company: 29% Lower Cost per Lead With More Form Leads',
     seoTitle: 'Roofing Google Ads Case Study | 29% Lower Cost per Lead',
     metaDescription:
-      'How a roofing company cut Google Ads cost per conversion from $54.76 to $38.99 and increased monthly lead forms, with real account screenshots and search term data.',
+      'How a roofing company cut Google Ads cost per conversion from $54.76 to $38.99 and increased monthly lead forms, with real before and after account screenshots.',
     industry: 'Roofing',
     relatedIndustries: ['google-ads-for-roofing', 'google-ads-for-home-services'],
     thumbnail: thumb('roofing-lower-cost', 'Google Ads results for a roofing business: 54 lead forms, 31 phone calls, $38.99 cost per conversion'),
     summary:
       'Tightened roofing keywords and cleaned up search terms. Cost per conversion fell from $54.76 to $38.99 and monthly form leads rose 28% on a smaller budget.',
-    location: 'United States',
+    location: 'USA',
     role: ROLE,
     campaignTypes: ['Search', 'Performance Max', 'Call and form tracking'],
     period: { before: 'September to November 2025 (monthly average)', after: 'December 2025' },
@@ -219,7 +218,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       { label: 'Ad spend per month', before: '$3.57K (avg)', after: '$2.85K' },
     ],
     outcome:
-      'The account now converts roofing searches at a lower cost, with more form leads each month on less budget, and search term reports confirm conversions are coming from roofing-specific searches.',
+      'The account now converts roofing searches at a lower cost, with more form leads each month on less budget.',
     notes: [
       'The before screenshot covers three months (September 1 to November 30, 2025), so before figures are shown as monthly averages (127 forms, 111 calls and $10.7K spend over three months).',
       'Monthly phone calls were slightly lower after optimization (37 to 31), while form leads increased and cost per conversion dropped.',
@@ -227,8 +226,6 @@ export const CASE_STUDIES: CaseStudy[] = [
     screenshots: [
       shot('roofing-google-ads-lower-cost-per-lead', 1, 1600, 466, 'Google Ads overview for December 2025 showing $38.99 cost per conversion, 54 lead forms and 31 phone calls', 'December 2025 (after): $38.99 cost per conversion, 54 lead forms, 31 phone calls, $2.85K spend.'),
       shot('roofing-google-ads-lower-cost-per-lead', 2, 1572, 406, 'Google Ads overview for September to November 2025 showing $54.76 cost per conversion, 127 lead forms and 111 phone calls', 'September to November 2025 (before, three months): $54.76 cost per conversion, 127 lead forms, 111 phone calls, $10.7K spend.'),
-      shot('roofing-google-ads-lower-cost-per-lead', 3, 1558, 429, 'Google Ads keyword report for roofing keywords with conversion rates up to 25%', 'Keyword report: roof repair near me converts at 22.73% and roof repair services at 22.22%.'),
-      shot('roofing-google-ads-lower-cost-per-lead', 4, 1544, 434, 'Google Ads search terms report showing roof replacement and roofing searches converting at 25% to 44%', 'Search terms: roof replacement, roof services and roofing searches convert at 25% to 44%.'),
     ],
   },
   {
@@ -236,13 +233,12 @@ export const CASE_STUDIES: CaseStudy[] = [
     title: 'Mobile Tire Service: 630 Phone Calls at CA$10.65 per Conversion',
     seoTitle: 'Mobile Tire Service Google Ads Case Study | 630 Calls',
     metaDescription:
-      'How a mobile tire service got 630 phone calls and 373 call leads in 30 days from Google Ads at CA$10.65 per conversion. Real account screenshots and keyword data.',
+      'How a mobile tire service got 630 phone calls and 373 call leads in 30 days from Google Ads at CA$10.65 per conversion. Real account screenshot.',
     industry: 'Auto & Tire Services',
     relatedIndustries: ['google-ads-for-auto-services', 'google-ads-for-local-businesses'],
     thumbnail: thumb('tire-service', 'Google Ads management for a tire service business: 630 phone calls, 373 call leads, $3.97K cost'),
     summary:
       'Call-focused local campaigns for a mobile tire service: 630 phone calls and 373 call leads in 30 days at CA$10.65 per conversion.',
-    location: 'Canada',
     role: ROLE,
     campaignTypes: ['Search', 'Call-focused ads', 'Call tracking'],
     period: { after: 'November 2 to December 2, 2025' },
@@ -280,9 +276,6 @@ export const CASE_STUDIES: CaseStudy[] = [
     notes: ['All costs are in Canadian dollars (CA$), the account currency.'],
     screenshots: [
       shot('mobile-tire-service-google-ads', 1, 1600, 518, 'Google Ads overview for November 2 to December 2, 2025 showing 630 phone calls, 373 call leads and CA$10.65 cost per conversion', 'November 2 to December 2, 2025: 630 phone calls, 373 phone call leads, CA$10.65 cost per conversion, CA$3.97K spend.'),
-      shot('mobile-tire-service-google-ads', 2, 1600, 563, 'Google Ads search terms report for tire searches such as tire shop near me and tire repair near me', 'Search terms for the call campaign: tire shop near me, tire repair near me and mobile tire service drive conversions.'),
-      shot('mobile-tire-service-google-ads', 3, 1560, 517, 'Google Ads keyword report ranked by phone calls for tire keywords', 'Keywords ranked by phone calls: tires near me, tire service and tire and repair lead the account.'),
-      shot('mobile-tire-service-google-ads', 4, 1600, 491, 'Google Ads conversion summary with calls from ads and calls from website set as primary conversions', 'Conversion tracking: calls from ads and calls from the website set as primary conversions, with click-to-call as secondary.'),
     ],
   },
   {
@@ -296,7 +289,6 @@ export const CASE_STUDIES: CaseStudy[] = [
     thumbnail: thumb('tour-booking-roas', 'Google Ads results for an online tour booking business: 547% ROAS'),
     summary:
       'Restructured campaigns and bidding around purchase value. ROAS rose from 166% to 547% while ad spend fell 54%.',
-    location: 'Mexico (tours sold online)',
     role: ROLE,
     campaignTypes: ['Search', 'Purchase conversion tracking', 'ROAS bidding'],
     period: { before: 'September 2025', after: 'October 2025' },
@@ -336,7 +328,6 @@ export const CASE_STUDIES: CaseStudy[] = [
     screenshots: [
       shot('tour-booking-google-ads-roas', 1, 1600, 530, 'Google Ads overview for October 2025 showing 547.44% ROAS, 26.50 conversions and 11.7K cost', 'October 2025 (after): 1.43K clicks, 547.44% ROAS, 26.50 conversions, MX$11.7K spend.'),
       shot('tour-booking-google-ads-roas', 2, 1581, 441, 'Google Ads overview for September 2025 showing 166.25% ROAS, 57.83 conversions and 25.5K cost', 'September 2025 (before): 1.99K clicks, 166.25% ROAS, 57.83 conversions, MX$25.5K spend.'),
-      shot('tour-booking-google-ads-roas', 3, 1581, 440, 'Google Ads conversion summary with Purchase set as the primary website conversion', 'Conversion tracking: Purchase set as the primary website conversion, recording booking revenue.'),
     ],
   },
   {
@@ -350,7 +341,6 @@ export const CASE_STUDIES: CaseStudy[] = [
     thumbnail: thumb('ecommerce-roas', 'Google Ads results for an e-commerce store: 2,517% ROAS and 5.33% conversion rate'),
     summary:
       'Refined keywords, audiences and bidding for an already profitable store. ROAS rose from 1,712% to 2,517% and conversion rate from 4.50% to 5.33%.',
-    location: 'Online store',
     role: ROLE,
     campaignTypes: ['Search and product campaigns', 'Conversion-focused bidding'],
     period: { before: 'September 1 to 13, 2025', after: 'September 14 to 23, 2025' },

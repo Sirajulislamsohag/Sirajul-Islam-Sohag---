@@ -70,7 +70,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
 
   const facts = [
     { icon: Layers, label: 'Industry', value: study.industry },
-    { icon: MapPin, label: 'Location', value: study.location },
+    ...(study.location ? [{ icon: MapPin, label: 'Country', value: study.location }] : []),
     { icon: CalendarDays, label: 'Results period', value: study.period.after },
     { icon: UserRound, label: 'My role', value: study.role },
   ];
