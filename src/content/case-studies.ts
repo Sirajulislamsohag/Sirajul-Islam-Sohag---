@@ -52,7 +52,7 @@ export interface CaseStudy {
   screenshots: CaseStudyScreenshot[];
 }
 
-const ROLE = 'Google Ads specialist: account restructure, conversion tracking and monthly management';
+const ROLE = 'Google Ads manager: account restructure, conversion tracking and monthly management';
 
 const shot = (slug: string, n: number, width: number, height: number, alt: string, caption: string): CaseStudyScreenshot => ({
   src: `/case-studies/${slug}/${String(n).padStart(2, '0')}.webp`,
