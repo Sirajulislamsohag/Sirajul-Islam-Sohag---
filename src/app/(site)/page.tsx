@@ -3,7 +3,7 @@ import { TrustedBrands } from '@/components/sections/trusted-brands';
 import { Services } from '@/components/sections/services';
 import { IndustryExpertise } from '@/components/sections/industry-expertise';
 import { HowIBringSuccess } from '@/components/sections/how-i-bring-success';
-import { PortfolioShowcase } from '@/components/sections/portfolio-showcase';
+import { CaseStudiesSection } from '@/components/case-studies/case-studies-section';
 import { Certificates } from '@/components/sections/certificates';
 import { ClientReviews } from '@/components/sections/client-reviews';
 import { CTASection } from '@/components/sections/cta-section';
@@ -34,7 +34,7 @@ export default function HomePage() {
       <TrustedBrands />
       <AboutWithImage/>
       <Services />
-      <PortfolioShowcase />
+      <CaseStudiesSection id="portfolio" />
       <IndustryExpertise />
       <ToolsPlatformsIcons/>
       <HowIBringSuccess />

@@ -47,15 +47,6 @@ export interface PageImage {
   credit?: string;
 }
 
-/** A real, client-approved case study. Leave undefined until real numbers exist. */
-export interface CaseStudy {
-  label: string;
-  challenge: string;
-  strategy: string;
-  optimization: string;
-  metrics: { label: string; value: string }[];
-}
-
 export interface IndustryPage {
   /** URL slug after the domain, e.g. google-ads-for-roofing */
   slug: string;
@@ -95,7 +86,6 @@ export interface IndustryPage {
   locationTargeting: { intro: string; points: string[] };
   conversionJourney: string[];
   trackingText: string;
-  caseStudy?: CaseStudy;
   subcategories: TitledText[];
   faqs: Faq[];
   finalCta: { heading: string; text: string };

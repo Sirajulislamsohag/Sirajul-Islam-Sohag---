@@ -2,6 +2,7 @@ import { MetadataRoute } from 'next';
 import { connectDB } from '@/lib/db';
 import { BlogModel } from '@/models/blog';
 import { INDUSTRY_PAGES, industryHref } from '@/content/industries';
+import { CASE_STUDIES, caseStudyHref } from '@/content/case-studies';
 import { SERVICE_PAGES, serviceHref } from '@/content/services';
 
 // Revalidate sitemap at most every hour (ISR) for fast responses & fresh indexation
@@ -57,6 +58,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'monthly',
       priority: 0.8,
     },
+    ...CASE_STUDIES.map((c) => ({
+      url: `${baseUrl}${caseStudyHref(c.slug)}`,
+      lastModified: now,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    })),
     ...INDUSTRY_PAGES.map((page) => ({
       url: `${baseUrl}${industryHref(page.slug)}`,
       lastModified: now,

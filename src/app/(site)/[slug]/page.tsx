@@ -26,6 +26,9 @@ import { Contact } from '@/components/sections/contact';
 import { Footer } from '@/components/sections/footer';
 import { CtaButtons } from '@/components/landing/cta-buttons';
 import { PageImageBlock } from '@/components/landing/page-image';
+import { CaseStudiesSection } from '@/components/case-studies/case-studies-section';
+import { ImageLightboxGrid } from '@/components/case-studies/image-lightbox-grid';
+import { caseStudiesForIndustry, snapshotsForIndustry } from '@/content/case-studies';
 import {
   Breadcrumbs,
   CheckList,
@@ -89,6 +92,8 @@ export default async function IndustryLandingPage({ params }: { params: Promise<
   const { slug } = await params;
   const page = getIndustryPage(slug);
   if (!page) notFound();
+  const relatedStudies = caseStudiesForIndustry(page.slug);
+  const relatedSnapshots = snapshotsForIndustry(page.slug);
 
   const url = absoluteUrl(industryHref(page.slug));
   const Icon = ICONS[page.slug] ?? Wrench;
@@ -314,26 +319,22 @@ export default async function IndustryLandingPage({ params }: { params: Promise<
         </div>
       </Section>
 
-      {/* I. Case study (only when real) */}
-      {page.caseStudy && (
-        <Section>
-          <SectionHeading title={<>Results: {page.caseStudy.label}</>} />
-          <div className="grid lg:grid-cols-3 gap-6">
-            <div className="lg:col-span-2 space-y-5 text-[var(--text-secondary)] leading-relaxed">
-              <p><strong className="text-[var(--text)]">Challenge.</strong> {page.caseStudy.challenge}</p>
-              <p><strong className="text-[var(--text)]">Strategy.</strong> {page.caseStudy.strategy}</p>
-              <p><strong className="text-[var(--text)]">Optimization.</strong> {page.caseStudy.optimization}</p>
+      {/* I. Case studies (real accounts) */}
+      {(relatedStudies.length > 0 || relatedSnapshots.length > 0) && (
+        <section id="case-studies" className="border-y border-[var(--border)] bg-[var(--bg-card)]/40">
+          <CaseStudiesSection
+            studies={relatedStudies}
+            id="industry-case-studies"
+            title={<>Google Ads results for {page.noun}</>}
+            subtitle="Case studies from real Google Ads accounts I manage, with the account screenshots on each page."
+          />
+          {relatedSnapshots.length > 0 && (
+            <div className={`max-w-7xl mx-auto px-6 pb-20 ${relatedStudies.length === 0 ? 'pt-20' : ''}`}>
+              <h3 className="text-2xl font-heading font-bold mb-6">Real account snapshot</h3>
+              <ImageLightboxGrid images={relatedSnapshots} columns={3} aspect="aspect-[4/3]" />
             </div>
-            <div className="grid grid-cols-2 gap-4">
-              {page.caseStudy.metrics.map((m) => (
-                <div key={m.label} className="rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] p-5">
-                  <p className="text-2xl font-heading font-bold text-primary">{m.value}</p>
-                  <p className="text-xs text-[var(--text-muted)] mt-1">{m.label}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </Section>
+          )}
+        </section>
       )}
 
       {/* J. Work process */}
