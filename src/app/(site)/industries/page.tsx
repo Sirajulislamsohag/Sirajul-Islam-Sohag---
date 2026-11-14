@@ -12,7 +12,7 @@ export const metadata: Metadata = pageMetadata({
   title: 'Google Ads by Industry | Home Services, Local & E-commerce',
   absoluteTitle: true,
   description:
-    'Google Ads management by industry: roofing, HVAC, plumbing, electricians, contractors, cleaning, auto services, dentists, law firms, local businesses and e-commerce.',
+    'Google Ads management by industry: roofing, HVAC, plumbing, electricians, contractors, cleaning, auto, dentists, law firms, local businesses and e-commerce.',
   path: '/industries',
 });
 

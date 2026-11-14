@@ -12,7 +12,7 @@ export const electricians: IndustryPage = {
 
   seoTitle: 'Google Ads for Electricians | Electrical PPC Leads',
   metaDescription:
-    'Google Ads for electricians and electrical contractors targeting panel upgrades, EV chargers, rewiring and emergency searches with call tracking and lead filtering.',
+    'Google Ads for electricians targeting panel upgrades, EV chargers, rewiring and emergency searches, with call tracking and lead filtering for qualified jobs.',
   imageAlt: 'Google Ads campaign for electricians generating service and installation leads',
   tags: ['Google Ads electricians', 'electrician PPC', 'electrical leads', 'EV charger installation ads', 'call tracking'],
   primaryKeyword: { keyword: 'google ads for electricians' },
