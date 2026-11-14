@@ -2,11 +2,22 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import { ArrowRight, BadgeCheck, CalendarDays, Info, Layers, MapPin, Target, UserRound } from 'lucide-react';
+import {
+  AlertTriangle,
+  ArrowRight,
+  BadgeCheck,
+  CalendarDays,
+  Info,
+  Layers,
+  Lightbulb,
+  Megaphone,
+  Target,
+  UserRound,
+} from 'lucide-react';
 import { Contact } from '@/components/sections/contact';
 import { Footer } from '@/components/sections/footer';
 import { CtaButtons } from '@/components/landing/cta-buttons';
-import { Breadcrumbs, CheckList, Section, SectionHeading } from '@/components/landing/shared-sections';
+import { Breadcrumbs, Section, SectionHeading } from '@/components/landing/shared-sections';
 import { ImageLightboxGrid } from '@/components/case-studies/image-lightbox-grid';
 import { CaseStudyCard } from '@/components/case-studies/case-study-card';
 import { CASE_STUDIES, caseStudyHref, getCaseStudy } from '@/content/case-studies';
@@ -29,8 +40,21 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     description: study.metaDescription,
     path: caseStudyHref(study.slug),
     imageAlt: study.thumbnail.alt,
-    keywords: ['Google Ads case study', `${study.industry} Google Ads`, 'PPC results', ...study.campaignTypes],
+    keywords: [study.primaryKeyword, ...study.secondaryKeywords],
   });
+}
+
+function TitledCards({ items }: { items: { title: string; text: string }[] }) {
+  return (
+    <div className="grid md:grid-cols-2 gap-5">
+      {items.map((item) => (
+        <div key={item.title} className="rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] p-6">
+          <h3 className="text-lg font-heading font-semibold mb-2">{item.title}</h3>
+          <p className="text-sm md:text-base text-[var(--text-secondary)] leading-relaxed">{item.text}</p>
+        </div>
+      ))}
+    </div>
+  );
 }
 
 export default async function CaseStudyPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -53,6 +77,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
         description: study.metaDescription,
         image: absoluteUrl(study.thumbnail.src),
         url,
+        keywords: [study.primaryKeyword, ...study.secondaryKeywords].join(', '),
         author: { '@type': 'Person', '@id': `${SITE_URL}/#person`, name: PERSON_NAME },
         publisher: { '@type': 'Person', '@id': `${SITE_URL}/#person`, name: PERSON_NAME },
         about: `Google Ads for ${study.industry}`,
@@ -70,8 +95,9 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
 
   const facts = [
     { icon: Layers, label: 'Industry', value: study.industry },
-    ...(study.location ? [{ icon: MapPin, label: 'Country', value: study.location }] : []),
-    { icon: CalendarDays, label: 'Results period', value: study.period.after },
+    { icon: Target, label: 'Target market', value: study.targetMarket },
+    { icon: Megaphone, label: 'Campaign type', value: study.campaignType },
+    { icon: CalendarDays, label: 'Duration', value: study.duration },
     { icon: UserRound, label: 'My role', value: study.role },
   ];
 
@@ -79,7 +105,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(schema)} />
 
-      {/* Hero */}
+      {/* Section 1: Hero */}
       <section className="relative pt-32 pb-14 md:pt-40 md:pb-20 overflow-hidden border-b border-[var(--border)] bg-gradient-to-b from-primary/5 via-transparent to-transparent">
         <div className="absolute top-1/4 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-primary/10 blur-[120px] rounded-full pointer-events-none -z-10" />
         <div className="max-w-7xl mx-auto px-6">
@@ -90,7 +116,14 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
                 Google Ads Case Study: {study.industry}
               </p>
               <h1 className="text-3xl md:text-5xl font-heading font-bold tracking-tight mb-5">{study.title}</h1>
-              <p className="text-[var(--text-secondary)] text-base md:text-lg leading-relaxed mb-6">{study.summary}</p>
+              <p className="text-[var(--text-secondary)] text-base md:text-lg leading-relaxed mb-6">{study.intro}</p>
+              <div className="inline-flex items-center gap-4 rounded-2xl border border-emerald-500/30 bg-emerald-500/10 px-5 py-4 mb-6">
+                <BadgeCheck className="w-6 h-6 text-emerald-500 shrink-0" />
+                <div>
+                  <p className="text-2xl md:text-3xl font-heading font-bold text-emerald-500 leading-tight">{study.heroResult.value}</p>
+                  <p className="text-xs md:text-sm text-[var(--text-secondary)]">{study.heroResult.label} (verified in the account)</p>
+                </div>
+              </div>
               <dl className="grid sm:grid-cols-2 gap-4 mb-8">
                 {facts.map(({ icon: Icon, label, value }) => (
                   <div key={label} className="flex gap-3">
@@ -102,7 +135,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
                   </div>
                 ))}
               </dl>
-              <CtaButtons context={`${study.industry} Google Ads`} size="lg" />
+              <CtaButtons context={`${study.industry} Google Ads`} size="lg" primaryLabel="Discuss Your Google Ads Campaign" hideSecondary />
             </div>
             <Image
               src={study.thumbnail.src}
@@ -117,7 +150,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
         </div>
       </section>
 
-      {/* Key results */}
+      {/* Section 2: Key results */}
       <section className="py-12 md:py-16 border-b border-[var(--border)]">
         <div className="max-w-5xl mx-auto px-6 grid sm:grid-cols-3 gap-6">
           {study.highlights.map((h) => (
@@ -129,16 +162,14 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
         </div>
       </section>
 
-      {/* Real account screenshots */}
+      {/* Section 3: Real account screenshots (layout unchanged) */}
       <Section tone="card" id="screenshots">
         <div className="max-w-3xl mb-10">
           <p className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-500 mb-4">
             <BadgeCheck className="w-4 h-4" /> Real Google Ads account
           </p>
-          <h2 className="text-3xl md:text-4xl font-heading font-bold tracking-tight mb-4">Screenshots from the Google Ads account</h2>
-          <p className="text-[var(--text-secondary)] text-base md:text-lg leading-relaxed">
-            Taken directly from the client&apos;s Google Ads account. Account names, emails and IDs are cropped out for privacy. Click any screenshot to enlarge it.
-          </p>
+          <h2 className="text-3xl md:text-4xl font-heading font-bold tracking-tight mb-4">{study.screenshotsHeading}</h2>
+          <p className="text-[var(--text-secondary)] text-base md:text-lg leading-relaxed">{study.screenshotsIntro}</p>
         </div>
         <ImageLightboxGrid images={study.screenshots} />
       </Section>
@@ -181,35 +212,47 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
         )}
       </Section>
 
-      {/* Story */}
+      {/* Section 4: Initial challenges */}
       <Section tone="card">
-        <div className="grid lg:grid-cols-2 gap-12">
-          <div>
-            <h2 className="text-2xl md:text-3xl font-heading font-bold mb-4">The challenge</h2>
-            <p className="text-[var(--text-secondary)] leading-relaxed mb-6">{study.challenge}</p>
-            <h3 className="text-lg font-heading font-semibold mb-3">Before optimization</h3>
-            <ul className="space-y-2 text-[var(--text-secondary)] mb-10 list-disc pl-5">
-              {study.beforeProblems.map((p) => (
-                <li key={p}>{p}</li>
-              ))}
-            </ul>
-            <h2 className="text-2xl md:text-3xl font-heading font-bold mb-4 flex items-center gap-2">
-              <Target className="w-6 h-6 text-primary" /> Goals
-            </h2>
-            <p className="text-[var(--text-secondary)] leading-relaxed">{study.goals}</p>
-          </div>
-          <div>
-            <h2 className="text-2xl md:text-3xl font-heading font-bold mb-4">What I did</h2>
-            <CheckList items={study.workDone} />
-            <p className="mt-6 text-sm text-[var(--text-muted)]">Campaign types: {study.campaignTypes.join(', ')}</p>
-            <h2 className="text-2xl md:text-3xl font-heading font-bold mt-10 mb-4">The outcome</h2>
-            <p className="text-[var(--text-secondary)] leading-relaxed">{study.outcome}</p>
-          </div>
+        <SectionHeading title="Initial challenges" subtitle={study.challengesIntro} />
+        <ul className="grid md:grid-cols-2 gap-4">
+          {study.challenges.map((c) => (
+            <li key={c} className="flex gap-3 rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] p-5 text-[var(--text-secondary)]">
+              <AlertTriangle className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
+              <span>{c}</span>
+            </li>
+          ))}
+        </ul>
+      </Section>
+
+      {/* Section 5: Google Ads strategy */}
+      <Section>
+        <SectionHeading title={study.strategyHeading} subtitle={study.strategyIntro} />
+        <TitledCards items={study.strategy} />
+      </Section>
+
+      {/* Section 6: Conversion tracking */}
+      <Section tone="card">
+        <SectionHeading title="Conversion tracking" subtitle={study.trackingIntro} />
+        <TitledCards items={study.tracking} />
+      </Section>
+
+      {/* Unique section: my optimization approach + a real example */}
+      <Section>
+        <SectionHeading title={study.approachHeading} subtitle="How I run accounts like this one, based on hands-on campaign work." />
+        <TitledCards items={study.approach} />
+        <div className="mt-8 rounded-3xl border border-primary/30 bg-primary/5 p-6 md:p-8">
+          <h3 className="flex items-center gap-2 text-xl md:text-2xl font-heading font-bold mb-3">
+            <Lightbulb className="w-6 h-6 text-primary" /> A real optimization from this account
+          </h3>
+          <p className="text-[var(--text-secondary)] text-base md:text-lg leading-relaxed">{study.realExample}</p>
         </div>
+        <h2 className="text-2xl md:text-3xl font-heading font-bold mt-14 mb-4">The outcome</h2>
+        <p className="text-[var(--text-secondary)] text-base md:text-lg leading-relaxed max-w-4xl">{study.outcome}</p>
       </Section>
 
       {/* Related pages */}
-      <Section>
+      <Section tone="card">
         {industries.length > 0 && (
           <div className="mb-14">
             <h2 className="text-2xl md:text-3xl font-heading font-bold mb-6">Related Google Ads services</h2>
@@ -240,9 +283,9 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
         <div className="max-w-3xl mx-auto px-6 text-center">
           <h2 className="text-3xl md:text-4xl font-heading font-bold tracking-tight mb-4">Want results like these for your business?</h2>
           <p className="text-[var(--text-secondary)] text-base md:text-lg leading-relaxed mb-8">
-            Book a free strategy call or request a Google Ads audit. I will review your account, tracking and lead quality and show you where the biggest gains are.
+            Let&apos;s talk about your Google Ads campaign. I will review your account, tracking and lead quality and show you where the biggest gains are.
           </p>
-          <CtaButtons context={`${study.industry} Google Ads`} size="lg" className="justify-center" />
+          <CtaButtons context={`${study.industry} Google Ads`} size="lg" primaryLabel="Discuss Your Google Ads Campaign" className="justify-center" />
         </div>
       </section>
 

@@ -9,13 +9,17 @@ interface CtaButtonsProps {
   context: string;
   className?: string;
   size?: 'md' | 'lg';
+  /** Override the primary button label. */
+  primaryLabel?: string;
+  /** Hide the secondary "Request a Google Ads Audit" button. */
+  hideSecondary?: boolean;
 }
 
 /**
  * Primary CTA: Book a Free Strategy Call (opens Calendly).
  * Secondary CTA: Request a Google Ads Audit (goes to the contact page).
  */
-export function CtaButtons({ context, className = '', size = 'md' }: CtaButtonsProps) {
+export function CtaButtons({ context, className = '', size = 'md', primaryLabel = 'Book a Free Strategy Call', hideSecondary = false }: CtaButtonsProps) {
   const { openCalendly } = useCalendly();
   const pad = size === 'lg' ? 'px-7 py-3.5 text-base' : 'px-6 py-3 text-sm md:text-base';
 
@@ -31,9 +35,10 @@ export function CtaButtons({ context, className = '', size = 'md' }: CtaButtonsP
         }
         className={`inline-flex items-center gap-2 rounded-full bg-primary text-white font-heading font-semibold hover:opacity-90 transition-opacity ${pad}`}
       >
-        Book a Free Strategy Call
+        {primaryLabel}
         <ArrowRight className="w-4 h-4" />
       </button>
+      {!hideSecondary && (
       <Link
         href="/contact"
         className={`inline-flex items-center gap-2 rounded-full border border-[var(--border)] font-heading font-semibold hover:border-primary hover:text-primary transition-colors ${pad}`}
@@ -41,6 +46,7 @@ export function CtaButtons({ context, className = '', size = 'md' }: CtaButtonsP
         <ClipboardCheck className="w-4 h-4" />
         Request a Google Ads Audit
       </Link>
+      )}
     </div>
   );
 }
