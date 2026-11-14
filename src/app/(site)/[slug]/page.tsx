@@ -326,11 +326,11 @@ export default async function IndustryLandingPage({ params }: { params: Promise<
             studies={relatedStudies}
             id="industry-case-studies"
             title={<>Google Ads results for {page.noun}</>}
-            subtitle="Case studies from real Google Ads accounts I manage, with the account screenshots on each page."
+            subtitle="Case studies from real Google Ads campaigns I manage, with verified before and after results on each page."
           />
           {relatedSnapshots.length > 0 && (
             <div className={`max-w-7xl mx-auto px-6 pb-20 ${relatedStudies.length === 0 ? 'pt-20' : ''}`}>
-              <h3 className="text-2xl font-heading font-bold mb-6">Real account snapshot</h3>
+              <h3 className="text-2xl font-heading font-bold mb-6">Real Google Ads results</h3>
               <ImageLightboxGrid images={relatedSnapshots} columns={3} aspect="aspect-[4/3]" />
             </div>
           )}

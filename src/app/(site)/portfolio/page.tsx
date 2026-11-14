@@ -38,7 +38,7 @@ export default function PortfolioPage() {
       <PageHeader
         badge="Case Studies"
         title="Google Ads Case Studies & PPC Results"
-        subtitle="PPC case studies and Google Ads results from real campaigns: performance marketing case studies across home services, roofing, local services and e-commerce, each backed by screenshots from the ad account."
+        subtitle="PPC case studies and Google Ads results from real campaigns: performance marketing case studies across home services, roofing, local services and e-commerce, each backed by verified results from Google Ads."
         breadcrumbCurrent="Case Studies"
       />
 
@@ -53,9 +53,9 @@ export default function PortfolioPage() {
       <section className="py-16 md:py-20 bg-[var(--bg-card)]/40 border-y border-[var(--border)]">
         <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-3xl mb-10">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold tracking-tight mb-4">More results from real Google Ads accounts</h2>
+            <h2 className="text-3xl md:text-4xl font-heading font-bold tracking-tight mb-4">More Google Ads results for US businesses</h2>
             <p className="text-[var(--text-secondary)] text-base md:text-lg leading-relaxed">
-              Snapshots from other accounts I manage. Each shows the account&apos;s own date range in the screenshot. Click to enlarge.
+              Results from other businesses I manage Google Ads for. Each image shows its own date range. Click to enlarge.
             </p>
           </div>
           <ImageLightboxGrid images={ACCOUNT_SNAPSHOTS} columns={3} aspect="aspect-[4/3]" />

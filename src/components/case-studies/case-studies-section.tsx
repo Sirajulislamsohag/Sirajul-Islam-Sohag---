@@ -10,7 +10,7 @@ import { CaseStudyCard } from './case-study-card';
 export function CaseStudiesSection({
   studies = CASE_STUDIES,
   title = 'Google Ads Case Studies',
-  subtitle = 'Real results from real Google Ads accounts I manage, with the account screenshots to prove it.',
+  subtitle = 'Real results from Google Ads campaigns I manage for US businesses, with verified before and after numbers.',
   showAllLink = true,
   id = 'case-studies',
 }: {
@@ -26,7 +26,7 @@ export function CaseStudiesSection({
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-12 md:mb-14">
           <p className="text-primary font-medium text-xs md:text-sm uppercase tracking-widest mb-3 inline-flex items-center gap-2">
-            <BadgeCheck className="w-4 h-4" /> Verified with account screenshots
+            <BadgeCheck className="w-4 h-4" /> Verified Google Ads results
           </p>
           <h2 className="section-heading mb-4">{title}</h2>
           <p className="section-subheading">{subtitle}</p>

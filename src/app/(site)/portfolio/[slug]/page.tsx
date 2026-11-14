@@ -113,7 +113,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
             <div>
               <p className="text-primary font-medium text-xs md:text-sm uppercase tracking-wider mb-3">
-                Google Ads Case Study: {study.industry}
+                {study.eyebrow}
               </p>
               <h1 className="text-3xl md:text-5xl font-heading font-bold tracking-tight mb-5">{study.title}</h1>
               <p className="text-[var(--text-secondary)] text-base md:text-lg leading-relaxed mb-6">{study.intro}</p>
@@ -121,7 +121,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
                 <BadgeCheck className="w-6 h-6 text-emerald-500 shrink-0" />
                 <div>
                   <p className="text-2xl md:text-3xl font-heading font-bold text-emerald-500 leading-tight">{study.heroResult.value}</p>
-                  <p className="text-xs md:text-sm text-[var(--text-secondary)]">{study.heroResult.label} (verified in the account)</p>
+                  <p className="text-xs md:text-sm text-[var(--text-secondary)]">{study.heroResult.label} (verified in Google Ads)</p>
                 </div>
               </div>
               <dl className="grid sm:grid-cols-2 gap-4 mb-8">
@@ -162,11 +162,11 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
         </div>
       </section>
 
-      {/* Section 3: Real account screenshots (layout unchanged) */}
+      {/* Section 3: Verified results images (layout unchanged) */}
       <Section tone="card" id="screenshots">
         <div className="max-w-3xl mb-10">
           <p className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-500 mb-4">
-            <BadgeCheck className="w-4 h-4" /> Real Google Ads account
+            <BadgeCheck className="w-4 h-4" /> Verified Google Ads results
           </p>
           <h2 className="text-3xl md:text-4xl font-heading font-bold tracking-tight mb-4">{study.screenshotsHeading}</h2>
           <p className="text-[var(--text-secondary)] text-base md:text-lg leading-relaxed">{study.screenshotsIntro}</p>
@@ -239,11 +239,11 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
 
       {/* Unique section: my optimization approach + a real example */}
       <Section>
-        <SectionHeading title={study.approachHeading} subtitle="How I run accounts like this one, based on hands-on campaign work." />
+        <SectionHeading title={study.approachHeading} subtitle="How I run Google Ads for businesses like this one, based on hands-on campaign work." />
         <TitledCards items={study.approach} />
         <div className="mt-8 rounded-3xl border border-primary/30 bg-primary/5 p-6 md:p-8">
           <h3 className="flex items-center gap-2 text-xl md:text-2xl font-heading font-bold mb-3">
-            <Lightbulb className="w-6 h-6 text-primary" /> A real optimization from this account
+            <Lightbulb className="w-6 h-6 text-primary" /> A real optimization for this business
           </h3>
           <p className="text-[var(--text-secondary)] text-base md:text-lg leading-relaxed">{study.realExample}</p>
         </div>
@@ -283,7 +283,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
         <div className="max-w-3xl mx-auto px-6 text-center">
           <h2 className="text-3xl md:text-4xl font-heading font-bold tracking-tight mb-4">Want results like these for your business?</h2>
           <p className="text-[var(--text-secondary)] text-base md:text-lg leading-relaxed mb-8">
-            Let&apos;s talk about your Google Ads campaign. I will review your account, tracking and lead quality and show you where the biggest gains are.
+            Let&apos;s talk about your Google Ads campaign. I will review your campaigns, tracking and lead quality and show you where the biggest gains are.
           </p>
           <CtaButtons context={`${study.industry} Google Ads`} size="lg" primaryLabel="Discuss Your Google Ads Campaign" className="justify-center" />
         </div>
