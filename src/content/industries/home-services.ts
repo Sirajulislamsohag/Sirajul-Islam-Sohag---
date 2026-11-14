@@ -32,14 +32,14 @@ export const homeServices: IndustryPage = {
     'Weekly optimization, not set-and-forget management',
   ],
   heroImage: {
-    src: 'https://images.unsplash.com/photo-1786204697642-328c597b6f05',
-    alt: 'Home service technician sealing a kitchen window frame',
-    credit: 'https://unsplash.com/photos/person-applying-caulk-in-kitchen-7PiboaUAB_0',
+    src: '/industries/google-ads-for-home-service-business.webp',
+    alt: 'Google Ads for home service business: HVAC technician, service van and electrician at work',
+    aspect: 'aspect-[16/9]',
   },
   sectionImage: {
-    src: 'https://images.unsplash.com/photo-1517581177682-a085bb7ffb15',
-    alt: 'Home improvement contractor working from a ladder indoors',
-    credit: 'https://unsplash.com/photos/man-climbing-on-ladder-inside-room-Te48TPzdcU8',
+    src: '/industries/google-ads-location-targeting.webp',
+    alt: 'Google Ads location targeting map with ads shown only inside the service area',
+    aspect: 'aspect-[1.91/1]',
   },
 
   challenges: [

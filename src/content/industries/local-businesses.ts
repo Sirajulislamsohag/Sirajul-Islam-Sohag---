@@ -32,14 +32,14 @@ export const localBusinesses: IndustryPage = {
     'Google Business Profile connected for location and call assets',
   ],
   heroImage: {
-    src: 'https://images.unsplash.com/photo-1768180316485-2c7306ab38ff',
-    alt: 'Local business storefront with open signs and plants',
-    credit: 'https://unsplash.com/photos/green-storefront-with-open-signs-and-plants-oQF86wU7UDc',
+    src: '/industries/google-ads-for-local-service-business.webp',
+    alt: 'Google Ads for local service business: local technicians and service van at work',
+    aspect: 'aspect-[16/9]',
   },
   sectionImage: {
-    src: 'https://images.unsplash.com/photo-1761783536272-2fb78dd52c76',
-    alt: 'Thank you for supporting local sign in a shop window',
-    credit: 'https://unsplash.com/photos/thank-you-for-supporting-local-sign-on-window-2vBTXkv-N20',
+    src: '/industries/google-ads-location-targeting.webp',
+    alt: 'Google Ads location targeting map with ads shown only inside the service area',
+    aspect: 'aspect-[1.91/1]',
   },
 
   challenges: [

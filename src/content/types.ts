@@ -45,6 +45,8 @@ export interface PageImage {
   alt: string;
   /** Photo page on Unsplash, shown as a small credit so stock photos are never mistaken for client work. */
   credit?: string;
+  /** Tailwind aspect class matching the image's own shape, so text in the image is never cropped. */
+  aspect?: string;
 }
 
 export interface IndustryPage {

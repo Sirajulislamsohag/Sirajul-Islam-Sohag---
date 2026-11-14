@@ -162,7 +162,7 @@ export default async function IndustryLandingPage({ params }: { params: Promise<
               <CheckList items={page.valueProps} />
               <CtaButtons context={page.name} className="mt-8" size="lg" />
             </div>
-            <PageImageBlock image={page.heroImage} fallbackIcon={Icon} fallbackLabel={page.h1} priority className="aspect-[4/3] lg:aspect-[5/4]" />
+            <PageImageBlock image={page.heroImage} fallbackIcon={Icon} fallbackLabel={page.h1} priority className={page.heroImage.aspect ?? 'aspect-[4/3] lg:aspect-[5/4]'} />
           </div>
         </div>
       </section>
@@ -240,7 +240,7 @@ export default async function IndustryLandingPage({ params }: { params: Promise<
               image={page.sectionImage}
               fallbackIcon={Icon}
               fallbackLabel={page.h1}
-              className="aspect-[4/3] order-last lg:order-first"
+              className={`${page.sectionImage.aspect ?? 'aspect-[4/3]'} order-last lg:order-first`}
             />
           )}
           <div className={page.sectionImage ? '' : 'lg:col-span-2 max-w-3xl'}>
