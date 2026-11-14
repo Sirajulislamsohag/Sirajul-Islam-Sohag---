@@ -471,7 +471,7 @@ function AddBlogContent() {
                       <div key={pIndex} className="flex gap-3 items-start">
                         <div className="flex-1">
                           <Textarea
-                            placeholder={`Paragraph ${pIndex + 1} body text...`}
+                            placeholder={`Paragraph ${pIndex + 1}. Formatting: [link text](/google-ads-for-roofing)  **bold**  start lines with "- " for bullets or "1. " for numbers`}
                             value={para}
                             onChange={(e) => updateParagraph(sIndex, pIndex, e.target.value)}
                             rows={3}

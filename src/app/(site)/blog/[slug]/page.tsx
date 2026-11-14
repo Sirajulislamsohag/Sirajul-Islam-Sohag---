@@ -9,6 +9,8 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ShareButton } from '@/components/ui/share-button';
 import { Clock, Calendar, User, ArrowLeft } from 'lucide-react';
+import { RichParagraph, extractFaq } from '@/components/blog/rich-text';
+import { absoluteUrl, jsonLdScript } from '@/lib/seo';
 
 interface BlogSection {
   title?: string;
@@ -103,9 +105,45 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 export default async function BlogDetailsPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const post = await getBlogPost(slug);
+  const url = absoluteUrl(`/blog/${post.slug}`);
+  const faq = extractFaq(post.sections || []);
+  const schema = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BlogPosting',
+      headline: post.seo?.metaTitle || post.title,
+      description: post.seo?.metaDescription || post.excerpt,
+      image: post.thumbnail ? [post.thumbnail] : undefined,
+      datePublished: post.createdAt,
+      dateModified: post.createdAt,
+      mainEntityOfPage: url,
+      url,
+      keywords: post.seo?.keywords?.length ? post.seo.keywords.join(', ') : post.tags?.join(', '),
+      articleSection: post.category,
+      author: { '@type': 'Person', name: post.author, url: absoluteUrl('/about') },
+      publisher: { '@type': 'Person', name: 'Sirajul Islam Sohag', url: absoluteUrl('/') },
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: absoluteUrl('/') },
+        { '@type': 'ListItem', position: 2, name: 'Blog', item: absoluteUrl('/blog') },
+        { '@type': 'ListItem', position: 3, name: post.title, item: url },
+      ],
+    },
+    ...(faq.length
+      ? [{
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+        }]
+      : []),
+  ];
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(schema)} />
       <article className="pt-28 pb-16 md:pt-36 md:pb-24 relative">
         <div className="max-w-4xl mx-auto px-6">
           {/* Back Button & Meta Bar */}
@@ -165,9 +203,7 @@ export default async function BlogDetailsPage({ params }: { params: Promise<{ sl
                   </h2>
                 )}
                 {section.paragraphs?.map((para, pIdx) => (
-                  <p key={pIdx} className="leading-relaxed">
-                    {para}
-                  </p>
+                  <RichParagraph key={pIdx} id={`s${sIdx}p${pIdx}`} text={para} />
                 ))}
               </div>
             ))}
