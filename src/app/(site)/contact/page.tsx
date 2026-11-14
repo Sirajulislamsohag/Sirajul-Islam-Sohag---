@@ -2,18 +2,27 @@ import { PageHeader } from '@/components/sections/page-header';
 import { Contact } from '@/components/sections/contact';
 import { Footer } from '@/components/sections/footer';
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Contact | Sirajul - Digital Marketing Consultant',
-  description: 'Get in touch with Sirajul Islam Sohag for Google Ads management, Meta Ads scaling, SEO audits, and custom performance marketing strategies.',
-  keywords: ['contact sirajul', 'book marketing consultation', 'hire google ads expert', 'ppc consultant contact'],
-};
+export const metadata: Metadata = pageMetadata({
+  title: 'Book a Google Ads Consultation | Sirajul Islam Sohag',
+  absoluteTitle: true,
+  description:
+    'Book a Google Ads consultation with Sirajul Islam Sohag to review campaign structure, tracking, wasted spend, lead quality and growth opportunities.',
+  path: '/contact',
+  imageAlt: 'Book a Google Ads consultation with Sirajul Islam Sohag',
+  keywords: ['Google Ads consultation', 'PPC consultation', 'account review', 'campaign strategy', 'Sirajul Sohag'],
+});
 
 export default function ContactPage() {
   return (
     <>
       <div className="pt-20">
-        <Contact />
+        <Contact
+          headingAs="h1"
+          heading="Book a Google Ads Consultation"
+          subheading="Send a message or book a free Google Ads consultation call. In a short PPC consultation or Google Ads strategy call, we review your campaigns, tracking and goals."
+        />
       </div>
       <Footer />
     </>

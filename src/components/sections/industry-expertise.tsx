@@ -1,7 +1,5 @@
 'use client';
 
-import { useState } from 'react';
-import { motion } from 'framer-motion';
 import {
   ShoppingBag,
   MapPin,
@@ -9,21 +7,26 @@ import {
   Sparkles,
   ShieldCheck,
   Zap,
-  Wrench,
   Car,
-  Briefcase,
   ArrowRight,
   TrendingUp,
   Award,
+  HardHat,
+  AirVent,
+  Droplets,
+  Smile,
+  Scale,
 } from 'lucide-react';
 import { TextReveal } from '@/components/animations/text-reveal';
 import { ScrollReveal } from '@/components/animations/scroll-reveal';
 import { useCalendly } from '@/providers/calendly-provider';
+import Link from 'next/link';
 
-// Top Row Featured Industries
+// Top row: featured industries (order: e-commerce, home services, local services)
 const FEATURED_INDUSTRIES = [
   {
     id: 'ecommerce',
+    href: '/google-ads-for-ecommerce',
     icon: ShoppingBag,
     title: 'Google Ads for E-commerce',
     tag: 'High-Volume Scale',
@@ -31,27 +34,13 @@ const FEATURED_INDUSTRIES = [
       'Shopping and Performance Max campaigns built around product feed optimization and Smart Bidding, structured to lower cost per acquisition and scale profitably.',
     stat: '4.8x Avg ROAS',
     subStat: '+185% Revenue YoY',
-    color: '#F59E0B',
     bgColor: 'from-amber-500/10 via-amber-500/5 to-transparent',
-    borderColor: 'group-hover:border-amber-500/50',
+    borderColor: 'hover:border-amber-500/50',
     iconBg: 'bg-gradient-to-br from-amber-500/20 to-amber-500/5 border-amber-500/30 text-amber-400 group-hover:shadow-[0_0_20px_rgba(245,158,11,0.3)]',
   },
   {
-    id: 'local-business',
-    icon: MapPin,
-    title: 'Google Ads for Local Service Businesses',
-    tag: 'Local Dominance',
-    description:
-      'A complete local Google Ads strategy built around your service area and store visibility, so nearby customers find you before your competitors.',
-    stat: '$18–$35 Cost / Lead',
-    subStat: '+240% Inbound Calls',
-    color: '#06B6D4',
-    bgColor: 'from-cyan-500/10 via-cyan-500/5 to-transparent',
-    borderColor: 'group-hover:border-cyan-500/50',
-    iconBg: 'bg-gradient-to-br from-cyan-500/20 to-cyan-500/5 border-cyan-500/30 text-cyan-400 group-hover:shadow-[0_0_20px_rgba(6,182,212,0.3)]',
-  },
-  {
     id: 'home-services',
+    href: '/google-ads-for-home-services',
     icon: Home,
     title: 'Google Ads for Home Service Businesses',
     tag: 'High-Ticket Booking',
@@ -59,73 +48,119 @@ const FEATURED_INDUSTRIES = [
       'Consistent, qualified leads for home service companies like roofing, HVAC, plumbing, and cleaning, structured around your booking capacity and job value.',
     stat: '6.2x Return on Ad Spend',
     subStat: '92% Job Booking Rate',
-    color: '#22C55E',
     bgColor: 'from-emerald-500/10 via-emerald-500/5 to-transparent',
-    borderColor: 'group-hover:border-emerald-500/50',
+    borderColor: 'hover:border-emerald-500/50',
     iconBg: 'bg-gradient-to-br from-emerald-500/20 to-emerald-500/5 border-emerald-500/30 text-emerald-400 group-hover:shadow-[0_0_20px_rgba(34,197,94,0.3)]',
+  },
+  {
+    id: 'local-business',
+    href: '/google-ads-for-local-businesses',
+    icon: MapPin,
+    title: 'Google Ads for Local Service Businesses',
+    tag: 'Local Dominance',
+    description:
+      'A complete local Google Ads strategy built around your service area and store visibility, so nearby customers find you before your competitors.',
+    stat: '$18-$35 Cost / Lead',
+    subStat: '+240% Inbound Calls',
+    bgColor: 'from-cyan-500/10 via-cyan-500/5 to-transparent',
+    borderColor: 'hover:border-cyan-500/50',
+    iconBg: 'bg-gradient-to-br from-cyan-500/20 to-cyan-500/5 border-cyan-500/30 text-cyan-400 group-hover:shadow-[0_0_20px_rgba(6,182,212,0.3)]',
   },
 ];
 
-// Standard Row Industries
-const STANDARD_INDUSTRIES = [
+// Grid: contractors, roofing, then the other industries
+const STANDARD_INDUSTRIES: {
+  id: string;
+  href: string;
+  icon: typeof HardHat;
+  title: string;
+  description: string;
+  stat?: string;
+  iconBg: string;
+}[] = [
   {
-    id: 'cleaning',
-    icon: Sparkles,
-    title: 'Google Ads for Cleaning Businesses',
+    id: 'contractors',
+    href: '/google-ads-for-contractors',
+    icon: HardHat,
+    title: 'Google Ads for Contractors',
     description:
-      'More booked cleaning jobs from residential and commercial searches, built around service-area targeting and call tracking.',
-    stat: '$22 Avg Cost Per Lead',
-    color: '#A855F7',
-    iconBg: 'bg-gradient-to-br from-purple-500/20 to-purple-500/5 border-purple-500/30 text-purple-400 group-hover:shadow-[0_0_15px_rgba(168,85,247,0.25)]',
+      'Qualified project inquiries for remodelers and general contractors, with campaigns split by project type and tracked from call to signed job.',
+    iconBg: 'bg-gradient-to-br from-orange-500/20 to-orange-500/5 border-orange-500/30 text-orange-400 group-hover:shadow-[0_0_15px_rgba(249,115,22,0.25)]',
   },
   {
     id: 'roofing',
+    href: '/google-ads-for-roofing',
     icon: ShieldCheck,
     title: 'Google Ads for Roofing Companies',
     description:
       'Capture homeowners actively searching for roof repair or replacement, not just browsing. Built around Local Services Ads and high-intent Search campaigns.',
     stat: '8.5x Pipeline ROI',
-    color: '#F43F5E',
     iconBg: 'bg-gradient-to-br from-rose-500/20 to-rose-500/5 border-rose-500/30 text-rose-400 group-hover:shadow-[0_0_15px_rgba(244,63,94,0.25)]',
   },
   {
-    id: 'electrical',
-    icon: Zap,
-    title: 'Google Ads for Electrical Contractors',
+    id: 'hvac',
+    href: '/google-ads-for-hvac',
+    icon: AirVent,
+    title: 'Google Ads for HVAC Companies',
     description:
-      'Generate qualified residential and commercial electrical leads while filtering out low-value, price-shopping clicks.',
-    stat: '$28 Avg Qualified Call',
-    color: '#EAB308',
-    iconBg: 'bg-gradient-to-br from-yellow-500/20 to-yellow-500/5 border-yellow-500/30 text-yellow-400 group-hover:shadow-[0_0_15px_rgba(234,179,8,0.25)]',
-  },
-  {
-    id: 'hvac-plumbing',
-    icon: Wrench,
-    title: 'Google Ads for HVAC & Plumbing',
-    description:
-      'Capture both emergency, same-day searches and scheduled maintenance requests with campaigns built around call tracking and service-area targeting.',
-    stat: '5.4x Average ROAS',
-    color: '#3B82F6',
+      'Emergency repair and planned installation searches handled separately, with budgets that follow the season and your dispatch capacity.',
     iconBg: 'bg-gradient-to-br from-blue-500/20 to-blue-500/5 border-blue-500/30 text-blue-400 group-hover:shadow-[0_0_15px_rgba(59,130,246,0.25)]',
   },
   {
-    id: 'auto-tyre',
+    id: 'plumbers',
+    href: '/google-ads-for-plumbers',
+    icon: Droplets,
+    title: 'Google Ads for Plumbers',
+    description:
+      'Calls from urgent plumbing searches like burst pipes, clogs and water heater failures, with ads scheduled around when your team can answer.',
+    iconBg: 'bg-gradient-to-br from-sky-500/20 to-sky-500/5 border-sky-500/30 text-sky-400 group-hover:shadow-[0_0_15px_rgba(14,165,233,0.25)]',
+  },
+  {
+    id: 'electrical',
+    href: '/google-ads-for-electricians',
+    icon: Zap,
+    title: 'Google Ads for Electricians',
+    description:
+      'Generate qualified residential and commercial electrical leads while filtering out low-value, price-shopping clicks.',
+    stat: '$28 Avg Qualified Call',
+    iconBg: 'bg-gradient-to-br from-yellow-500/20 to-yellow-500/5 border-yellow-500/30 text-yellow-400 group-hover:shadow-[0_0_15px_rgba(234,179,8,0.25)]',
+  },
+  {
+    id: 'cleaning',
+    href: '/google-ads-for-cleaning-businesses',
+    icon: Sparkles,
+    title: 'Google Ads for Cleaning Businesses',
+    description:
+      'More booked cleaning jobs from residential and commercial searches, built around service-area targeting and call tracking.',
+    stat: '$22 Avg Cost Per Lead',
+    iconBg: 'bg-gradient-to-br from-purple-500/20 to-purple-500/5 border-purple-500/30 text-purple-400 group-hover:shadow-[0_0_15px_rgba(168,85,247,0.25)]',
+  },
+  {
+    id: 'auto-services',
+    href: '/google-ads-for-auto-services',
     icon: Car,
-    title: 'Google Ads for Auto & Tyre Services',
+    title: 'Google Ads for Auto Repair & Tire Shops',
     description:
       'Local search campaigns built to fill your appointment book, structured around service-specific keywords instead of broad, expensive terms.',
     stat: '$14 Avg Booking Cost',
-    color: '#EC4899',
     iconBg: 'bg-gradient-to-br from-pink-500/20 to-pink-500/5 border-pink-500/30 text-pink-400 group-hover:shadow-[0_0_15px_rgba(236,72,153,0.25)]',
   },
   {
-    id: 'service-based',
-    icon: Briefcase,
-    title: 'Google Ads for Service-Based Businesses',
+    id: 'dentists',
+    href: '/google-ads-for-dentists',
+    icon: Smile,
+    title: 'Google Ads for Dentists',
     description:
-      'Consistent leads for any service company not listed above, structured around your booking capacity and customer lifetime value.',
-    stat: '3x–10x Target ROAS',
-    color: '#6366F1',
+      'New patient appointments for the treatments that matter most, from implants and Invisalign to emergency visits.',
+    iconBg: 'bg-gradient-to-br from-teal-500/20 to-teal-500/5 border-teal-500/30 text-teal-400 group-hover:shadow-[0_0_15px_rgba(20,184,166,0.25)]',
+  },
+  {
+    id: 'law-firms',
+    href: '/google-ads-for-law-firms',
+    icon: Scale,
+    title: 'Google Ads for Law Firms',
+    description:
+      'Case inquiries organized by practice area, with intake tracking that separates real cases from unqualified calls.',
     iconBg: 'bg-gradient-to-br from-indigo-500/20 to-indigo-500/5 border-indigo-500/30 text-indigo-400 group-hover:shadow-[0_0_15px_rgba(99,102,241,0.25)]',
   },
 ];
@@ -176,7 +211,9 @@ export function IndustryExpertise() {
               const Icon = item.icon;
               return (
                 <ScrollReveal key={item.id} delay={index * 0.1}>
-                  <div
+                  <Link
+                    href={item.href}
+                    aria-label={item.title}
                     className={`group relative h-full rounded-3xl p-7 md:p-8 bg-[var(--bg-card)] border border-[var(--border)] ${item.borderColor} shadow-xl hover:shadow-2xl transition-all duration-300 flex flex-col justify-between overflow-hidden`}
                   >
                     {/* Top Radial Glow on Hover */}
@@ -219,21 +256,11 @@ export function IndustryExpertise() {
                         </span>
                       </div>
 
-                      <button
-                        type="button"
-                        onClick={() =>
-                          openCalendly({
-                            title: `Strategy Call: ${item.title}`,
-                            subtitle: `Let's discuss proven benchmarks and a scaling roadmap for your business.`,
-                          })
-                        }
-                        className="inline-flex items-center gap-1.5 text-xs font-heading font-semibold text-primary hover:text-primary-hover group-hover:translate-x-1 transition-all cursor-pointer"
-                      >
-                        <span>Learn the strategy</span>
-                        <ArrowRight className="w-3.5 h-3.5" />
-                      </button>
+                      <span className="inline-flex items-center gap-1.5 text-xs font-heading font-semibold text-primary group-hover:translate-x-1 transition-transform">
+                        View page <ArrowRight className="w-3.5 h-3.5" />
+                      </span>
                     </div>
-                  </div>
+                  </Link>
                 </ScrollReveal>
               );
             })}
@@ -249,13 +276,17 @@ export function IndustryExpertise() {
             </span>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {/* Standard Vertical Cards */}
             {STANDARD_INDUSTRIES.map((item, index) => {
               const Icon = item.icon;
               return (
                 <ScrollReveal key={item.id} delay={0.05 * index}>
-                  <div className="group h-full rounded-2xl p-6 bg-[var(--bg-card)] border border-[var(--border)] hover:border-primary/40 hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                  <Link
+                    href={item.href}
+                    aria-label={item.title}
+                    className="group h-full rounded-2xl p-6 bg-[var(--bg-card)] border border-[var(--border)] hover:border-primary/40 hover:shadow-lg transition-all duration-300 flex flex-col justify-between"
+                  >
                     <div>
                       {/* Icon */}
                       <div className="mb-4">
@@ -275,35 +306,26 @@ export function IndustryExpertise() {
                       </p>
                     </div>
 
-                    {/* Verified Stat & Learn Strategy */}
-                    <div className="pt-3 border-t border-[var(--border)]/60">
-                      <div className="flex items-center justify-between gap-1 mb-2.5">
+                    {/* Stat (only where one exists) & link cue */}
+                    <div className="pt-3 border-t border-[var(--border)]/60 flex items-center justify-between gap-2">
+                      {item.stat ? (
                         <span className="text-[11px] font-semibold text-emerald-400 flex items-center gap-1">
                           <TrendingUp className="w-3 h-3" /> {item.stat}
                         </span>
-                      </div>
-
-                      <button
-                        type="button"
-                        onClick={() =>
-                          openCalendly({
-                            title: `Strategy Call: ${item.title}`,
-                            subtitle: `Let's discuss proven benchmarks and a scaling roadmap for your market.`,
-                          })
-                        }
-                        className="inline-flex items-center gap-1 text-xs font-heading font-semibold text-primary hover:text-primary-hover group-hover:translate-x-1 transition-all cursor-pointer"
-                      >
-                        <span>Learn the strategy</span>
-                        <ArrowRight className="w-3 h-3" />
-                      </button>
+                      ) : (
+                        <span />
+                      )}
+                      <span className="inline-flex items-center gap-1 text-xs font-heading font-semibold text-primary group-hover:translate-x-1 transition-transform">
+                        View page <ArrowRight className="w-3 h-3" />
+                      </span>
                     </div>
-                  </div>
+                  </Link>
                 </ScrollReveal>
               );
             })}
 
             {/* DISTINCTIVE STANDOUT CTA CARD (Styled like the reference photo) */}
-            <ScrollReveal delay={0.35} className="sm:col-span-2 lg:col-span-1 xl:col-span-2">
+            <ScrollReveal delay={0.35} className="sm:col-span-2 lg:col-span-3">
               <div className="h-full rounded-2xl p-7 md:p-8 bg-gradient-to-br from-[#4F46E5] via-[#4338CA] to-[#3730A3] text-white shadow-2xl relative overflow-hidden flex flex-col justify-between border border-indigo-400/30 group">
                 {/* Background ambient lighting */}
                 <div className="absolute top-0 right-0 w-48 h-48 bg-white/10 blur-3xl rounded-full pointer-events-none" />

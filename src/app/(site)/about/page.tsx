@@ -9,12 +9,17 @@ import { CTASection } from '@/components/sections/cta-section';
 import { Footer } from '@/components/sections/footer';
 import { ToolsPlatformsIcons } from '@/components/sections/tools-platforms-icons';
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'About Me | Sirajul - Digital Marketing Consultant',
-  description: 'Learn more about Sirajul Islam Sohag, a performance digital marketer with 5+ years of experience helping 200+ businesses scale revenue through Google Ads, Meta Ads, and SEO.',
-  keywords: ['about sirajul', 'digital marketing consultant background', 'google ads expert bio', 'marketing strategist'],
-};
+export const metadata: Metadata = pageMetadata({
+  title: 'About Sirajul Islam Sohag | Certified Google Ads Expert',
+  absoluteTitle: true,
+  description:
+    'Meet Sirajul Islam Sohag, a certified Google Ads and analytics specialist with 3+ years running Search, PMax and tracking for clients worldwide.',
+  path: '/about',
+  imageAlt: 'Sirajul Islam Sohag certified Google Ads and analytics specialist',
+  keywords: ['Sirajul Islam Sohag', 'Google Ads specialist', 'PPC expert Bangladesh', 'certifications', 'performance marketer'],
+});
 
 export default function AboutPage() {
   return (

@@ -65,7 +65,7 @@ export function AboutV2() {
             Driving Scalable Growth Through <span className="text-gradient">Data-Driven Strategy</span>
           </TextReveal>
           <TextReveal variant="fade-up" delay={0.2} as="p" className="section-subheading text-lg leading-relaxed">
-            With over 5 years of hands-on experience in performance marketing, I combine deep data analytics with creative strategy to build marketing engines that generate consistent, high-ROI revenue for 200+ brands worldwide.
+            With 3+ years of hands-on experience in performance marketing, I combine deep data analytics with creative strategy to build marketing engines that generate consistent, high-ROI revenue for 100+ brands worldwide.
           </TextReveal>
         </div>
 

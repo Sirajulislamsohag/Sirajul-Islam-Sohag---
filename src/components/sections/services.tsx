@@ -94,7 +94,7 @@ const SERVICES_DATA = [
   },
 ];
 
-export function Services() {
+export function Services({ headingAs = 'h2' }: { headingAs?: 'h1' | 'h2' } = {}) {
   const { openCalendly } = useCalendly();
 
   return (
@@ -105,11 +105,11 @@ export function Services() {
           <TextReveal as="p" variant="fade-up" className="text-primary font-medium text-sm uppercase tracking-wider mb-3">
             WHAT I OFFER
           </TextReveal>
-          <TextReveal as="h2" variant="char-reveal" className="section-heading mb-4">
+          <TextReveal as={headingAs} variant="char-reveal" className="section-heading mb-4">
             Google Ads Services That Scale Businesses
           </TextReveal>
           <TextReveal as="p" variant="fade-up" delay={0.2} className="section-subheading">
-            End-to-end Google Ads management, from strategy and campaign build to tracking and optimization, designed to lower your cost per lead and maximize return on ad spend.
+            End-to-end Google Ads management and PPC services, from strategy and campaign build to tracking and optimization. Google advertising services designed to lower your cost per lead and maximize return on ad spend.
           </TextReveal>
         </div>
 

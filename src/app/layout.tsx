@@ -3,6 +3,7 @@ import Script from 'next/script';
 import { Space_Grotesk, Inter, Sora } from 'next/font/google';
 import { Toaster } from 'react-hot-toast';
 import { GTM_ID } from '@/lib/gtm';
+import { SiteSchema } from '@/components/seo/site-schema';
 import './globals.css';
 
 const spaceGrotesk = Space_Grotesk({
@@ -25,23 +26,27 @@ const sora = Sora({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Sirajul | Digital Marketing Consultant',
-    template: '%s | Sirajul Marketing',
+    default: 'Google Ads Expert & PPC Consultant | Sirajul Islam Sohag',
+    template: '%s | Sirajul Islam Sohag',
   },
-  description: 'Expert Google Ads, Facebook Ads, SEO & Analytics specialist helping businesses scale through data-driven digital marketing strategies.',
+  description:
+    'Certified Google Ads expert with 3+ years managing PPC for home service, local and e-commerce brands. More qualified leads, less wasted spend. Book a call.',
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://www.sirajulislamsohag.com'),
-  keywords: ['digital marketing', 'google ads specialist', 'facebook ads expert', 'seo optimization', 'ppc management', 'marketing consultant', 'performance marketing'],
-  authors: [{ name: 'Sirajul Islam Sohag' }],
+  applicationName: 'Sirajul Islam Sohag',
+  authors: [{ name: 'Sirajul Islam Sohag', url: 'https://www.sirajulislamsohag.com/about' }],
   creator: 'Sirajul Islam Sohag',
+  publisher: 'Sirajul Islam Sohag',
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    siteName: 'Sirajul Marketing',
+    siteName: 'Sirajul Islam Sohag - Google Ads Consultant',
   },
   twitter: {
     card: 'summary_large_image',
-    creator: '@sirajmarketing',
   },
+  ...(process.env.NEXT_PUBLIC_GSC_VERIFICATION
+    ? { verification: { google: process.env.NEXT_PUBLIC_GSC_VERIFICATION } }
+    : {}),
   icons: {
     icon: '/favicon.png',
     shortcut: '/favicon.png',
@@ -78,35 +83,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         />
         <link rel="icon" href="/favicon.png" type="image/png" sizes="any" />
         <link rel="apple-touch-icon" href="/favicon.png" />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'ProfessionalService',
-              name: 'Sirajul Islam Sohag - Digital Marketing Consultant',
-              image: 'https://www.sirajulislamsohag.com/siraj-portrait.jpg',
-              description: 'Enterprise Google Ads, Meta Ads, SEO & Analytics Growth Consultancy.',
-              address: {
-                '@type': 'PostalAddress',
-                addressCountry: 'US',
-              },
-              priceRange: '$$$$',
-              url: 'https://www.sirajulislamsohag.com',
-              sameAs: [
-                'https://linkedin.com/in/sirajul-islam-sohag-04996428a/',
-                'https://facebook.com/sirajul.islam.sohag',
-              ],
-              knowsAbout: [
-                'Google Ads',
-                'Meta Ads',
-                'Search Engine Optimization',
-                'Conversion Rate Optimization',
-                'Performance Analytics',
-              ],
-            }),
-          }}
-        />
+        <SiteSchema />
       </head>
       <body className={`${spaceGrotesk.variable} ${inter.variable} ${sora.variable} font-body antialiased bg-[var(--bg)] text-[var(--text)]`}>
         {/* Google Tag Manager (noscript fallback) */}

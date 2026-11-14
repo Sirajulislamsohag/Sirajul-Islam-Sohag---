@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
-import { ArrowRight, Play } from 'lucide-react';
+import { ArrowRight, Play, Home, Hammer, Store, ShoppingCart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Magnetic } from '@/components/animations/magnetic';
@@ -16,11 +16,12 @@ import { HeroParticles } from '@/components/effects/hero-particles';
 import { TYPING_ROLES, ORBIT_SKILLS, SITE_CONFIG } from '@/lib/constants';
 import { cn } from '@/lib/utils';
 
-const CLIENT_AVATARS = [
-  { name: 'Alex Thompson', src: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80' },
-  { name: 'Sarah Chen', src: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&auto=format&fit=crop&q=80' },
-  { name: 'Michael Roberts', src: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=120&auto=format&fit=crop&q=80' },
-  { name: 'Emily Park', src: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=120&auto=format&fit=crop&q=80' },
+/** Industries served, shown as icon badges (no stock photos posing as clients). */
+const CLIENT_INDUSTRIES = [
+  { name: 'Home services', icon: Home, color: 'bg-amber-500' },
+  { name: 'Contractors and roofing', icon: Hammer, color: 'bg-rose-500' },
+  { name: 'Local businesses', icon: Store, color: 'bg-sky-500' },
+  { name: 'E-commerce', icon: ShoppingCart, color: 'bg-emerald-500' },
 ];
 
 export function Hero() {
@@ -106,6 +107,9 @@ export function Hero() {
                 className="hero-heading"
               >
                 <span className="text-gradient">Sirajul Islam Sohag</span>
+                <span className="block mt-3 text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-[var(--text)] tracking-tight">
+                  Google Ads Expert
+                </span>
               </h1>
               <div className="hero-animate mt-4 text-xl md:text-2xl font-heading text-[var(--text-secondary)] font-semibold">
                 <Typing words={TYPING_ROLES} />
@@ -113,7 +117,7 @@ export function Hero() {
             </div>
 
             <p className="hero-animate text-[var(--text-secondary)] text-lg leading-relaxed max-w-lg">
-              I help home service, local service, and e-commerce businesses turn ad spend into qualified leads and revenue through data-driven Google Ads strategy.
+              Google Ads expert and PPC consultant for home service, local service and e-commerce businesses across the USA and beyond. I work hands-on as your Google Ads consultant and PPC expert, turning ad spend into qualified leads and revenue.
             </p>
 
             <div className="hero-animate flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 sm:gap-4 pt-1">
@@ -158,7 +162,7 @@ export function Hero() {
               <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-white/10 shadow-2xl">
                 <Image
                   src="/siraj.webp"
-                  alt="Sirajul Islam Sohag - Digital Marketing Consultant"
+                  alt="Sirajul Islam Sohag Google Ads expert and PPC consultant"
                   fill
                   priority
                   className="object-cover"
@@ -221,18 +225,14 @@ export function Hero() {
               className="absolute -bottom-2 sm:-bottom-4 -right-1 sm:right-2 md:right-4 xl:right-6 glass-card p-2.5 sm:p-4 flex items-center gap-2.5 sm:gap-3 rounded-2xl shadow-xl border border-white/20 dark:border-white/10 z-20"
             >
               <div className="flex -space-x-2.5 overflow-hidden">
-                {CLIENT_AVATARS.map((client) => (
+                {CLIENT_INDUSTRIES.map(({ name, icon: Icon, color }) => (
                   <div
-                    key={client.name}
-                    className="relative w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 rounded-full border-2 border-[var(--bg-card)] overflow-hidden shrink-0 shadow-sm"
+                    key={name}
+                    title={name}
+                    className={`relative w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 rounded-full border-2 border-[var(--bg-card)] shrink-0 shadow-sm flex items-center justify-center text-white ${color}`}
                   >
-                    <Image
-                      src={client.src}
-                      alt={client.name}
-                      fill
-                      className="object-cover"
-                      sizes="36px"
-                    />
+                    <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4" aria-hidden="true" />
+                    <span className="sr-only">{name}</span>
                   </div>
                 ))}
               </div>
@@ -243,7 +243,7 @@ export function Hero() {
                   ))}
                 </div>
                 <p className="text-[11px] sm:text-xs text-[var(--text-secondary)]">
-                  <Counter value={15000} suffix="+" className="font-bold text-[var(--text)]" /> Happy Clients
+                  <Counter value={100} suffix="+" className="font-bold text-[var(--text)]" /> Happy Clients
                 </p>
               </div>
             </div>

@@ -30,7 +30,11 @@ const contactSchema = z.object({
 
 type ContactFormData = z.infer<typeof contactSchema>;
 
-export function Contact() {
+export function Contact({
+  headingAs = 'h2',
+  heading = "Let's Grow Your Business",
+  subheading = "Ready to scale? Send me a message and let's discuss your marketing goals.",
+}: { headingAs?: 'h1' | 'h2'; heading?: string; subheading?: string } = {}) {
   const { openCalendly } = useCalendly();
   const [isSubmitted, setIsSubmitted] = useState(false);
   const {
@@ -70,11 +74,11 @@ export function Contact() {
           <TextReveal as="p" variant="fade-up" className="text-primary font-medium text-sm uppercase tracking-wider mb-3">
             Get In Touch
           </TextReveal>
-          <TextReveal as="h2" variant="char-reveal" className="section-heading mb-4">
-            Let's Grow Your Business
+          <TextReveal as={headingAs} variant="char-reveal" className="section-heading mb-4">
+            {heading}
           </TextReveal>
           <TextReveal as="p" variant="fade-up" delay={0.2} className="section-subheading">
-            Ready to scale? Send me a message and let's discuss your marketing goals.
+            {subheading}
           </TextReveal>
         </div>
 
@@ -104,9 +108,12 @@ export function Contact() {
                     <Phone className="w-5 h-5 text-secondary" />
                   </div>
                   <div>
-                    <h4 className="font-heading font-semibold mb-1">Phone</h4>
-                    <a href={`tel:${SITE_CONFIG.phone}`} className="text-sm text-[var(--text-secondary)] hover:text-primary transition-colors">
+                    <h4 className="font-heading font-semibold mb-1">WhatsApp</h4>
+                    <a href={SOCIAL_LINKS.whatsapp} target="_blank" rel="noopener noreferrer" className="block text-sm text-[var(--text-secondary)] hover:text-primary transition-colors">
                       {SITE_CONFIG.phone}
+                    </a>
+                    <a href={SOCIAL_LINKS.whatsapp} target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline">
+                      Chat on WhatsApp &rarr;
                     </a>
                   </div>
                 </div>

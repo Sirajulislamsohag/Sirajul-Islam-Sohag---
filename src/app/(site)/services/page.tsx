@@ -1,4 +1,3 @@
-import { PageHeader } from '@/components/sections/page-header';
 import { Services } from '@/components/sections/services';
 import { ToolsPlatforms } from '@/components/sections/tools-platforms';
 import { ClientReviews } from '@/components/sections/client-reviews';
@@ -9,13 +8,22 @@ import { TextReveal } from '@/components/animations/text-reveal';
 import { Card } from '@/components/ui/card';
 import { Search, Target, TrendingUp, ShieldCheck } from 'lucide-react';
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 import { CTASection } from '@/components/sections/cta-section';
+import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
+import { SERVICE_PAGES, serviceHref } from '@/content/services';
+import { INDUSTRY_PAGES, industryHref } from '@/content/industries';
 
-export const metadata: Metadata = {
-  title: 'Services | Sirajul - Performance Marketing Solutions',
-  description: 'Explore full-funnel digital marketing services: Google Ads management, Meta Ads, SEO optimization, GA4 analytics setup, and CRO to maximize ROI.',
-  keywords: ['google ads management', 'facebook ads service', 'seo optimization service', 'ga4 tracking', 'ppc consultant'],
-};
+export const metadata: Metadata = pageMetadata({
+  title: 'Google Ads Services | PPC Management & Tracking',
+  absoluteTitle: true,
+  description:
+    'Google Ads services for Search, PMax, Shopping, tracking, CRO and reporting, built to reduce wasted spend and improve qualified leads and ROAS.',
+  path: '/services',
+  imageAlt: 'Google Ads services including Search PMax Shopping and conversion tracking',
+  keywords: ['Google Ads services', 'PPC services', 'paid search', 'conversion tracking', 'performance marketing'],
+});
 
 const PROCESS_STEPS = [
   {
@@ -48,8 +56,61 @@ export default function ServicesPage() {
   return (
     <>
       <div className="pt-20">
-        <Services />
+        <Services headingAs="h1" />
       </div>
+
+      {/* Service pages */}
+      <section className="py-20 md:py-24 border-y border-[var(--border)] bg-[var(--bg-card)]/40">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="max-w-3xl mb-12">
+            <p className="text-primary font-medium text-sm uppercase tracking-wider mb-3">Services in detail</p>
+            <h2 className="section-heading mb-4">Google Ads services, one page each</h2>
+            <p className="section-subheading">
+              Each service has its own page explaining what is included, how it works, what you receive and the questions clients ask most.
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+            {SERVICE_PAGES.map((service) => (
+              <Link
+                key={service.slug}
+                href={serviceHref(service.slug)}
+                className="group flex flex-col justify-between rounded-2xl p-6 md:p-7 bg-[var(--bg-card)] border border-[var(--border)] hover:border-primary/50 transition-colors"
+              >
+                <div>
+                  <h3 className="text-lg font-heading font-bold mb-2 group-hover:text-primary transition-colors">{service.name}</h3>
+                  <p className="text-sm text-[var(--text-secondary)] leading-relaxed mb-5">{service.heroHeadline}</p>
+                </div>
+                <span className="inline-flex items-center gap-1.5 text-sm font-heading font-semibold text-primary">
+                  Learn more <ArrowRight className="w-4 h-4" />
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Industries */}
+      <section className="py-20 md:py-24">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="max-w-3xl mb-10">
+            <p className="text-primary font-medium text-sm uppercase tracking-wider mb-3">Industries</p>
+            <h2 className="section-heading mb-4">Google Ads strategies by industry</h2>
+            <p className="section-subheading">Industry-specific campaign structures, negative keywords, tracking and FAQs.</p>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            {INDUSTRY_PAGES.map((page) => (
+              <Link
+                key={page.slug}
+                href={industryHref(page.slug)}
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full border border-[var(--border)] bg-[var(--bg-card)] text-sm font-heading font-semibold hover:border-primary hover:text-primary transition-colors"
+              >
+                {page.h1}
+                <ArrowRight className="w-3.5 h-3.5 text-primary" />
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <ToolsPlatforms />
 

@@ -7,12 +7,12 @@ import { Heart } from 'lucide-react';
 import { SOCIAL_ICON_MAP } from '@/components/ui/social-icons';
 import { useCalendly } from '@/providers/calendly-provider';
 const services = [
-  "Google Ads Search Campaigns",
-  "Performance Max & Shopping",
-  "Display & YouTube Advertising",
-  "Analytics & Conversion Tracking",
-  "Conversion Rate Optimization",
-  "Performance Strategy & Reporting",
+  { label: 'Google Ads Management', href: '/services/google-ads-management' },
+  { label: 'Google Ads Audit', href: '/services/google-ads-audit' },
+  { label: 'Google Search Ads', href: '/services/google-search-ads' },
+  { label: 'Performance Max & Shopping', href: '/services/performance-max-management' },
+  { label: 'Conversion Tracking (GA4 & GTM)', href: '/services/google-ads-conversion-tracking' },
+  { label: 'Looker Studio Reporting', href: '/services/looker-studio-dashboard' },
 ];
 export function Footer() {
   const { openCalendly } = useCalendly();
@@ -61,13 +61,13 @@ export function Footer() {
           <div className="footer-item">
             <h3 className="text-xs uppercase tracking-[0.2em] text-amber-500 font-bold mb-4">Services</h3>
             <ul className="space-y-3">
-              {services.map((service,index) => (
-                <li key={index}>
+              {services.map((service) => (
+                <li key={service.href}>
                   <Link
-                    href="/services"
+                    href={service.href}
                     className="text-sm text-white/60 hover:text-primary transition-colors"
                   >
-                    {service}
+                    {service.label}
                   </Link>
                 </li>
               ))}

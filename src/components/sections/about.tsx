@@ -58,11 +58,11 @@ export function About() {
           <TextReveal variant="fade-up" as="p" className="text-primary font-medium text-sm uppercase tracking-wider mb-3">
             About My Work & Philosophy
           </TextReveal>
-          <TextReveal variant="fade-up" delay={0.1} as="h2" className="section-heading mb-6">
+          <TextReveal variant="fade-up" delay={0.1} as="h1" className="section-heading mb-6">
             Driving Scalable Growth Through <span className="text-gradient">Data-Driven Strategy</span>
           </TextReveal>
           <TextReveal variant="fade-up" delay={0.2} as="p" className="section-subheading text-lg leading-relaxed">
-            With over 5 years of hands-on experience in performance marketing, I combine deep data analytics with creative strategy to build marketing engines that generate consistent, high-ROI revenue for 200+ brands worldwide.
+            I'm Sirajul Islam Sohag (Sirajul Sohag), a Google Ads and analytics specialist. With 3+ years of hands-on experience in performance marketing, I combine deep data analytics with creative strategy to build marketing engines that generate consistent, high-ROI revenue for 100+ brands worldwide.
           </TextReveal>
         </div>
 
