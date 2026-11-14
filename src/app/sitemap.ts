@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next';
 import { connectDB } from '@/lib/db';
 import { BlogModel } from '@/models/blog';
+import { STATIC_POSTS } from '@/content/blog';
 import { INDUSTRY_PAGES, industryHref } from '@/content/industries';
 import { CASE_STUDIES, caseStudyHref } from '@/content/case-studies';
 import { SERVICE_PAGES, serviceHref } from '@/content/services';
@@ -101,5 +102,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     console.warn('Sitemap dynamic blog fetching error:', error);
   }
 
-  return [...staticPages, ...blogPages];
+  const codePosts: MetadataRoute.Sitemap = STATIC_POSTS.map((p) => ({
+    url: `${baseUrl}/blog/${p.slug}`,
+    lastModified: new Date(p.updatedAt || p.publishedAt),
+    changeFrequency: 'monthly',
+    priority: 0.7,
+  }));
+  const codeSlugs = new Set(STATIC_POSTS.map((p) => p.slug));
+  return [...staticPages, ...codePosts, ...blogPages.filter((b) => !codeSlugs.has(b.url.split('/blog/')[1]))];
 }

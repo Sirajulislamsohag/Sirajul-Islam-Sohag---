@@ -10,6 +10,7 @@ import { Button } from '@/components/ui/button';
 import { ShareButton } from '@/components/ui/share-button';
 import { Clock, Calendar, User, ArrowLeft } from 'lucide-react';
 import { RichParagraph, extractFaq } from '@/components/blog/rich-text';
+import { getStaticPost, blogCover } from '@/content/blog';
 import { absoluteUrl, jsonLdScript } from '@/lib/seo';
 
 interface BlogSection {
@@ -29,6 +30,7 @@ interface BlogPost {
   author: string;
   readTime: number;
   createdAt: string;
+  updatedAt?: string;
   seo?: {
     metaTitle?: string;
     metaDescription?: string;
@@ -39,6 +41,25 @@ interface BlogPost {
 
 
 async function getBlogPost(slug: string): Promise<BlogPost> {
+  const fromCode = getStaticPost(slug);
+  if (fromCode) {
+    return {
+      _id: `static-${fromCode.slug}`,
+      title: fromCode.title,
+      slug: fromCode.slug,
+      category: fromCode.category,
+      excerpt: fromCode.excerpt,
+      sections: fromCode.sections,
+      thumbnail: fromCode.thumbnail || blogCover(fromCode.slug),
+      tags: fromCode.tags,
+      author: fromCode.author,
+      readTime: fromCode.readTime,
+      createdAt: fromCode.publishedAt,
+      updatedAt: fromCode.updatedAt || fromCode.publishedAt,
+      seo: fromCode.seo,
+    };
+  }
+
   try {
     if (process.env.MONGODB_URI) {
       await connectDB();
@@ -75,12 +96,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const url = `${siteUrl}/blog/${post.slug}`;
   const title = post.seo?.metaTitle || post.title;
   const description = post.seo?.metaDescription || post.excerpt;
-  const image = post.seo?.ogImage || post.thumbnail || `${siteUrl}/avatar.png`;
+  const rawImage = post.seo?.ogImage || post.thumbnail || blogCover(post.slug);
+  const image = rawImage.startsWith('/') ? `${siteUrl}${rawImage}` : rawImage;
 
   return {
-    title,
+    title: { absolute: title },
     description,
-    keywords: post.tags,
+    keywords: post.seo?.keywords?.length ? post.seo.keywords : post.tags,
     openGraph: {
       title,
       description,
@@ -113,9 +135,9 @@ export default async function BlogDetailsPage({ params }: { params: Promise<{ sl
       '@type': 'BlogPosting',
       headline: post.seo?.metaTitle || post.title,
       description: post.seo?.metaDescription || post.excerpt,
-      image: post.thumbnail ? [post.thumbnail] : undefined,
+      image: [absoluteUrl(post.thumbnail && !post.thumbnail.startsWith('http') ? post.thumbnail : blogCover(post.slug))],
       datePublished: post.createdAt,
-      dateModified: post.createdAt,
+      dateModified: post.updatedAt || post.createdAt,
       mainEntityOfPage: url,
       url,
       keywords: post.seo?.keywords?.length ? post.seo.keywords.join(', ') : post.tags?.join(', '),
@@ -185,9 +207,16 @@ export default async function BlogDetailsPage({ params }: { params: Promise<{ sl
             ))}
           </div>
 
+          <h1 className="text-3xl md:text-5xl font-heading font-bold tracking-tight leading-tight text-[var(--text)] mb-6">
+            {post.title}
+          </h1>
+          {post.excerpt && (
+            <p className="text-lg md:text-xl text-[var(--text-secondary)] leading-relaxed mb-10">{post.excerpt}</p>
+          )}
+
           {/* Thumbnail */}
           {post.thumbnail && (
-            <div className="w-full aspect-video md:aspect-[21/9] relative rounded-2xl overflow-hidden mb-12 shadow-2xl">
+            <div className="w-full aspect-[1200/630] relative rounded-2xl overflow-hidden mb-12 shadow-2xl">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={post.thumbnail} alt={post.title} className="w-full h-full object-cover" />
             </div>
