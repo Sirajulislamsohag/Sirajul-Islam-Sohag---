@@ -15,7 +15,7 @@ export async function GET(_req: Request, { params }: { params: Promise<{ slug: s
   const post = getStaticPost(slug);
   const title = post?.title || 'Google Ads Insights';
   const category = post?.category || 'Google Ads';
-  const photo = await readFile(join(process.cwd(), 'public/Siraj.jpeg'));
+  const photo = await readFile(join(process.cwd(), 'public/siraj-profile.jpg'));
   const photoSrc = `data:image/jpeg;base64,${photo.toString('base64')}`;
   const fontSize = title.length > 70 ? 54 : title.length > 50 ? 62 : 70;
 
