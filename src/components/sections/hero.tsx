@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
-import { ArrowRight, Play } from 'lucide-react';
+import { ArrowRight, Play, Home, Hammer, Store, ShoppingCart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Magnetic } from '@/components/animations/magnetic';
@@ -16,11 +16,12 @@ import { HeroParticles } from '@/components/effects/hero-particles';
 import { TYPING_ROLES, ORBIT_SKILLS, SITE_CONFIG } from '@/lib/constants';
 import { cn } from '@/lib/utils';
 
-const CLIENT_AVATARS = [
-  { name: 'Alex Thompson', src: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80' },
-  { name: 'Sarah Chen', src: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&auto=format&fit=crop&q=80' },
-  { name: 'Michael Roberts', src: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=120&auto=format&fit=crop&q=80' },
-  { name: 'Emily Park', src: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=120&auto=format&fit=crop&q=80' },
+/** Industries served, shown as icon badges (no stock photos posing as clients). */
+const CLIENT_INDUSTRIES = [
+  { name: 'Home services', icon: Home, color: 'bg-amber-500' },
+  { name: 'Contractors and roofing', icon: Hammer, color: 'bg-rose-500' },
+  { name: 'Local businesses', icon: Store, color: 'bg-sky-500' },
+  { name: 'E-commerce', icon: ShoppingCart, color: 'bg-emerald-500' },
 ];
 
 export function Hero() {
@@ -224,18 +225,14 @@ export function Hero() {
               className="absolute -bottom-2 sm:-bottom-4 -right-1 sm:right-2 md:right-4 xl:right-6 glass-card p-2.5 sm:p-4 flex items-center gap-2.5 sm:gap-3 rounded-2xl shadow-xl border border-white/20 dark:border-white/10 z-20"
             >
               <div className="flex -space-x-2.5 overflow-hidden">
-                {CLIENT_AVATARS.map((client) => (
+                {CLIENT_INDUSTRIES.map(({ name, icon: Icon, color }) => (
                   <div
-                    key={client.name}
-                    className="relative w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 rounded-full border-2 border-[var(--bg-card)] overflow-hidden shrink-0 shadow-sm"
+                    key={name}
+                    title={name}
+                    className={`relative w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 rounded-full border-2 border-[var(--bg-card)] shrink-0 shadow-sm flex items-center justify-center text-white ${color}`}
                   >
-                    <Image
-                      src={client.src}
-                      alt={client.name}
-                      fill
-                      className="object-cover"
-                      sizes="36px"
-                    />
+                    <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4" aria-hidden="true" />
+                    <span className="sr-only">{name}</span>
                   </div>
                 ))}
               </div>
