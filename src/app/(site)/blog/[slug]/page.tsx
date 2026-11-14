@@ -240,17 +240,20 @@ export default async function BlogDetailsPage({ params }: { params: Promise<{ sl
 
           {/* Author Box */}
           <div className="mt-16 p-8 rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] flex flex-col md:flex-row items-center gap-6">
-            <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center shrink-0 border border-primary/30">
-              <span className="text-xl font-heading font-bold text-primary">
-                {post.author.charAt(0).toUpperCase()}
-              </span>
-            </div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/siraj-profile.webp"
+              alt="Sirajul Islam Sohag, Google Ads Expert"
+              width={80}
+              height={80}
+              className="w-20 h-20 rounded-full object-cover shrink-0 border-2 border-primary/40 shadow-md"
+            />
             <div>
               <h4 className="text-lg font-heading font-bold text-[var(--text)] mb-1">
-                Written by {post.author}
+                Written by <Link href="/about" className="hover:text-primary transition-colors">{post.author}</Link>
               </h4>
               <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-                Digital Marketing Consultant specializing in Google Ads, Meta Ads scaling, SEO, and Web Analytics for e-commerce and high-growth brands.
+                Google Ads Expert
               </p>
             </div>
           </div>
