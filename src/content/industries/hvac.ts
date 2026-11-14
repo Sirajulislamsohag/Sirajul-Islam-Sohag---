@@ -32,9 +32,9 @@ export const hvac: IndustryPage = {
     'Seasonal budget shifts between cooling and heating instead of a flat budget all year',
   ],
   heroImage: {
-    src: 'https://images.unsplash.com/photo-1776860155275-eee24bfb1dee',
-    alt: 'Heat pump unit installed outside a modern home',
-    credit: 'https://unsplash.com/photos/modern-house-exterior-with-heat-pump-unit-kblddocwPa0',
+    src: '/industries/google-ads-for-hvac-companies.webp',
+    alt: 'Google Ads for HVAC companies: technician repairing an AC unit with Google Search ad and Local Services Ad examples',
+    aspect: 'aspect-[16/9]',
   },
   sectionImage: {
     src: 'https://images.unsplash.com/photo-1770625467384-304e461ef1be',
