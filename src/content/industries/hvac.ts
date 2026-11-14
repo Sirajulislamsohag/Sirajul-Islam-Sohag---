@@ -37,9 +37,9 @@ export const hvac: IndustryPage = {
     aspect: 'aspect-[16/9]',
   },
   sectionImage: {
-    src: 'https://images.unsplash.com/photo-1770625467384-304e461ef1be',
-    alt: 'Homeowner adjusting a digital thermostat on the wall',
-    credit: 'https://unsplash.com/photos/finger-adjusting-a-modern-digital-thermostat-on-wall-3_nf1qKJGf4',
+    src: '/industries/google-ads-location-targeting.webp',
+    alt: 'Google Ads location targeting for HVAC companies: ads shown only inside the service area',
+    aspect: 'aspect-[1.91/1]',
   },
 
   challenges: [
