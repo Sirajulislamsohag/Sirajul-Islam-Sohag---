@@ -15,7 +15,7 @@ export const metadata: Metadata = pageMetadata({
   title: 'About Sirajul Islam Sohag | Certified Google Ads Expert',
   absoluteTitle: true,
   description:
-    'Meet Sirajul Islam Sohag, a certified Google Ads and analytics specialist with 4+ years running Search, PMax and tracking for clients worldwide.',
+    'Meet Sirajul Islam Sohag, a certified Google Ads and analytics specialist with 3+ years running Search, PMax and tracking for clients worldwide.',
   path: '/about',
   imageAlt: 'Sirajul Islam Sohag certified Google Ads and analytics specialist',
   keywords: ['Sirajul Islam Sohag', 'Google Ads specialist', 'PPC expert Bangladesh', 'certifications', 'performance marketer'],

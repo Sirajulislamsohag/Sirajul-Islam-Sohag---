@@ -21,7 +21,7 @@ export const metadata: Metadata = pageMetadata({
   title: 'Google Ads Expert & PPC Consultant | Sirajul Islam Sohag',
   absoluteTitle: true,
   description:
-    'Certified Google Ads expert with 4+ years managing PPC for home service, local and e-commerce brands. More qualified leads, less wasted spend. Book a call.',
+    'Certified Google Ads expert with 3+ years managing PPC for home service, local and e-commerce brands. More qualified leads, less wasted spend. Book a call.',
   path: '/',
   imageAlt: 'Sirajul Islam Sohag Google Ads expert and PPC consultant',
   keywords: ['Google Ads expert', 'PPC consultant', 'Google Ads specialist', 'performance marketing', 'Sirajul Islam Sohag'],
