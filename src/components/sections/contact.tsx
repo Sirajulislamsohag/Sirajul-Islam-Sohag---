@@ -108,7 +108,7 @@ export function Contact({
                     <Phone className="w-5 h-5 text-secondary" />
                   </div>
                   <div>
-                    <h4 className="font-heading font-semibold mb-1">Phone / WhatsApp</h4>
+                    <h4 className="font-heading font-semibold mb-1">WhatsApp</h4>
                     <a href={SOCIAL_LINKS.whatsapp} target="_blank" rel="noopener noreferrer" className="block text-sm text-[var(--text-secondary)] hover:text-primary transition-colors">
                       {SITE_CONFIG.phone}
                     </a>
