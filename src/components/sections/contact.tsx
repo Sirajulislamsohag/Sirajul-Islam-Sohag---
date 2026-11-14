@@ -108,9 +108,12 @@ export function Contact({
                     <Phone className="w-5 h-5 text-secondary" />
                   </div>
                   <div>
-                    <h4 className="font-heading font-semibold mb-1">Phone</h4>
-                    <a href={`tel:${SITE_CONFIG.phone}`} className="text-sm text-[var(--text-secondary)] hover:text-primary transition-colors">
+                    <h4 className="font-heading font-semibold mb-1">Phone / WhatsApp</h4>
+                    <a href={SOCIAL_LINKS.whatsapp} target="_blank" rel="noopener noreferrer" className="block text-sm text-[var(--text-secondary)] hover:text-primary transition-colors">
                       {SITE_CONFIG.phone}
+                    </a>
+                    <a href={SOCIAL_LINKS.whatsapp} target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline">
+                      Chat on WhatsApp &rarr;
                     </a>
                   </div>
                 </div>
