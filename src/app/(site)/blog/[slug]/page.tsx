@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 import { connectDB } from '@/lib/db';
 import { BlogModel } from '@/models/blog';
 import { Contact } from '@/components/sections/contact';
@@ -34,72 +35,6 @@ interface BlogPost {
   };
 }
 
-const SAMPLE_ARTICLES_MAP: Record<string, BlogPost> = {
-  'scale-google-ads-pmax-2026': {
-    _id: '1',
-    title: 'How to Scale Google Ads Performance Max Campaigns in 2026',
-    slug: 'scale-google-ads-pmax-2026',
-    excerpt: 'Discover actionable strategies to structure asset groups, feed optimization, and audience signals to reach 5x+ ROAS on PMax.',
-    sections: [
-      {
-        title: 'Introduction to Performance Max Scaling',
-        paragraphs: ['Performance Max (PMax) has become the flagship campaign type in Google Ads. However, many advertisers struggle with runaway spending and inconsistent CPA. In this guide, we break down the exact scaling framework used across enterprise Google Ads accounts.']
-      },
-      {
-        title: '1. Granular Asset Group Segmentation',
-        paragraphs: ['Stop dumping all products or landing pages into a single asset group. Group your asset groups by tight product categories, high-margin items, or audience personas. This gives Google\'s AI specific creative assets and copy tailored to each buying intent.']
-      },
-      {
-        title: '2. High-Intent Audience Signals',
-        paragraphs: ['Audience signals don\'t target users directly — they guide the algorithm during the initial learning phase. Combine custom intent keywords (competitor brand names + high-intent search queries) with first-party customer lists (uploaded via Customer Match).']
-      }
-    ],
-    tags: ['Google Ads', 'PMax', 'PPC'],
-    author: 'Sirajul Islam Sohag',
-    readTime: 6,
-    createdAt: '2026-07-28',
-  },
-  'meta-ads-attribution-setup-ios': {
-    _id: '2',
-    title: 'Meta Ads Attribution Setup: Navigating iOS Restrictions',
-    slug: 'meta-ads-attribution-setup-ios',
-    excerpt: 'Learn how to set up Meta Conversions API (CAPI) and GA4 server-side tracking to recover up to 35% of lost attribution data.',
-    sections: [
-      {
-        title: 'The Challenge of Signal Loss in Meta Ads',
-        paragraphs: ['Since Apple introduced iOS 14.5+ ATT privacy prompts, browser-based Meta Pixel tracking misses 20% to 40% of conversion events. Without accurate data, Meta\'s algorithm bids blindly, leading to inflated CPA and inaccurate ROAS metrics.']
-      },
-      {
-        title: '1. Server-Side Conversions API (CAPI)',
-        paragraphs: ['Conversions API creates a direct server-to-server link between your website (or server container) and Meta. By bypassing client-side ad blockers and browser privacy restrictions, CAPI recovers lost conversion signals seamlessly.']
-      }
-    ],
-    tags: ['Meta Ads', 'Analytics', 'Tracking'],
-    author: 'Sirajul Islam Sohag',
-    readTime: 8,
-    createdAt: '2026-07-20',
-  },
-  'technical-seo-checklist-ecommerce': {
-    _id: '3',
-    title: 'Technical SEO Checklist: 10 Critical Audits For E-Commerce',
-    slug: 'technical-seo-checklist-ecommerce',
-    excerpt: 'Step-by-step technical SEO guide covering crawl budgets, Schema markup, Core Web Vitals, and indexation fixes to double organic traffic.',
-    sections: [
-      {
-        title: 'Why Technical SEO Drives Organic Revenue',
-        paragraphs: ['Even with great content, technical barriers like slow page speed, orphan pages, or canonical loops can prevent search engine crawlers from indexing your money pages.']
-      },
-      {
-        title: '1. Faceted Navigation & Canonicalization',
-        paragraphs: ['E-commerce filter parameters (color, size, price) can generate thousands of duplicate URL parameters. Implement canonical tags pointing to root category pages or use noindex, follow rules for thin filter variations.']
-      }
-    ],
-    tags: ['SEO', 'E-Commerce', 'Audits'],
-    author: 'Sirajul Islam Sohag',
-    readTime: 10,
-    createdAt: '2026-07-15',
-  }
-};
 
 async function getBlogPost(slug: string): Promise<BlogPost> {
   try {
@@ -124,29 +59,11 @@ async function getBlogPost(slug: string): Promise<BlogPost> {
       }
     }
   } catch (error) {
-    console.warn('Database blog lookup error, falling back to static map:', error);
+    console.warn('Database blog lookup error, returning 404:', error);
   }
 
-  if (SAMPLE_ARTICLES_MAP[slug]) {
-    return SAMPLE_ARTICLES_MAP[slug];
-  }
-
-  return {
-    _id: 'default',
-    title: slug.replace(/-/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase()),
-    slug,
-    excerpt: 'Comprehensive growth guide and strategic analysis for performance marketing campaigns.',
-    sections: [
-      {
-        title: 'Strategic Growth Framework',
-        paragraphs: ['Scaling digital marketing performance requires continuous optimization, accurate conversion tracking, and high-converting ad copy.']
-      }
-    ],
-    tags: ['Digital Marketing', 'Growth', 'Strategy'],
-    author: 'Sirajul Islam Sohag',
-    readTime: 5,
-    createdAt: new Date().toISOString().split('T')[0],
-  };
+  // No post with this slug: return a real 404 instead of a placeholder page.
+  notFound();
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
