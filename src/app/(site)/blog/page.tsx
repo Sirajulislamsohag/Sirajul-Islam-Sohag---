@@ -11,6 +11,7 @@ import { Button } from '@/components/ui/button';
 import { Clock, ArrowUpRight, ChevronLeft, ChevronRight, FileText } from 'lucide-react';
 import Link from 'next/link';
 import { CTASection } from '@/components/sections/cta-section';
+import { STATIC_POST_CARDS } from '@/content/blog';
 
 interface BlogPost {
   _id: string;
@@ -25,8 +26,8 @@ interface BlogPost {
   createdAt: string;
 }
 
-// Old sample posts removed. New posts come from the dashboard (database).
-const SAMPLE_BLOGS: BlogPost[] = [];
+// Posts published from the codebase are rendered on first load (crawlable); dashboard posts are merged in.
+const SAMPLE_BLOGS: BlogPost[] = STATIC_POST_CARDS;
 
 const ITEMS_PER_PAGE = 6;
 
@@ -44,7 +45,12 @@ export default function BlogPage() {
         const res = await fetch('/api/blogs?status=published&limit=100');
         const data = await res.json();
         if (data.success && Array.isArray(data.data) && data.data.length > 0) {
-          setBlogs(data.data);
+          const seen = new Set(STATIC_POST_CARDS.map((p) => p.slug));
+          const fromDb = (data.data as BlogPost[]).filter((p) => p.slug && !seen.has(p.slug));
+          const merged = [...STATIC_POST_CARDS, ...fromDb].sort(
+            (x, y) => new Date(y.createdAt).getTime() - new Date(x.createdAt).getTime(),
+          );
+          setBlogs(merged);
         }
       } catch (err) {
         console.warn('Using sample blogs fallback:', err);
@@ -190,7 +196,7 @@ export default function BlogPage() {
                 <ScrollReveal key={post._id} delay={index * 0.06}>
                   <Link href={`/blog/${post.slug}`} className="block h-full">
                     <Card variant="glass" className="h-full flex flex-col justify-between group hover-glow cursor-pointer overflow-hidden p-0">
-                      <div className="relative aspect-[16/10] bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center overflow-hidden">
+                      <div className="relative aspect-[1200/630] bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center overflow-hidden">
                         {post.thumbnail ? (
                           /* eslint-disable-next-line @next/next/no-img-element */
                           <img

@@ -2,6 +2,7 @@ import { INDUSTRY_PAGES, industryHref } from '@/content/industries';
 import { SERVICE_PAGES, serviceHref } from '@/content/services';
 import { CASE_STUDIES, caseStudyHref } from '@/content/case-studies';
 import { absoluteUrl } from '@/lib/seo';
+import { STATIC_POSTS } from '@/content/blog';
 
 /**
  * /llms.txt: a plain-text map of the site for AI assistants and answer engines
@@ -35,6 +36,9 @@ export function GET() {
     '## Case studies',
     ...CASE_STUDIES.map((c) => line(c.title, caseStudyHref(c.slug), c.metaDescription)),
     '',
+    ...(STATIC_POSTS.length
+      ? ['## Articles', ...STATIC_POSTS.map((p) => line(p.title, `/blog/${p.slug}`, p.seo.metaDescription)), '']
+      : []),
   ].join('\n');
 
   return new Response(body, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
