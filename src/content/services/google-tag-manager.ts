@@ -29,9 +29,9 @@ export const googleTagManager: ServicePage = {
     'Server-side GTM for better data quality and control where it is worth it',
   ],
   heroImage: {
-    src: 'https://images.unsplash.com/photo-1542903660-eedba2cda473',
-    alt: 'Tracking code on a computer screen',
-    credit: 'https://unsplash.com/photos/computer-coding-screengrab-hvSr_CVecVI',
+    src: '/services/google-tag-manager.webp',
+    alt: 'Google Tag Manager consultant setting up tags, triggers and conversion tracking',
+    aspect: 'aspect-[16/10]',
   },
 
   whoItsFor: [

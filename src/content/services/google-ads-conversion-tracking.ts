@@ -29,9 +29,9 @@ export const conversionTracking: ServicePage = {
     'Offline conversions from your CRM so Google learns from qualified leads and revenue',
   ],
   heroImage: {
-    src: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f',
-    alt: 'Laptop displaying conversion and traffic reports',
-    credit: 'https://unsplash.com/photos/laptop-computer-on-glass-top-table-hpjSkU2UYSU',
+    src: '/services/google-ads-conversion-tracking.webp',
+    alt: 'Google Ads conversion tracking setup with Google Tag Manager',
+    aspect: 'aspect-[16/10]',
   },
 
   whoItsFor: [

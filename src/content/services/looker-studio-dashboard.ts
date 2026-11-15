@@ -29,9 +29,9 @@ export const lookerStudioDashboard: ServicePage = {
     'Automated refresh and scheduled delivery to your inbox',
   ],
   heroImage: {
-    src: 'https://images.unsplash.com/photo-1784729553968-07da5d7b7c99',
-    alt: 'Laptop screen with a marketing reporting dashboard',
-    credit: 'https://unsplash.com/photos/a-laptop-screen-displays-data-analytics-charts-and-statistics-fDisDvdiqrQ',
+    src: '/services/looker-studio-dashboard.webp',
+    alt: 'Looker Studio consultant building automated marketing reporting dashboards',
+    aspect: 'aspect-[16/10]',
   },
 
   whoItsFor: [

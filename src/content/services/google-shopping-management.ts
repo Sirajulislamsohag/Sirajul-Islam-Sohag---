@@ -29,9 +29,9 @@ export const googleShoppingManagement: ServicePage = {
     'Purchase tracking verified so ROAS numbers are real',
   ],
   heroImage: {
-    src: 'https://images.unsplash.com/photo-1607166452427-7e4477079cb9',
-    alt: 'Product package for an online store',
-    credit: 'https://unsplash.com/photos/brown-cardboard-box-on-white-surface-3l19r5EOZaw',
+    src: '/services/google-shopping-management.webp',
+    alt: 'Google Shopping campaign management for e-commerce product ads',
+    aspect: 'aspect-[16/10]',
   },
 
   whoItsFor: [
