@@ -2,16 +2,12 @@
 
 import { useEffect, useState, useRef } from 'react';
 import Image from 'next/image';
-import { useGSAP } from '@gsap/react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { motion, AnimatePresence } from 'framer-motion';
 import { TiltCard } from '@/components/animations/tilt-card';
 import { TextReveal } from '@/components/animations/text-reveal';
 import { Button } from '@/components/ui/button';
 import { Award, ExternalLink, X } from 'lucide-react';
 
-gsap.registerPlugin(ScrollTrigger);
 
 const CERTIFICATES = [
   {
@@ -126,31 +122,35 @@ export function Certificates() {
     };
   }, [selectedCert]);
 
-  useGSAP(() => {
-    if (!cardsRef.current || !sectionRef.current) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    const cards = gsap.utils.toArray<HTMLElement>(cardsRef.current.querySelectorAll('.cert-card'));
-
-    cards.forEach((card, index) => {
-      if (index === cards.length - 1) return;
-
-      const nextCard = cards[index + 1];
-
-      gsap.to(card, {
-        scale: 0.9 - (cards.length - index) * 0.02,
-         
-        transformOrigin: 'center top',
-        ease: 'none',
-        scrollTrigger: {
-          trigger: nextCard,
-          start: 'top bottom',
-          end: 'top center',
-          scrub: true,
-        },
+  // Stacked-card effect: each card shrinks slightly as the next one scrolls over it.
+  useEffect(() => {
+    const wrap = cardsRef.current;
+    if (!wrap || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const cards = Array.from(wrap.querySelectorAll<HTMLElement>('.cert-card'));
+    if (cards.length < 2) return;
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const vh = window.innerHeight;
+      cards.forEach((card, i) => {
+        if (i === cards.length - 1) return;
+        const nextTop = cards[i + 1].getBoundingClientRect().top;
+        const p = Math.min(1, Math.max(0, (vh - nextTop) / (vh / 2)));
+        const target = 0.9 - (cards.length - i) * 0.02;
+        card.style.transformOrigin = 'center top';
+        card.style.transform = `scale(${1 - p * (1 - target)})`;
       });
-    });
-  }, { scope: sectionRef, dependencies: [list] });
+    };
+    const onScroll = () => { if (!raf) raf = requestAnimationFrame(update); };
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+      cancelAnimationFrame(raf);
+    };
+  }, [list]);
 
   return (
     <section ref={sectionRef} id="certificates" className="py-24 md:py-32 relative">

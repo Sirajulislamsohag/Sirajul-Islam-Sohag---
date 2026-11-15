@@ -1,13 +1,7 @@
 'use client';
 
-import { useRef, ReactNode } from 'react';
-import { useGSAP } from '@gsap/react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import SplitType from 'split-type';
+import { useRef, useEffect, ReactNode } from 'react';
 import { cn } from '@/lib/utils';
-
-gsap.registerPlugin(ScrollTrigger);
 
 interface TextRevealProps {
   children: ReactNode;
@@ -19,6 +13,28 @@ interface TextRevealProps {
   once?: boolean;
 }
 
+/*
+ * Lightweight scroll reveal (CSS transition + one shared IntersectionObserver).
+ * Text is server-rendered visible; only elements that start BELOW the fold are hidden
+ * on mount and revealed as they scroll in, so nothing above the fold waits for JavaScript.
+ */
+let observer: IntersectionObserver | null = null;
+function getObserver() {
+  if (observer || typeof IntersectionObserver === 'undefined') return observer;
+  observer = new IntersectionObserver(
+    (entries) => {
+      for (const e of entries) {
+        if (!e.isIntersecting) continue;
+        const el = e.target as HTMLElement;
+        el.classList.add('reveal-in');
+        observer?.unobserve(el);
+      }
+    },
+    { rootMargin: '0px 0px -8% 0px' },
+  );
+  return observer;
+}
+
 export function TextReveal({
   children,
   className,
@@ -26,89 +42,24 @@ export function TextReveal({
   delay = 0,
   duration = 0.8,
   as: Tag = 'div',
-  once = true,
 }: TextRevealProps) {
-  const containerRef = useRef<HTMLElement>(null);
+  const ref = useRef<HTMLElement>(null);
 
-  useGSAP(() => {
-    const element = containerRef.current;
-    if (!element) return;
+  useEffect(() => {
+    const el = ref.current;
+    const io = getObserver();
+    if (!el || !io) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    let split: SplitType | null = null;
-
-    const hasNestedElements = element.children.length > 0;
-
-    if (variant === 'char-reveal' && !hasNestedElements) {
-      try {
-        split = new SplitType(element as HTMLElement, { types: 'chars,words' });
-        if (split.chars && split.chars.length > 0) {
-          gsap.fromTo(
-            split.chars,
-            { y: '80%', opacity: 0 },
-            {
-              y: '0%',
-              opacity: 1,
-              duration: 0.7,
-              stagger: 0.02,
-              ease: 'power4.out',
-              delay,
-              scrollTrigger: {
-                trigger: element,
-                start: 'top 92%',
-                once,
-              },
-            }
-          );
-        }
-      } catch (e) {
-        console.warn('SplitType error:', e);
-      }
-    } else {
-      const animations: Record<string, gsap.TweenVars> = {
-        'fade-up': { y: 30, opacity: 0 },
-        'slide-in': { x: -40, opacity: 0 },
-        'blur-in': { opacity: 0, filter: 'blur(8px)' },
-      };
-
-      gsap.fromTo(
-        element,
-        animations[variant] || { y: 30, opacity: 0 },
-        {
-          y: 0,
-          x: 0,
-          opacity: 1,
-          filter: 'blur(0px)',
-          duration,
-          delay,
-          ease: 'power4.out',
-          scrollTrigger: {
-            trigger: element,
-            start: 'top 92%',
-            once,
-          },
-        }
-      );
-    }
-
-    // Safety fallback: Refresh ScrollTrigger so characters never stay hidden on reload
-    const timer = setTimeout(() => {
-      ScrollTrigger.refresh();
-      if (split && split.chars) {
-        gsap.to(split.chars, { opacity: 1, y: '0%', duration: 0.3 });
-      } else if (element) {
-        gsap.to(element, { opacity: 1, y: 0, x: 0, filter: 'blur(0px)', duration: 0.3 });
-      }
-    }, 1200);
-
-    return () => {
-      clearTimeout(timer);
-      if (split) split.revert();
-    };
-  }, { scope: containerRef });
+    if (el.getBoundingClientRect().top < window.innerHeight) return; // already visible: leave as is
+    el.style.transitionDelay = `${delay}s`;
+    el.style.transitionDuration = `${Math.min(duration, 0.8)}s`;
+    el.classList.add('reveal', `reveal-${variant}`);
+    io.observe(el);
+    return () => io.unobserve(el);
+  }, [delay, duration, variant]);
 
   return (
-    <Tag ref={containerRef as any} className={cn('will-change-transform', className)}>
+    <Tag ref={ref as never} className={cn(className)}>
       {children}
     </Tag>
   );

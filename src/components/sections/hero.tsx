@@ -3,8 +3,6 @@
 import { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useGSAP } from '@gsap/react';
-import gsap from 'gsap';
 import { ArrowRight, Play, Home, Hammer, Store, ShoppingCart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -59,25 +57,6 @@ export function Hero() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  useGSAP(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    
-    const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
-    
-    tl.from(headingRef.current, { y: 100, opacity: 0, duration: 1.2, delay: 0.3 })
-      .from(contentRef.current?.querySelectorAll('.hero-animate') || [], {
-        y: 40, opacity: 0, duration: 0.8, stagger: 0.15,
-      }, '-=0.6')
-      .from(imageRef.current, {
-        scale: 0.8, opacity: 0, duration: 1, ease: 'back.out(1.7)',
-      }, '-=0.8')
-      .from(orbitRef.current?.querySelectorAll('.orbit-item') || [], {
-        scale: 0, opacity: 0, duration: 0.6, stagger: 0.1, ease: 'back.out(2)',
-      }, '-=0.5')
-      .from(statsRef.current, {
-        y: 30, opacity: 0, duration: 0.8,
-      }, '-=0.4');
-  }, { scope: sectionRef });
 
   return (
     <section
@@ -161,12 +140,15 @@ export function Hero() {
               {/* Image Container */}
               <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-white/10 shadow-2xl">
                 <Image
-                  src="/siraj.webp"
+                  src="/siraj-hero.webp"
                   alt="Sirajul Islam Sohag Google Ads expert and PPC consultant"
                   fill
-                  priority
+                  preload
+                  fetchPriority="high"
+                  decoding="sync"
+                  quality={70}
                   className="object-cover"
-                  sizes="(max-width: 640px) 270px, (max-width: 1024px) 340px, 420px"
+                  sizes="(max-width: 480px) 230px, (max-width: 640px) 270px, (max-width: 1024px) 340px, 420px"
                 />
               </div>
 
@@ -188,6 +170,7 @@ export function Hero() {
                       style={{
                         left: `calc(50% + ${x}px)`,
                         top: `calc(50% + ${y}px)`,
+                        animation: `orbit-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) ${0.2 + index * 0.08}s both`,
                       }}
                     >
                       {/* Center alignment wrapper */}
@@ -201,9 +184,13 @@ export function Hero() {
                             boxShadow: `0 0 20px ${skill.color}20`
                           }}
                         >
-                          <img 
-                            src={skill.iconUrl} 
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img
+                            src={skill.iconUrl}
                             alt={skill.label}
+                            width={28}
+                            height={28}
+                            decoding="async"
                             className="w-5 h-5 sm:w-6 sm:h-6 xl:w-7 xl:h-7 object-contain"
                           />
                           {/* Tooltip on hover */}

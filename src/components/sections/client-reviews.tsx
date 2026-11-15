@@ -4,7 +4,6 @@ import { GSAPMarquee } from '@/components/animations/marquee';
 import { TextReveal } from '@/components/animations/text-reveal';
 import { Card } from '@/components/ui/card';
 import { REVIEWS } from '@/lib/constants';
-import Image from 'next/image';
 
 export function ClientReviews() {
   const firstRow = REVIEWS.slice(0, Math.ceil(REVIEWS.length / 2));
@@ -76,14 +75,12 @@ function ReviewCard({ review }: { review: typeof REVIEWS[0] }) {
         {/* Bottom Author Row: Avatar + Info on Left, Google Logo on Right */}
         <div className="flex items-center justify-between gap-3 mt-auto pt-4 border-t border-[var(--border)]">
           <div className="flex items-center gap-3.5 min-w-0">
-            <div className="relative w-10 h-10 rounded-full overflow-hidden ring-2 ring-primary/30 shrink-0">
-              <Image
-                src={review.photo}
-                alt={review.name}
-                fill
-                className="object-cover"
-                sizes="40px"
-              />
+            {/* Initials avatar drawn locally (no image request per review) */}
+            <div
+              aria-hidden="true"
+              className="w-10 h-10 rounded-full ring-2 ring-primary/30 shrink-0 flex items-center justify-center bg-primary text-white text-xs font-bold font-heading"
+            >
+              {review.name.split(' ').slice(0, 2).map((w) => w[0]).join('').toUpperCase()}
             </div>
             <div className="min-w-0">
               <p className="text-sm font-heading font-semibold text-[var(--text)] leading-tight truncate">{review.name}</p>

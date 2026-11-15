@@ -1,7 +1,6 @@
 'use client';
 
 import { useRef, useCallback, ReactNode } from 'react';
-import gsap from 'gsap';
 import { cn } from '@/lib/utils';
 
 interface MagneticProps {
@@ -10,45 +9,32 @@ interface MagneticProps {
   strength?: number;
 }
 
+/** Element gently follows the cursor (desktop hover only). Plain CSS transforms, no animation library. */
 export function Magnetic({ children, className, strength = 0.3 }: MagneticProps) {
   const ref = useRef<HTMLDivElement>(null);
 
   const handleMouseMove = useCallback(
     (e: React.MouseEvent) => {
-      if (!ref.current) return;
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      
-      const rect = ref.current.getBoundingClientRect();
-      const x = e.clientX - rect.left - rect.width / 2;
-      const y = e.clientY - rect.top - rect.height / 2;
-
-      gsap.to(ref.current, {
-        x: x * strength,
-        y: y * strength,
-        duration: 0.4,
-        ease: 'power3.out',
-      });
+      const el = ref.current;
+      if (!el || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const rect = el.getBoundingClientRect();
+      const x = (e.clientX - rect.left - rect.width / 2) * strength;
+      const y = (e.clientY - rect.top - rect.height / 2) * strength;
+      el.style.transition = 'transform 0.4s cubic-bezier(0.22, 1, 0.36, 1)';
+      el.style.transform = `translate3d(${x}px, ${y}px, 0)`;
     },
-    [strength]
+    [strength],
   );
 
   const handleMouseLeave = useCallback(() => {
-    if (!ref.current) return;
-    gsap.to(ref.current, {
-      x: 0,
-      y: 0,
-      duration: 0.7,
-      ease: 'elastic.out(1, 0.3)',
-    });
+    const el = ref.current;
+    if (!el) return;
+    el.style.transition = 'transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1)';
+    el.style.transform = 'translate3d(0, 0, 0)';
   }, []);
 
   return (
-    <div
-      ref={ref}
-      className={cn('inline-block', className)}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-    >
+    <div ref={ref} className={cn('inline-block', className)} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
       {children}
     </div>
   );

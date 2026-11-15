@@ -1,67 +1,56 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
-import gsap from 'gsap';
-import { useMediaQuery } from '@/hooks/use-media-query';
+import { useEffect, useRef, useState } from 'react';
 
+/** Custom cursor (desktop with a mouse only). Lightweight requestAnimationFrame easing. */
 export function CursorBlob() {
   const dotRef = useRef<HTMLDivElement>(null);
   const outlineRef = useRef<HTMLDivElement>(null);
-  const isMobile = useMediaQuery('(max-width: 768px)');
+  const [enabled, setEnabled] = useState(false);
 
   useEffect(() => {
-    if (isMobile) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const fine = window.matchMedia('(pointer: fine) and (min-width: 769px)').matches;
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    setEnabled(fine && !reduced);
+  }, []);
 
+  useEffect(() => {
+    if (!enabled) return;
     const dot = dotRef.current;
     const outline = outlineRef.current;
     if (!dot || !outline) return;
 
-    const xDot = gsap.quickTo(dot, 'x', { duration: 0.15, ease: 'power3.out' });
-    const yDot = gsap.quickTo(dot, 'y', { duration: 0.15, ease: 'power3.out' });
-    const xOutline = gsap.quickTo(outline, 'x', { duration: 0.5, ease: 'power3.out' });
-    const yOutline = gsap.quickTo(outline, 'y', { duration: 0.5, ease: 'power3.out' });
+    let mx = -100, my = -100, dx = -100, dy = -100, ox = -100, oy = -100, raf = 0;
+    const loop = () => {
+      dx += (mx - dx) * 0.5; dy += (my - dy) * 0.5;
+      ox += (mx - ox) * 0.18; oy += (my - oy) * 0.18;
+      dot.style.transform = `translate3d(${dx}px, ${dy}px, 0) translate(-50%, -50%)`;
+      outline.style.transform = `translate3d(${ox}px, ${oy}px, 0) translate(-50%, -50%)`;
+      raf = Math.abs(mx - ox) + Math.abs(my - oy) > 0.1 ? requestAnimationFrame(loop) : 0;
+    };
+    const onMove = (e: MouseEvent) => { mx = e.clientX; my = e.clientY; if (!raf) raf = requestAnimationFrame(loop); };
 
-    const handleMouseMove = (e: MouseEvent) => {
-      xDot(e.clientX);
-      yDot(e.clientY);
-      xOutline(e.clientX);
-      yOutline(e.clientY);
+    const interactive = 'a, button, [role="button"], input, textarea, select';
+    const onOver = (e: MouseEvent) => {
+      const hit = (e.target as Element | null)?.closest?.(interactive);
+      dot.classList.toggle('cursor-dot--active', !!hit);
+      outline.classList.toggle('cursor-outline--active', !!hit);
     };
 
-    const handleMouseEnterInteractive = () => {
-      gsap.to(dot, { width: 60, height: 60, background: 'rgba(79, 70, 229, 0.2)', duration: 0.3 });
-      gsap.to(outline, { width: 80, height: 80, borderColor: 'var(--color-accent)', opacity: 0.3, duration: 0.3 });
-    };
-
-    const handleMouseLeaveInteractive = () => {
-      gsap.to(dot, { width: 8, height: 8, background: 'var(--color-primary)', duration: 0.3 });
-      gsap.to(outline, { width: 40, height: 40, borderColor: 'var(--color-primary)', opacity: 0.5, duration: 0.3 });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-
-    const interactiveElements = document.querySelectorAll('a, button, [role="button"], input, textarea, select');
-    interactiveElements.forEach((el) => {
-      el.addEventListener('mouseenter', handleMouseEnterInteractive);
-      el.addEventListener('mouseleave', handleMouseLeaveInteractive);
-    });
-
+    window.addEventListener('mousemove', onMove, { passive: true });
+    document.addEventListener('mouseover', onOver, { passive: true });
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      interactiveElements.forEach((el) => {
-        el.removeEventListener('mouseenter', handleMouseEnterInteractive);
-        el.removeEventListener('mouseleave', handleMouseLeaveInteractive);
-      });
+      window.removeEventListener('mousemove', onMove);
+      document.removeEventListener('mouseover', onOver);
+      cancelAnimationFrame(raf);
     };
-  }, [isMobile]);
+  }, [enabled]);
 
-  if (isMobile) return null;
-
+  if (!enabled) return null;
   return (
     <>
-      <div ref={dotRef} className="cursor-dot hidden md:block" style={{ left: 0, top: 0 }} />
-      <div ref={outlineRef} className="cursor-outline hidden md:block" style={{ left: 0, top: 0 }} />
+      <div ref={dotRef} className="cursor-dot" style={{ left: 0, top: 0 }} />
+      <div ref={outlineRef} className="cursor-outline" style={{ left: 0, top: 0 }} />
     </>
   );
 }
