@@ -29,6 +29,8 @@ export function HeroParticles() {
     if (!canvas) return;
 
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    // Decorative only: skip on small screens to keep phones fast.
+    if (window.innerWidth < 768) return;
 
     const ctx = canvas.getContext('2d', { alpha: true });
     if (!ctx) return;

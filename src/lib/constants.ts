@@ -32,12 +32,12 @@ export const TYPING_ROLES = [
 ];
 
 export const ORBIT_SKILLS = [
-  { label: 'Google Ads', iconUrl: 'https://cdn.simpleicons.org/googleads/4285F4', color: '#4285F4' },
-  { label: 'Meta Ads', iconUrl: 'https://cdn.simpleicons.org/meta/0668E1', color: '#0668E1' },
-  { label: 'Google Analytics', iconUrl: 'https://cdn.simpleicons.org/googleanalytics/F59E0B', color: '#F59E0B' },
-  { label: 'SEO', iconUrl: 'https://cdn.simpleicons.org/google/22C55E', color: '#22C55E' },
-  { label: 'Google Tag Manager', iconUrl: 'https://cdn.simpleicons.org/googletagmanager/246FDB', color: '#246FDB' },
-  { label: 'HubSpot', iconUrl: 'https://cdn.simpleicons.org/hubspot/FF7A59', color: '#FF7A59' },
+  { label: 'Google Ads', iconUrl: '/icons/googleads.svg', color: '#4285F4' },
+  { label: 'Meta Ads', iconUrl: '/icons/meta.svg', color: '#0668E1' },
+  { label: 'Google Analytics', iconUrl: '/icons/googleanalytics.svg', color: '#F59E0B' },
+  { label: 'SEO', iconUrl: '/icons/google.svg', color: '#22C55E' },
+  { label: 'Google Tag Manager', iconUrl: '/icons/googletagmanager.svg', color: '#246FDB' },
+  { label: 'HubSpot', iconUrl: '/icons/hubspot.svg', color: '#FF7A59' },
 ];
 
 export const STATS = [
@@ -281,21 +281,21 @@ export const REVIEWS: Review[] = [
 ];
 
 export const TRUSTED_BRANDS = [
-  { name: 'United Trailers', logo: '/logos/1785730667707_unitedtrailers_com_au_logo9_nobg.png' },
-  { name: 'Peckphase', logo: '/logos/Peckphase_nobg.png' },
-  { name: 'Anan Care Services', logo: '/logos/anancareservices_com_au_logo13_nobg.png' },
-  { name: 'Asap Tars', logo: '/logos/asaptars_com_logo5_nobg.png' },
-  { name: 'Drugstore Online', logo: '/logos/drugstoreonline_me_logo11_nobg.png' },
-  { name: 'Engraved Anything', logo: '/logos/engravedanything_com_logo10_nobg.png' },
-  { name: 'Fishing Tours', logo: '/logos/fishingtoursplayadelcarmen_com_logo13_nobg.png' },
-  { name: 'Fresh Ausfluege', logo: '/logos/fresh_deutsche-ausfluege-mexiko_de_logo12_nobg.png' },
-  { name: 'House of Appliances', logo: '/logos/houseofappliances_co_logo11_nobg.png' },
-  { name: 'Leather Dot BD', logo: '/logos/leatherdotbd_com_logo5_nobg.png' },
-  { name: 'Location Mobile Tire', logo: '/logos/locationmobiletire_com_logo9_nobg.png' },
-  { name: 'Photo Reviser', logo: '/logos/photoreviser_com_logo84_nobg.png' },
-  { name: 'Pirate Mobile', logo: '/logos/piratemobile_gg_logo15_nobg.png' },
-  { name: 'Rdon Cleaning', logo: '/logos/rdoncleaning_com_logo11_nobg.png' },
-  { name: 'RST Electrical', logo: '/logos/rstelectrical_co_logo5_nobg.png' },
+  { name: 'United Trailers', logo: '/logos/1785730667707_unitedtrailers_com_au_logo9_nobg.webp' },
+  { name: 'Peckphase', logo: '/logos/Peckphase_nobg.webp' },
+  { name: 'Anan Care Services', logo: '/logos/anancareservices_com_au_logo13_nobg.webp' },
+  { name: 'Asap Tars', logo: '/logos/asaptars_com_logo5_nobg.webp' },
+  { name: 'Drugstore Online', logo: '/logos/drugstoreonline_me_logo11_nobg.webp' },
+  { name: 'Engraved Anything', logo: '/logos/engravedanything_com_logo10_nobg.webp' },
+  { name: 'Fishing Tours', logo: '/logos/fishingtoursplayadelcarmen_com_logo13_nobg.webp' },
+  { name: 'Fresh Ausfluege', logo: '/logos/fresh_deutsche-ausfluege-mexiko_de_logo12_nobg.webp' },
+  { name: 'House of Appliances', logo: '/logos/houseofappliances_co_logo11_nobg.webp' },
+  { name: 'Leather Dot BD', logo: '/logos/leatherdotbd_com_logo5_nobg.webp' },
+  { name: 'Location Mobile Tire', logo: '/logos/locationmobiletire_com_logo9_nobg.webp' },
+  { name: 'Photo Reviser', logo: '/logos/photoreviser_com_logo84_nobg.webp' },
+  { name: 'Pirate Mobile', logo: '/logos/piratemobile_gg_logo15_nobg.webp' },
+  { name: 'Rdon Cleaning', logo: '/logos/rdoncleaning_com_logo11_nobg.webp' },
+  { name: 'RST Electrical', logo: '/logos/rstelectrical_co_logo5_nobg.webp' },
 ];
 
 export const SERVICE_OPTIONS = [

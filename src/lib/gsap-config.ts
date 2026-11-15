@@ -2,10 +2,9 @@
 
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Flip } from 'gsap/Flip';
 
 if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger, Flip);
+  gsap.registerPlugin(ScrollTrigger);
   
   // Set global defaults
   gsap.defaults({
@@ -22,4 +21,4 @@ if (typeof window !== 'undefined') {
   }
 }
 
-export { gsap, ScrollTrigger, Flip };
+export { gsap, ScrollTrigger };

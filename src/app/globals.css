@@ -125,7 +125,7 @@
 
 /* ===== BASE STYLES ===== */
 html {
-  scroll-behavior: auto; /* Lenis handles smooth scroll */
+  scroll-behavior: smooth;
 }
 
 body {
@@ -224,7 +224,6 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 50%;
   filter: blur(120px);
   opacity: 0.3;
-  animation: aurora 8s ease-in-out infinite alternate;
 }
 
 .aurora-bg::before {
@@ -443,3 +442,22 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.6;
   color: var(--text-secondary);
 }
+
+/* ===== Lightweight scroll reveal (TextReveal) ===== */
+.reveal {
+  transition-property: opacity, transform, filter;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal:not(.reveal-in) { opacity: 0; transform: translate3d(0, 24px, 0); }
+.reveal-slide-in:not(.reveal-in) { transform: translate3d(-32px, 0, 0); }
+.reveal-blur-in:not(.reveal-in) { transform: none; filter: blur(6px); }
+
+/* Custom cursor hover state (CursorBlob) */
+.cursor-dot.cursor-dot--active { width: 60px; height: 60px; background: rgba(79, 70, 229, 0.2); mix-blend-mode: normal; }
+.cursor-outline.cursor-outline--active { width: 80px; height: 80px; border-color: var(--color-accent); opacity: 0.3; }
+
+/* Hero orbit icons pop in (CSS, no JS needed) */
+@keyframes orbit-pop { from { opacity: 0; transform: scale(0); } to { opacity: 1; transform: scale(1); } }
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }

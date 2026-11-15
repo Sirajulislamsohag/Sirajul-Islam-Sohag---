@@ -82,6 +82,16 @@ export function GSAPMarquee({
   const lastTimeRef = useRef(0);
   const contentWidthRef = useRef(0);
   const initializedRef = useRef(false);
+  const visibleRef = useRef(true);
+
+  // Only animate while the marquee is on screen (saves main-thread work while scrolling elsewhere).
+  useEffect(() => {
+    const el = trackRef.current?.parentElement;
+    if (!el || typeof IntersectionObserver === 'undefined') return;
+    const io = new IntersectionObserver(([e]) => { visibleRef.current = e.isIntersecting; }, { rootMargin: '200px' });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
 
   const measure = useCallback(() => {
     const track = trackRef.current;
@@ -114,7 +124,7 @@ export function GSAPMarquee({
       const delta = (time - lastTimeRef.current) / 1000;
       lastTimeRef.current = time;
 
-      if (!isPaused && contentWidthRef.current > 0 && offsetRef.current !== null) {
+      if (!isPaused && visibleRef.current && contentWidthRef.current > 0 && offsetRef.current !== null) {
         const dir = reverse ? 1 : -1;
         offsetRef.current += dir * speed * delta;
 
@@ -157,8 +167,8 @@ export function GSAPMarquee({
         className="flex will-change-transform"
         style={{ gap: `${gap}px` }}
       >
-        {/* Render 4 copies for seamless wrapping on all screen sizes */}
-        {Array.from({ length: 4 }).map((_, i) => (
+        {/* Two copies are enough for a seamless loop: each copy is wider than any screen */}
+        {Array.from({ length: 2 }).map((_, i) => (
           <div
             key={i}
             className="flex shrink-0"

@@ -23,10 +23,15 @@ export function TrustedBrands() {
             key={brand.name}
             className="flex items-center justify-center px-8 py-4 shrink-0 rounded-xl border border-[var(--border)] bg-[var(--bg-card)]/60 backdrop-blur-sm hover:border-primary/30 transition-all duration-300 group h-24 min-w-[200px]"
           >
-            <img 
-              src={brand.logo} 
-              alt={brand.name} 
-              className="max-h-full max-w-full object-contain   transition-all duration-300"
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={brand.logo}
+              alt={brand.name}
+              width={160}
+              height={64}
+              loading="lazy"
+              decoding="async"
+              className="h-auto w-auto max-h-full max-w-full object-contain transition-all duration-300"
             />
           </div>
         ))}

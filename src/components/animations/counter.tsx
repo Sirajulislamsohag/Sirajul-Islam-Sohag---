@@ -1,12 +1,7 @@
 'use client';
 
-import { useRef } from 'react';
-import { useGSAP } from '@gsap/react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useRef, useEffect } from 'react';
 import { cn } from '@/lib/utils';
-
-gsap.registerPlugin(ScrollTrigger);
 
 interface CounterProps {
   value: number;
@@ -17,46 +12,42 @@ interface CounterProps {
   decimals?: number;
 }
 
-export function Counter({
-  value,
-  suffix = '',
-  prefix = '',
-  duration = 2,
-  className,
-  decimals = 0,
-}: CounterProps) {
-  const counterRef = useRef<HTMLSpanElement>(null);
-  const hasAnimated = useRef(false);
+/**
+ * Shows the real number in the HTML (good for SEO and first paint). Counters that start
+ * below the fold count up from 0 when they scroll into view.
+ */
+export function Counter({ value, suffix = '', prefix = '', duration = 2, className, decimals = 0 }: CounterProps) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const fmt = (v: number) => `${prefix}${decimals > 0 ? v.toFixed(decimals) : Math.round(v)}${suffix}`;
 
-  useGSAP(() => {
-    if (!counterRef.current || hasAnimated.current) return;
-
-    const obj = { val: 0 };
-
-    gsap.to(obj, {
-      val: value,
-      duration,
-      ease: 'power2.out',
-      snap: decimals === 0 ? { val: 1 } : undefined,
-      scrollTrigger: {
-        trigger: counterRef.current,
-        start: 'top 90%',
-        once: true,
-      },
-      onUpdate: () => {
-        if (counterRef.current) {
-          counterRef.current.textContent = `${prefix}${decimals > 0 ? obj.val.toFixed(decimals) : Math.round(obj.val)}${suffix}`;
-        }
-      },
-      onComplete: () => {
-        hasAnimated.current = true;
-      },
-    });
-  }, { scope: counterRef });
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || typeof IntersectionObserver === 'undefined') return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (el.getBoundingClientRect().top < window.innerHeight) return; // already on screen: keep final value
+    el.textContent = fmt(0);
+    let raf = 0;
+    const io = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return;
+      io.disconnect();
+      const start = performance.now();
+      const ms = duration * 1000;
+      const step = (now: number) => {
+        const t = Math.min(1, (now - start) / ms);
+        const eased = 1 - Math.pow(1 - t, 2);
+        el.textContent = fmt(value * eased);
+        if (t < 1) raf = requestAnimationFrame(step);
+      };
+      raf = requestAnimationFrame(step);
+    }, { rootMargin: '0px 0px -10% 0px' });
+    io.observe(el);
+    return () => { io.disconnect(); cancelAnimationFrame(raf); };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [value, duration, decimals, prefix, suffix]);
 
   return (
-    <span ref={counterRef} className={cn('font-number tabular-nums', className)}>
-      {prefix}0{suffix}
+    <span ref={ref} className={cn('font-number tabular-nums', className)}>
+      {fmt(value)}
     </span>
   );
 }

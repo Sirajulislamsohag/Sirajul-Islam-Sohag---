@@ -2,8 +2,6 @@
 
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
 import { Mail, Phone, Send, Calendar, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -18,17 +16,18 @@ import { useCalendly } from '@/providers/calendly-provider';
 import { analyticsEvents } from '@/lib/gtm';
 import toast from 'react-hot-toast';
 
-const contactSchema = z.object({
-  name: z.string().min(2, 'Name must be at least 2 characters'),
-  email: z.string().email('Please enter a valid email'),
-  phone: z.string().optional(),
-  company: z.string().optional(),
-  service: z.string().min(1, 'Please select a service'),
-  budget: z.string().min(1, 'Please select a budget'),
-  message: z.string().optional(),
-});
+// Validation uses react-hook-form's built-in rules (no zod on the client); the API validates again server-side.
+type ContactFormData = {
+  name: string;
+  email: string;
+  phone?: string;
+  company?: string;
+  service: string;
+  budget: string;
+  message?: string;
+};
 
-type ContactFormData = z.infer<typeof contactSchema>;
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export function Contact({
   headingAs = 'h2',
@@ -42,9 +41,7 @@ export function Contact({
     handleSubmit,
     formState: { errors, isSubmitting },
     reset,
-  } = useForm<ContactFormData>({
-    resolver: zodResolver(contactSchema),
-  });
+  } = useForm<ContactFormData>();
 
   const onSubmit = async (data: ContactFormData) => {
     try {
@@ -180,7 +177,7 @@ export function Contact({
                         label="Full Name"
                         placeholder="John Doe"
                         error={errors.name?.message}
-                        {...register('name')}
+                        {...register('name', { validate: (v) => v.trim().length >= 2 || 'Name must be at least 2 characters' })}
                       />
                       <Input
                         id="email"
@@ -188,7 +185,7 @@ export function Contact({
                         type="email"
                         placeholder="john@company.com"
                         error={errors.email?.message}
-                        {...register('email')}
+                        {...register('email', { required: 'Please enter a valid email', pattern: { value: EMAIL_RE, message: 'Please enter a valid email' } })}
                       />
                     </div>
                     <div className="grid md:grid-cols-2 gap-5">
@@ -212,7 +209,7 @@ export function Contact({
                         placeholder="Select a service"
                         options={SERVICE_OPTIONS.map((s) => ({ value: s, label: s }))}
                         error={errors.service?.message}
-                        {...register('service')}
+                        {...register('service', { required: 'Please select a service' })}
                       />
                       <Select
                         id="budget"
@@ -220,7 +217,7 @@ export function Contact({
                         placeholder="Select budget"
                         options={BUDGET_OPTIONS.map((b) => ({ value: b, label: b }))}
                         error={errors.budget?.message}
-                        {...register('budget')}
+                        {...register('budget', { required: 'Please select a budget' })}
                       />
                     </div>
                     <Textarea
