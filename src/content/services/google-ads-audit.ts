@@ -29,9 +29,9 @@ export const googleAdsAudit: ServicePage = {
     'A roadmap you can hand to any manager or agency',
   ],
   heroImage: {
-    src: 'https://images.unsplash.com/photo-1783115259399-3a5a3e0e4592',
-    alt: 'Reviewing campaign data in a spreadsheet during a Google Ads audit',
-    credit: 'https://unsplash.com/photos/hands-typing-on-a-laptop-displaying-a-data-spreadsheet-9fZuqBYlV1w',
+    src: '/services/google-ads-audit.webp',
+    alt: 'Google Ads account audit services: performance boost, cost efficiency and error detection',
+    aspect: 'aspect-[16/10]',
   },
 
   whoItsFor: [

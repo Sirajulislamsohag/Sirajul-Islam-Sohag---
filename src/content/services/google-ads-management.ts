@@ -30,9 +30,9 @@ export const googleAdsManagement: ServicePage = {
     'Weekly optimization and a monthly report you can actually read',
   ],
   heroImage: {
-    src: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71',
-    alt: 'Google Ads performance graphs on a laptop screen',
-    credit: 'https://unsplash.com/photos/graphs-of-performance-analytics-on-a-laptop-screen-JKUTrJ4vK00',
+    src: '/services/google-ads-management.webp',
+    alt: 'Google Ads management services for lead generation and campaign optimization',
+    aspect: 'aspect-[16/10]',
   },
 
   whoItsFor: [

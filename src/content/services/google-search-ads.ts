@@ -29,9 +29,9 @@ export const googleSearchAds: ServicePage = {
     'Weekly search term reviews that cut waste and find new opportunities',
   ],
   heroImage: {
-    src: 'https://images.unsplash.com/photo-1781246435700-afec19012b45',
-    alt: 'Laptop showing search campaign charts on a desk',
-    credit: 'https://unsplash.com/photos/laptop-with-charts-on-a-desk-by-a-sunny-window-8OYcY9CRP_0',
+    src: '/services/google-search-ads.webp',
+    alt: 'Google Search Ads management lifecycle: audit, keyword research, campaign setup, ads, bidding and monitoring',
+    aspect: 'aspect-[16/10]',
   },
 
   whoItsFor: [

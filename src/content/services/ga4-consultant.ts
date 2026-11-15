@@ -29,9 +29,9 @@ export const ga4Consultant: ServicePage = {
     'Attribution and channel reporting that holds up against ad platform claims',
   ],
   heroImage: {
-    src: 'https://images.unsplash.com/photo-1666875753105-c63a6f3bdc86',
-    alt: 'Analytics dashboard interface with traffic and engagement data',
-    credit: 'https://unsplash.com/photos/graphical-user-interface--WXQm_NTK0U',
+    src: '/services/ga4-consultant.webp',
+    alt: 'GA4 consultant for Google Analytics 4 setup, events and reporting',
+    aspect: 'aspect-[16/10]',
   },
 
   whoItsFor: [

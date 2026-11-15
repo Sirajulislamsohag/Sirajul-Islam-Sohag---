@@ -29,9 +29,9 @@ export const performanceMaxManagement: ServicePage = {
     'Conversion values and tracking verified before scaling',
   ],
   heroImage: {
-    src: 'https://images.unsplash.com/photo-1763038311036-6d18805537e5',
-    alt: 'Marketer analyzing Performance Max charts on a laptop',
-    credit: 'https://unsplash.com/photos/woman-working-on-laptop-with-charts-and-graphs-KNQUEQwTCY4',
+    src: '/services/performance-max-management.webp',
+    alt: 'Google Ads Performance Max management across Search, YouTube, Display, Discover, Gmail and Maps',
+    aspect: 'aspect-[16/10]',
   },
 
   whoItsFor: [
