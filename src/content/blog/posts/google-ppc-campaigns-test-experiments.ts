@@ -129,7 +129,7 @@ const post: StaticBlogPost = {
       "title": "Test With a Clear Business Goal",
       "paragraphs": [
         "The best Google PPC campaign tests answer one business question. Start with reliable tracking, change one main variable, choose a lead-focused metric and give the test enough time.",
-        "If you want help deciding what to test or checking whether your account is ready, [book a consultation](/contact). You can also review my [Google Ads management service](/services/google-ads-management)."
+        "If you want help deciding what to test or checking whether your account is ready, [book a consultation](/contact). You can also browse my [Google Ads case studies](/portfolio)."
       ]
     }
   ]
