@@ -8,6 +8,7 @@ import googleAdsManagerAccountAccessOwnership from './google-ads-manager-account
 import whatDoesAGoogleAdsManagerDo from './what-does-a-google-ads-manager-do';
 import howToHireAGoogleAdsExpert from './how-to-hire-a-google-ads-expert';
 import googleAdsAdvertisingSmallBusiness from './google-ads-advertising-small-business';
+import googlePpcCampaignExperiments from './google-ppc-campaigns-test-experiments';
 // Each new post: create ./<slug>.ts exporting a StaticBlogPost as default, then add it below.
 
 export const POSTS: StaticBlogPost[] = [
@@ -20,4 +21,5 @@ export const POSTS: StaticBlogPost[] = [
   whatDoesAGoogleAdsManagerDo,
   howToHireAGoogleAdsExpert,
   googleAdsAdvertisingSmallBusiness,
+  googlePpcCampaignExperiments,
 ];
