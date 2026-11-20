@@ -9,6 +9,8 @@ import type { ReactNode } from 'react';
  *   lines starting with "- "   -> bullet list
  *   lines starting with "1. "  -> numbered list
  *   a paragraph starting "### " -> small heading (H3)
+ *   a paragraph whose lines all start with "|" -> table (first row = header,
+ *   an optional "|---|---|" separator row is skipped)
  */
 
 const INLINE = /\[([^\]]+)\]\(([^)\s]+)\)|\*\*([^*]+)\*\*/g;
@@ -54,6 +56,33 @@ export function RichParagraph({ text, id }: { text: string; id: string }) {
   }
 
   const lines = trimmed.split('\n').map((l) => l.trim()).filter(Boolean);
+  if (lines.length >= 2 && lines.every((l) => l.startsWith('|'))) {
+    const cells = (l: string) => l.replace(/^\|/, '').replace(/\|$/, '').split('|').map((c) => c.trim());
+    const rows = lines.filter((l) => !/^\|[\s:|-]+\|?$/.test(l)).map(cells);
+    const [head, ...body] = rows;
+    return (
+      <div className="overflow-x-auto rounded-2xl border border-[var(--border)] not-prose">
+        <table className="w-full min-w-[480px] text-left text-sm md:text-base">
+          <thead className="bg-[var(--bg-card)] text-[var(--text)]">
+            <tr>
+              {head.map((h, k) => (
+                <th key={k} scope="col" className="px-4 py-3 font-heading font-semibold">{inline(h, `${id}-h${k}`)}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {body.map((r, ri) => (
+              <tr key={ri} className="border-t border-[var(--border)]">
+                {r.map((c, ci) => (
+                  <td key={ci} className="px-4 py-3 align-top">{inline(c, `${id}-${ri}-${ci}`)}</td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    );
+  }
   if (lines.length && lines.every((l) => l.startsWith('- '))) {
     return (
       <ul className="list-disc pl-6 space-y-2 marker:text-primary">
@@ -69,6 +98,17 @@ export function RichParagraph({ text, id }: { text: string; id: string }) {
     );
   }
   return <p className="leading-relaxed">{inline(trimmed, id)}</p>;
+}
+
+/** URL-safe id for an H2, used by the table of contents jump links. */
+export function headingId(title: string): string {
+  return title
+    .toLowerCase()
+    .replace(/\*\*/g, '')
+    .replace(/[^a-z0-9\s-]/g, '')
+    .trim()
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-');
 }
 
 /** Plain-text version (markdown removed) for schema and descriptions. */

@@ -26,5 +26,14 @@ export interface StaticBlogPost {
   thumbnail?: string;
   thumbnailAlt?: string;
   seo: { metaTitle: string; metaDescription: string; keywords: string[] };
+  /**
+   * Key takeaways box shown right after the intro (3 to 6 short standalone sentences).
+   * Required for posts published from 2026-11-21 (SEO checklist).
+   */
+  keyTakeaways?: string[];
+  /** ISO date the facts, stats and links were last verified. Shown as "Sources checked". */
+  sourcesChecked?: string;
+  /** Optional italic note shown at the end (e.g. which figures are illustrative). */
+  editorialNote?: string;
   sections: StaticBlogSection[];
 }
