@@ -9,7 +9,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ShareButton } from '@/components/ui/share-button';
 import { Clock, Calendar, User, ArrowLeft } from 'lucide-react';
-import { RichParagraph, extractFaq } from '@/components/blog/rich-text';
+import { RichParagraph, extractFaq, headingId } from '@/components/blog/rich-text';
 import { getStaticPost, blogCover } from '@/content/blog';
 import { absoluteUrl, jsonLdScript } from '@/lib/seo';
 
@@ -31,6 +31,9 @@ interface BlogPost {
   readTime: number;
   createdAt: string;
   updatedAt?: string;
+  keyTakeaways?: string[];
+  sourcesChecked?: string;
+  editorialNote?: string;
   seo?: {
     metaTitle?: string;
     metaDescription?: string;
@@ -56,6 +59,9 @@ async function getBlogPost(slug: string): Promise<BlogPost> {
       readTime: fromCode.readTime,
       createdAt: fromCode.publishedAt,
       updatedAt: fromCode.updatedAt || fromCode.publishedAt,
+      keyTakeaways: fromCode.keyTakeaways,
+      sourcesChecked: fromCode.sourcesChecked,
+      editorialNote: fromCode.editorialNote,
       seo: fromCode.seo,
     };
   }
@@ -124,6 +130,42 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
+const LINKEDIN_URL = 'https://www.linkedin.com/in/sirajul-islam-sohag-04996428a/';
+
+function formatDate(iso?: string) {
+  if (!iso) return '';
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return iso.split('T')[0];
+  return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
+}
+
+const isFaqTitle = (t?: string) => !!t && /faq|frequently asked/i.test(t);
+
+function SectionBody({ section, sIdx }: { section: BlogSection; sIdx: number }) {
+  const faq = isFaqTitle(section.title);
+  return (
+    <div className="space-y-6">
+      {section.title && (
+        <h2 id={headingId(section.title)} className="scroll-mt-28 text-2xl md:text-3xl font-heading font-bold text-[var(--text)]">
+          {section.title}
+        </h2>
+      )}
+      {section.paragraphs?.map((para, pIdx) => {
+        const m = faq ? para.trim().match(/^\*\*(.+?\?)\*\*\s*([\s\S]+)$/) : null;
+        if (m) {
+          return (
+            <div key={pIdx} className="space-y-2">
+              <h3 className="text-lg md:text-xl font-heading font-semibold text-[var(--text)]">{m[1].trim()}</h3>
+              <RichParagraph id={`s${sIdx}p${pIdx}`} text={m[2]} />
+            </div>
+          );
+        }
+        return <RichParagraph key={pIdx} id={`s${sIdx}p${pIdx}`} text={para} />;
+      })}
+    </div>
+  );
+}
+
 export default async function BlogDetailsPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const post = await getBlogPost(slug);
@@ -142,7 +184,7 @@ export default async function BlogDetailsPage({ params }: { params: Promise<{ sl
       url,
       keywords: post.seo?.keywords?.length ? post.seo.keywords.join(', ') : post.tags?.join(', '),
       articleSection: post.category,
-      author: { '@type': 'Person', name: post.author, url: absoluteUrl('/about') },
+      author: { '@type': 'Person', name: post.author, url: absoluteUrl('/about'), sameAs: [LINKEDIN_URL], jobTitle: 'Google Ads Expert' },
       publisher: { '@type': 'Person', name: 'Sirajul Islam Sohag', url: absoluteUrl('/') },
     },
     {
@@ -176,14 +218,21 @@ export default async function BlogDetailsPage({ params }: { params: Promise<{ sl
               </Button>
             </Link>
 
-            <div className="flex items-center gap-6 text-xs md:text-sm text-[var(--text-muted)]">
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs md:text-sm text-[var(--text-muted)]">
               <span className="flex items-center gap-1.5">
                 <User className="w-4 h-4 text-primary" />
                 {post.author}
               </span>
               <span className="flex items-center gap-1.5">
                 <Calendar className="w-4 h-4 text-primary" />
-                {post.createdAt?.split('T')[0]}
+                <span>
+                  Published <time dateTime={post.createdAt}>{formatDate(post.createdAt)}</time>
+                  {post.updatedAt && post.updatedAt.split('T')[0] !== post.createdAt?.split('T')[0] && (
+                    <>
+                      {' '}· Updated <time dateTime={post.updatedAt}>{formatDate(post.updatedAt)}</time>
+                    </>
+                  )}
+                </span>
               </span>
               <span className="flex items-center gap-1.5">
                 <Clock className="w-4 h-4 text-primary" />
@@ -223,20 +272,49 @@ export default async function BlogDetailsPage({ params }: { params: Promise<{ sl
           )}
 
           {/* Body Content from Sections */}
-          <div className="max-w-none text-[var(--text-secondary)] leading-relaxed space-y-12 text-base md:text-lg">
-            {post.sections?.map((section, sIdx) => (
-              <div key={sIdx} className="space-y-6">
-                {section.title && (
-                  <h2 className="text-2xl md:text-3xl font-heading font-bold text-[var(--text)]">
-                    {section.title}
-                  </h2>
+          {(() => {
+            const sections = post.sections || [];
+            const intro = sections[0] && !sections[0].title ? sections[0] : null;
+            const rest = intro ? sections.slice(1) : sections;
+            const toc = rest.filter((sec) => sec.title);
+            return (
+              <div className="max-w-none text-[var(--text-secondary)] leading-relaxed space-y-12 text-base md:text-lg">
+                {intro && <SectionBody section={intro} sIdx={0} />}
+
+                {post.keyTakeaways && post.keyTakeaways.length > 0 && (
+                  <aside aria-label="Key takeaways" className="rounded-2xl border border-primary/30 bg-primary/5 p-6 md:p-8">
+                    <h2 className="text-xl md:text-2xl font-heading font-bold text-[var(--text)] mb-4">Key takeaways</h2>
+                    <RichParagraph id="takeaways" text={post.keyTakeaways.map((t) => `- ${t}`).join('\n')} />
+                  </aside>
                 )}
-                {section.paragraphs?.map((para, pIdx) => (
-                  <RichParagraph key={pIdx} id={`s${sIdx}p${pIdx}`} text={para} />
+
+                {toc.length >= 3 && (
+                  <nav aria-label="Table of contents" className="rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] p-6 md:p-8">
+                    <p className="text-sm font-semibold uppercase tracking-wider text-primary mb-4">In this article</p>
+                    <ol className="list-decimal pl-6 space-y-2 marker:text-primary text-base">
+                      {toc.map((sec) => (
+                        <li key={sec.title}>
+                          <a href={`#${headingId(sec.title!)}`} className="hover:text-primary transition-colors">{sec.title}</a>
+                        </li>
+                      ))}
+                    </ol>
+                  </nav>
+                )}
+
+                {rest.map((section, i) => (
+                  <SectionBody key={i} section={section} sIdx={intro ? i + 1 : i} />
                 ))}
+
+                {(post.editorialNote || post.sourcesChecked) && (
+                  <p className="text-sm italic text-[var(--text-muted)] border-t border-[var(--border)] pt-6">
+                    {post.editorialNote}
+                    {post.editorialNote && post.sourcesChecked ? ' ' : ''}
+                    {post.sourcesChecked && <>Sources checked: {formatDate(post.sourcesChecked)}.</>}
+                  </p>
+                )}
               </div>
-            ))}
-          </div>
+            );
+          })()}
 
           {/* Author Box */}
           <div className="mt-16 p-8 rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] flex flex-col md:flex-row items-center gap-6">
@@ -252,9 +330,15 @@ export default async function BlogDetailsPage({ params }: { params: Promise<{ sl
               <h4 className="text-lg font-heading font-bold text-[var(--text)] mb-1">
                 Written by <Link href="/about" className="hover:text-primary transition-colors">{post.author}</Link>
               </h4>
-              <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-                Google Ads Expert
+              <p className="text-sm text-[var(--text-secondary)] leading-relaxed mb-3">
+                Google Ads Expert. Certified Google Ads specialist and web analyst with 3+ years of hands-on experience
+                managing Search, Performance Max, conversion tracking and lead generation for US home service businesses.
               </p>
+              <div className="flex flex-wrap gap-4 text-sm font-medium">
+                <Link href="/about" className="text-primary hover:opacity-80">About the author</Link>
+                <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="text-primary hover:opacity-80">LinkedIn</a>
+                <Link href="/blog" className="text-primary hover:opacity-80">All articles</Link>
+              </div>
             </div>
           </div>
         </div>
