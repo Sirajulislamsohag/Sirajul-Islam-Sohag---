@@ -9,6 +9,7 @@ const post: StaticBlogPost = {
   tags: ['Google Ads Advertising', 'Small Business PPC', 'Local Lead Generation'],
   author: 'Sirajul Islam Sohag',
   publishedAt: '2026-11-19T15:48:12.000Z',
+  updatedAt: '2026-11-21T15:55:00.000Z',
   thumbnailAlt: 'Google Ads advertising for small businesses - starter plan guide by Sirajul Islam Sohag',
   seo: {
     metaTitle: 'Google Ads Advertising for Small Businesses',
@@ -43,7 +44,7 @@ const post: StaticBlogPost = {
       paragraphs: [
         'Google offers several ways to advertise, and during setup it may suggest an automated campaign. For a small budget, the choice matters because each type spends money in a different way:',
         '- **Search campaigns:** text ads on Google search results for keywords you choose. Highest intent, the most control and the clearest reporting. This is where most small service businesses should start.\n- **Local Services Ads:** a separate Google product for eligible service categories, where you pay per lead instead of per click and the business goes through a screening process. Worth running alongside Search if your trade qualifies.\n- **Performance Max:** one automated campaign that can show ads across Search, Maps, YouTube, Display and Gmail. Useful once conversion tracking is reliable and there is enough data, but on a small budget it can be hard to see where the money went.\n- **Display and YouTube:** good for awareness and remarketing, but rarely the best first spend for a business that needs calls this month.',
-        'My recommendation for most small businesses is a single [Google Search ads](/services/google-search-ads) campaign built around your best service. Once it produces leads at a cost you are happy with, add the next service or the next campaign type. If you want to understand what happens between a search and a click, my guide on [how Google PPC campaigns work](/blog/how-google-ppc-campaigns-work) walks through the auction and the building blocks.',
+        'My recommendation for most small businesses is a single [Google Search ads](/services/google-search-ads) campaign built around your best service. Once it produces leads at a cost you are happy with, add the next service or the next campaign type. If you want to understand what happens between a search and a click, my guide on [how Google PPC campaigns work](/blog/how-google-ppc-campaigns-work) walks through the auction and the building blocks. For a side-by-side look at every option, see my guide to [Google Ads campaign types and when to use each](/blog/google-ppc-campaign-types).',
       ],
     },
     {
