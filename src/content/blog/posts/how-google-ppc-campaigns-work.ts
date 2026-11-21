@@ -10,6 +10,7 @@ const post: StaticBlogPost = {
   author: 'Sirajul Islam Sohag',
   readTime: 11,
   publishedAt: '2026-11-15T15:47:06.000Z',
+  updatedAt: '2026-11-21T15:55:00.000Z',
   thumbnailAlt: 'How Google PPC campaigns work for service businesses, from search to auction to booked job',
   seo: {
     metaTitle: 'How Google PPC Campaigns Work for Service Businesses',
@@ -63,7 +64,7 @@ const post: StaticBlogPost = {
       paragraphs: [
         'A Google Ads account is organized in layers. Understanding them makes reports and recommendations much easier to follow:',
         '- **Account:** your billing, conversion tracking and overall settings\n- **Campaign:** where budget, bid strategy, locations, languages and ad schedule are set\n- **Ad group:** a tight set of keywords for one service or intent, with ads written for that group\n- **Keywords:** the searches the ad group is allowed to enter\n- **Ads:** responsive search ads with several headlines and descriptions that Google combines\n- **Assets:** call buttons, sitelinks, callouts, location and other extras attached to ads',
-        'The key design decision is what each campaign represents. Budget lives at campaign level, so anything that needs its own budget needs its own campaign. A company that earns far more from replacements than repairs usually separates them, so cheap repair clicks cannot use up the money meant for replacement leads.',
+        'The key design decision is what each campaign represents. Budget lives at campaign level, so anything that needs its own budget needs its own campaign. A company that earns far more from replacements than repairs usually separates them, so cheap repair clicks cannot use up the money meant for replacement leads. The campaign type matters too, and my comparison of [the 6 Google PPC campaign types and when to use each](/blog/google-ppc-campaign-types) shows which one fits each goal.',
         'Campaign settings also shape who sees your ads. Location targeting should cover the areas your crews actually serve, and should target people located in or regularly in those areas rather than anyone showing interest in them. The ad schedule decides which hours you compete in, which I cover in detail in my guide to [planning ad scheduling for local service campaigns](/blog/google-ppc-campaigns-ad-scheduling).'
       ],
     },
