@@ -9,6 +9,7 @@ const post: StaticBlogPost = {
   author: "Sirajul Islam Sohag",
   readTime: 11,
   publishedAt: "2026-11-18T15:48:35.000Z",
+  updatedAt: "2026-11-22T15:47:40.000Z",
   thumbnailAlt: "How to hire a Google Ads expert: interview questions and a candidate scorecard for business owners",
   seo: {
     metaTitle: "How to Hire a Google Ads Expert: 12 Questions",
@@ -104,7 +105,7 @@ const post: StaticBlogPost = {
         "The lowest-risk way to hire a Google Ads expert is to start with a defined piece of work before a monthly contract. A [Google Ads audit](/services/google-ads-audit) works well for this because it shows you exactly how the person thinks.",
         "A useful audit should give you:",
         "- A review of conversion tracking, with every conversion action checked\n- Search terms with estimated wasted spend and a negative keyword list\n- Notes on structure, match types, location settings and bidding\n- Landing page observations tied to the ads that send traffic there\n- A prioritized list of fixes, ranked by impact, that any manager could follow",
-        "Compare that against what you were told in the interview. If the audit is specific, honest about problems and clearly ranked, you have learned more about the expert than any sales call could tell you. If it is a generic checklist with your logo on it, keep looking.",
+        "Compare that against what you were told in the interview. If the audit is specific, honest about problems and clearly ranked, you have learned more about the expert than any sales call could tell you. If it is a generic checklist with your logo on it, keep looking. Before you sign for ongoing work, use this breakdown of [Google Ads consultant cost and fee models](/blog/google-ads-consultant-cost) to compare quotes on the same basis.",
       ],
     },
     {

@@ -10,6 +10,7 @@ const post: StaticBlogPost = {
   author: 'Sirajul Islam Sohag',
   readTime: 10,
   publishedAt: '2026-11-14T13:00:00.000Z',
+  updatedAt: '2026-11-22T15:47:40.000Z',
   thumbnailAlt: 'Google Ads consultant vs agency comparison for business owners',
   seo: {
     metaTitle: 'Google Ads Consultant vs Agency: Which to Hire?',
@@ -102,7 +103,7 @@ const post: StaticBlogPost = {
         '- **Exit terms:** What happens to the campaigns, data and access if you end the agreement?',
         'There is no single standard fee that applies to every consultant or agency. Pricing can depend on monthly ad spend, number of campaigns, number of locations, tracking requirements, landing page work, reporting needs and the amount of strategic support involved.',
         'You may see flat monthly management fees, percentage-of-ad-spend fees, hourly consulting or a one-time project fee for setup and auditing. Ask for a written breakdown of one-time setup costs and recurring management fees. Also confirm whether your advertising spend is paid directly by your business to Google or handled through another billing arrangement. The management fee and media budget are different costs.',
-        'Do not compare proposals by the monthly fee alone. Compare the tasks included, who performs them, how often optimization happens, whether tracking is included, and whether landing page or creative work costs extra.'
+        'Do not compare proposals by the monthly fee alone. Compare the tasks included, who performs them, how often optimization happens, whether tracking is included, and whether landing page or creative work costs extra. For a worked total-cost example and a break-even check, see my guide to [Google Ads consultant cost](/blog/google-ads-consultant-cost).'
       ],
     },
     {

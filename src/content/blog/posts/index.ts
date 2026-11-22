@@ -12,6 +12,7 @@ import googlePpcCampaignExperiments from './google-ppc-campaigns-test-experiment
 import googleAdwordsSpecialist from './google-adwords-specialist';
 import roofingGoogleAdsCaseStudy from './roofing-google-ads-case-study-cost-per-lead';
 import googlePpcCampaignTypes from './google-ppc-campaign-types';
+import googleAdsConsultantCost from './google-ads-consultant-cost';
 // Each new post: create ./<slug>.ts exporting a StaticBlogPost as default, then add it below.
 
 export const POSTS: StaticBlogPost[] = [
@@ -28,4 +29,5 @@ export const POSTS: StaticBlogPost[] = [
   googleAdwordsSpecialist,
   roofingGoogleAdsCaseStudy,
   googlePpcCampaignTypes,
+  googleAdsConsultantCost,
 ];
