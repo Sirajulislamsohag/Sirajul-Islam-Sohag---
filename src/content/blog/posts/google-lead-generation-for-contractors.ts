@@ -10,6 +10,7 @@ const post: StaticBlogPost = {
   author: 'Sirajul Islam Sohag',
   readTime: 11,
   publishedAt: '2026-11-16T15:52:15.000Z',
+  updatedAt: '2026-11-23T15:55:18.000Z',
   thumbnailAlt: 'Google lead generation for contractors: Business Profile, Local Services Ads, Search ads and lead forms feeding a project pipeline',
   seo: {
     metaTitle: 'Google Lead Generation for Contractors',
@@ -44,7 +45,7 @@ const post: StaticBlogPost = {
       paragraphs: [
         'Contractors do not all sell the same kind of job. The searches behind an urgent repair and a planned remodel look completely different, and so should your lead generation.',
         '### Urgent and repair work',
-        'Someone with a leaking roof or a failed water heater calls the first credible company they find. Phone calls dominate, the search is often on a mobile phone, and response speed decides who wins the job. Call-focused Search ads with a visible call button, Local Services Ads and a strong Business Profile fit this work well.',
+        'Someone with a leaking roof or a failed water heater calls the first credible company they find. Phone calls dominate, the search is often on a mobile phone, and response speed decides who wins the job. Call-focused Search ads with a visible call button, Local Services Ads and a strong Business Profile fit this work well. If you run a roofing company, my guide to [Google lead generation for roofers](/blog/google-lead-generation-roofers) covers storm season and cost per signed roof.',
         '### Planned projects',
         'A homeowner planning a kitchen remodel, an addition or a basement finish researches for weeks. They search cost questions, compare contractors, look at project photos and often fill in a form instead of calling. Search campaigns built around each project type, landing pages with real project photos, and forms that ask a few qualifying questions fit this work better. These leads take longer to close, so tracking them to the signed contract matters more.',
         'Many contractors sell both. If they share one campaign, the frequent small-job searches usually take most of the budget and the high-value projects get very little.'
