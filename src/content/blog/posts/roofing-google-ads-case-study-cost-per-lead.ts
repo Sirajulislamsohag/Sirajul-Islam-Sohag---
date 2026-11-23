@@ -13,6 +13,7 @@ const post: StaticBlogPost = {
   "author": "Sirajul Islam Sohag",
   "readTime": 8,
   "publishedAt": "2026-11-20T16:30:00.000Z",
+  "updatedAt": "2026-11-23T15:55:18.000Z",
   "thumbnailAlt": "Roofing Google Ads case study showing cost per conversion falling from $54.76 to $38.99",
   "seo": {
     "metaTitle": "Roofing Google Ads Case Study: 29% Lower Cost per Lead",
@@ -102,7 +103,7 @@ const post: StaticBlogPost = {
       "title": "Takeaways: What This Project Proved",
       "paragraphs": [
         "- **The data was already in the account.** The search terms report showed which searches to fund.\n- **A bigger budget is not the fix.** Spend went down 20% and leads went up.\n- **Negative keywords pay for themselves.** Every blocked junk search leaves budget for a real lead.\n- **Structure by service.** Repair and replacement behave differently, so they need their own room.\n- **Track calls and forms separately.** Otherwise you can't see what actually changed.\n- **Be honest about the trade-offs.** Calls dipped while forms rose, and the client should know that.",
-        "If you run a roofing company and want to see how this applies to your market, my page on [Google Ads for roofing companies](/google-ads-for-roofing) explains how I set up and manage roofing accounts."
+        "If you run a roofing company and want to see how this applies to your market, my page on [Google Ads for roofing companies](/google-ads-for-roofing) explains how I set up and manage roofing accounts. For the wider picture across Search ads, Local Services Ads and Google Business Profile, read my guide to [Google lead generation for roofers](/blog/google-lead-generation-roofers)."
       ]
     },
     {
