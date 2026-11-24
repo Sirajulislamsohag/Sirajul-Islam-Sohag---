@@ -10,6 +10,7 @@ const post: StaticBlogPost = {
   author: 'Sirajul Islam Sohag',
   readTime: 9,
   publishedAt: '2026-11-17T15:47:05.000Z',
+  updatedAt: '2026-11-24T15:50:30.000Z',
   thumbnailAlt: 'Monthly Google Ads manager calendar with weekly optimization tasks and a lead report',
   seo: {
     metaTitle: 'What Does a Google Ads Manager Do Every Month?',
@@ -33,7 +34,7 @@ const post: StaticBlogPost = {
     {
       title: 'Google Ads Manager: The Person vs the Manager Account',
       paragraphs: [
-        'The phrase "Google Ads manager" is used for two different things. This article is about the **person** who manages your campaigns. Google also has a tool called a Google Ads **manager account** (often called an MCC), which lets a professional reach several client accounts from one login.',
+        'The phrase "Google Ads manager" is used for two different things. This article is about the **person** who manages your campaigns. Google also has a tool called a Google Ads **manager account** (often called an MCC), which lets a professional reach several client accounts from one login. A third tool, [Google Campaign Manager 360, is an ad server and not part of Google Ads](/blog/google-campaign-manager-explained), so most service businesses never need it.',
         'They are connected, because most managers work in your account through their manager account. But the tool does not do the work. If you want to understand linking, permissions and who owns the account, read my guide on [Google Ads manager account access and ownership](/blog/google-ads-manager-account-access-ownership). The rest of this article covers what the person should be doing each month.',
       ],
     },

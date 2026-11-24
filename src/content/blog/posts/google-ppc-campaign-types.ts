@@ -10,6 +10,7 @@ const post: StaticBlogPost = {
   author: 'Sirajul Islam Sohag',
   readTime: 11,
   publishedAt: '2026-11-21T15:50:41.000Z',
+  updatedAt: '2026-11-24T15:50:30.000Z',
   thumbnailAlt:
     'Comparison of six Google PPC campaign types: Search, Performance Max, Shopping, Display, Demand Gen and Video',
   seo: {
@@ -47,7 +48,7 @@ const post: StaticBlogPost = {
       paragraphs: [
         'A campaign type is the setting that decides where your ads can show, which ad formats you use and how much control you keep. You pick it when you create a campaign, and you cannot switch it later.',
         "Google's own guide to [choosing the right campaign type](https://support.google.com/google-ads/answer/2567043?hl=en) and its objectives page list seven types: Search, Performance Max, Shopping, Display, Demand Gen, Video and App. App campaigns only promote mobile apps. That leaves six Google PPC campaigns that matter for a business selling services or products.",
-        'Do not confuse campaign types with ad formats or keyword match types. A responsive search ad is a format inside a Search campaign. Phrase match is a keyword setting inside Search. The campaign type sits above both and sets the rules for everything inside it.',
+        'Do not confuse campaign types with ad formats or keyword match types. A responsive search ad is a format inside a Search campaign. Phrase match is a keyword setting inside Search. The campaign type sits above both and sets the rules for everything inside it. It is also separate from [Google Campaign Manager 360, an ad server for large advertisers](/blog/google-campaign-manager-explained).',
       ],
     },
     {

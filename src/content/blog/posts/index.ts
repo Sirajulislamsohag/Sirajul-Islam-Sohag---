@@ -14,6 +14,7 @@ import roofingGoogleAdsCaseStudy from './roofing-google-ads-case-study-cost-per-
 import googlePpcCampaignTypes from './google-ppc-campaign-types';
 import googleAdsConsultantCost from './google-ads-consultant-cost';
 import googleLeadGenerationRoofers from './google-lead-generation-roofers';
+import googleCampaignManagerExplained from './google-campaign-manager-explained';
 // Each new post: create ./<slug>.ts exporting a StaticBlogPost as default, then add it below.
 
 export const POSTS: StaticBlogPost[] = [
@@ -32,4 +33,5 @@ export const POSTS: StaticBlogPost[] = [
   googlePpcCampaignTypes,
   googleAdsConsultantCost,
   googleLeadGenerationRoofers,
+  googleCampaignManagerExplained,
 ];
