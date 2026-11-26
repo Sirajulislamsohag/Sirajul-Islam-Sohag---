@@ -10,6 +10,7 @@ const post: StaticBlogPost = {
   author: "Sirajul Islam Sohag",
   readTime: 10,
   publishedAt: "2026-11-22T15:47:40.000Z",
+  updatedAt: "2026-11-26T15:53:39.000Z",
   thumbnailAlt:
     "Google Ads consultant cost breakdown showing management fee, ad spend and extras for a US service business",
   seo: {
@@ -90,7 +91,7 @@ const post: StaticBlogPost = {
       paragraphs: [
         "A consultant fee is worth it when the extra profit from better leads is larger than the fee. You can check this with a simple break-even calculation before you sign.",
         "1. Write down the monthly fee, for example $1,000.\n2. Estimate your average gross profit per booked job, for example $1,500.\n3. Divide the fee by the profit per job: $1,000 ÷ $1,500 = 0.67 jobs.\n4. Round up. One extra booked job a month covers the fee in this example.\n5. Track booked jobs from Google Ads leads each month and compare.",
-        "These numbers are illustrative. Use your own job profit and close rate.",
+        "These numbers are illustrative. Use your own job profit and close rate. If you are unsure whether the fix is skill or spend, read [how to tell if you need a Google Ads expert or more budget](/blog/google-ads-expert-signs).",
         "Real accounts show why the fee alone is the wrong measure. In one [roofing Google Ads case study](/portfolio/roofing-google-ads), cost per conversion fell from $54.76 to $38.99. Monthly ad spend dropped from an average of $3.57K to $2.85K, and form leads rose from an average of 42 to 54. Monthly phone calls were slightly lower, 37 on average before and 31 after, which is part of the honest picture.",
       ],
     },

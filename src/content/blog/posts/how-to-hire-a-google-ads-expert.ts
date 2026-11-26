@@ -9,7 +9,7 @@ const post: StaticBlogPost = {
   author: "Sirajul Islam Sohag",
   readTime: 11,
   publishedAt: "2026-11-18T15:48:35.000Z",
-  updatedAt: "2026-11-22T15:47:40.000Z",
+  updatedAt: "2026-11-26T15:53:39.000Z",
   thumbnailAlt: "How to hire a Google Ads expert: interview questions and a candidate scorecard for business owners",
   seo: {
     metaTitle: "How to Hire a Google Ads Expert: 12 Questions",
@@ -34,7 +34,7 @@ const post: StaticBlogPost = {
       paragraphs: [
         "Good candidates will ask you questions too. Having these answers ready makes interviews shorter and shows you quickly who is listening:",
         "1. **Your most profitable services.** Which jobs do you want more of, and which do you not want at all?\n2. **Your real service area.** The cities, counties or ZIP codes you actually work in.\n3. **What a lead is worth.** A rough average job value and how many leads usually turn into booked jobs.\n4. **Your current numbers.** Monthly ad spend and how many calls and forms you believe Google Ads brings in.\n5. **Who has access today.** Whether your business owns the Google Ads account, the GA4 property and Google Tag Manager, or someone else set them up.",
-        "If you are still deciding between a freelancer and a firm, read [Google Ads consultant vs agency](/blog/google-ads-consultant-vs-agency) first. This guide focuses on the next step: testing whether the person in front of you actually knows the work.",
+        "If you are still deciding between a freelancer and a firm, read [Google Ads consultant vs agency](/blog/google-ads-consultant-vs-agency) first. This guide focuses on the next step: testing whether the person in front of you actually knows the work. If you are not sure you need outside help at all, check these [signs you need a Google Ads expert or more budget](/blog/google-ads-expert-signs) first.",
       ],
     },
     {
