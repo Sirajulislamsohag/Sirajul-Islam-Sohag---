@@ -12,6 +12,7 @@ const post: StaticBlogPost = {
   ],
   "author": "Sirajul Islam Sohag",
   "publishedAt": "2026-11-14T16:30:00.000Z",
+  "updatedAt": "2026-11-26T13:30:00.000Z",
   "thumbnailAlt": "What does a Google Ads specialist do - guide by Sirajul Islam Sohag",
   "seo": {
     "metaTitle": "What Does a Google Ads Specialist Do? (2026 Guide)",
@@ -74,7 +75,7 @@ const post: StaticBlogPost = {
       "paragraphs": [
         "These titles overlap, and many people use them interchangeably. Here is how I explain the difference to business owners:",
         "- **Google Ads specialist:** hands-on expert who builds and optimizes campaigns\n- **Google Ads consultant:** advises on strategy, audits accounts and often also manages them\n- **Google Ads manager:** runs one or more accounts day to day, often inside a company or agency\n- **Google Ads agency:** a team that manages many clients, where your account may be handled by different people over time",
-        "The title matters less than who actually works in your account. Ask who will make the weekly changes, how often they review search terms, and how they measure lead quality. If you want a hands-on approach, see my [Google Ads management service](/services/google-ads-management)."
+        "The title matters less than who actually works in your account. Ask who will make the weekly changes, how often they review search terms, and how they measure lead quality. If you want a hands-on approach, see my [Google Ads management service](/services/google-ads-management) or all of my [Google Ads services](/services). You may also see the older title AdWords specialist; here is why a [Google AdWords specialist is the same role as a Google Ads specialist](/blog/google-adwords-specialist)."
       ]
     },
     {

@@ -62,11 +62,11 @@ export function RichParagraph({ text, id }: { text: string; id: string }) {
     const [head, ...body] = rows;
     return (
       <div className="overflow-x-auto rounded-2xl border border-[var(--border)] not-prose">
-        <table className="w-full min-w-[480px] text-left text-sm md:text-base">
+        <table className="w-full text-left text-[13px] leading-snug sm:text-sm md:text-base">
           <thead className="bg-[var(--bg-card)] text-[var(--text)]">
             <tr>
               {head.map((h, k) => (
-                <th key={k} scope="col" className="px-4 py-3 font-heading font-semibold">{inline(h, `${id}-h${k}`)}</th>
+                <th key={k} scope="col" className="px-2.5 sm:px-4 py-3 font-heading font-semibold align-bottom">{inline(h, `${id}-h${k}`)}</th>
               ))}
             </tr>
           </thead>
@@ -74,7 +74,7 @@ export function RichParagraph({ text, id }: { text: string; id: string }) {
             {body.map((r, ri) => (
               <tr key={ri} className="border-t border-[var(--border)]">
                 {r.map((c, ci) => (
-                  <td key={ci} className="px-4 py-3 align-top">{inline(c, `${id}-${ri}-${ci}`)}</td>
+                  <td key={ci} className="px-2.5 sm:px-4 py-3 align-top">{inline(c, `${id}-${ri}-${ci}`)}</td>
                 ))}
               </tr>
             ))}

@@ -9,7 +9,7 @@ const post: StaticBlogPost = {
   tags: ['Google Ads Advertising', 'Small Business PPC', 'Local Lead Generation'],
   author: 'Sirajul Islam Sohag',
   publishedAt: '2026-11-19T15:48:12.000Z',
-  updatedAt: '2026-11-21T15:55:00.000Z',
+  updatedAt: '2026-11-26T13:30:00.000Z',
   thumbnailAlt: 'Google Ads advertising for small businesses - starter plan guide by Sirajul Islam Sohag',
   seo: {
     metaTitle: 'Google Ads Advertising for Small Businesses',
@@ -37,6 +37,7 @@ const post: StaticBlogPost = {
         'Google Ads works best when people already search for your service and a new customer is worth noticeably more than the cost of winning them. Before you open an account, run through this quick fit test:',
         '- **People search for it:** customers type your service into Google ("water heater repair", "bookkeeper near me"), rather than discovering you by chance\n- **A customer is worth enough:** the profit from one job, or one repeat customer, comfortably covers several clicks that do not convert\n- **You can answer the phone:** someone picks up calls during the hours your ads run, or calls back quickly\n- **You have a page to send people to:** a page about the specific service, with your phone number, service area and a short form\n- **You can handle more work:** if your schedule is already full for weeks, ads will mostly create frustrated leads',
         'If you can say yes to all five, Google Ads advertising is worth testing. If two or more are a no, fix those first. Ads multiply what already happens when a customer contacts you; they do not fix a missed call or a confusing website.',
+        'Most local shops pass this test easily. An auto repair or tire shop, for example, gets steady "near me" searches every day, which is why I built a dedicated page on [Google Ads for auto repair and tire shops](/google-ads-for-auto-services). You can see every other option on my [Google Ads services](/services) page.',
       ],
     },
     {

@@ -10,7 +10,7 @@ const post: StaticBlogPost = {
   author: 'Sirajul Islam Sohag',
   readTime: 11,
   publishedAt: '2026-11-15T15:47:06.000Z',
-  updatedAt: '2026-11-21T15:55:00.000Z',
+  updatedAt: '2026-11-26T13:30:00.000Z',
   thumbnailAlt: 'How Google PPC campaigns work for service businesses, from search to auction to booked job',
   seo: {
     metaTitle: 'How Google PPC Campaigns Work for Service Businesses',
@@ -82,7 +82,7 @@ const post: StaticBlogPost = {
       paragraphs: [
         'Most generic PPC advice assumes e-commerce, where the sale happens on the website. Service businesses differ in a few important ways:',
         '- **Many leads are phone calls:** calls from ads and calls from the website need to be tracked, ideally with a minimum call length so short calls do not count as leads\n- **The sale happens offline:** the job is won on the phone or at the house, so the ad account only sees part of the result unless you feed lead quality back into your decisions\n- **Geography is strict:** a click from outside your service area is close to worthless\n- **Jobs have very different values:** an emergency repair, a maintenance visit and a full replacement deserve different budgets and different ads\n- **Speed matters:** urgent searches go to whoever answers first, so call handling is part of campaign performance',
-        'This is why I usually start service businesses on Search campaigns. Search gives the clearest control over which searches you enter and the cleanest data on which keywords produce calls. You can read how I build these on my [Google Search Ads management](/services/google-search-ads) page. Performance Max can be added later with that conversion data behind it. Local Services Ads are a separate Google product where you generally pay per lead rather than per click.'
+        'This is why I usually start service businesses on Search campaigns. Search gives the clearest control over which searches you enter and the cleanest data on which keywords produce calls. You can read how I build these on my [Google Search Ads management](/services/google-search-ads) page. Performance Max can be added later with that conversion data behind it. Local Services Ads are a separate Google product where you generally pay per lead rather than per click. For a trade-specific example, see how I set up [Google Ads for auto repair and tire shops](/google-ads-for-auto-services), where most leads are phone calls and bookings.'
       ],
     },
     {
