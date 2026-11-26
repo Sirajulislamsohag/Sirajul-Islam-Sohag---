@@ -2,9 +2,9 @@ import type { StaticBlogPost } from '../types';
 
 const post: StaticBlogPost = {
   "slug": "google-adwords-specialist",
-  "title": "Google AdWords Specialist vs Google Ads Specialist: Same Job, Very Different Platform",
+  "title": "Google AdWords Specialist vs Google Ads Specialist (2026)",
   "category": "Google Ads Expertise",
-  "excerpt": "A Google AdWords specialist and a Google Ads specialist do the same job, because AdWords was renamed Google Ads in 2018. What matters is whether the person's skills caught up with everything that changed after the rename.",
+  "excerpt": "A Google AdWords specialist and a Google Ads specialist do the same job, because AdWords was renamed Google Ads in 2018. What matters is whether their skills kept up with the platform.",
   "tags": [
     "Google AdWords Specialist",
     "Google Ads Specialist",
@@ -12,116 +12,131 @@ const post: StaticBlogPost = {
   ],
   "author": "Sirajul Islam Sohag",
   "publishedAt": "2026-11-20T15:48:39.000Z",
+  "updatedAt": "2026-11-26T13:30:00.000Z",
+  "sourcesChecked": "2026-11-26",
   "thumbnailAlt": "Google AdWords specialist vs Google Ads specialist explained - guide by Sirajul Islam Sohag",
   "seo": {
-    "metaTitle": "Google AdWords Specialist vs Google Ads Specialist",
-    "metaDescription": "Is a Google AdWords specialist the same as a Google Ads specialist? Yes, but the platform has changed a lot since 2018. Here is how to check skills are current.",
+    "metaTitle": "Google AdWords Specialist vs Google Ads Specialist (2026)",
+    "metaDescription": "A Google AdWords specialist and a Google Ads specialist do the same job. See what changed after the 2018 rename and how to check a specialist's skills today.",
     "keywords": [
       "google adwords specialist",
       "google ads specialist",
-      "adwords vs google ads",
+      "adwords specialist",
       "adwords expert",
-      "google adwords consultant"
+      "adwords vs google ads"
     ]
   },
+  "keyTakeaways": [
+    "Google renamed AdWords to Google Ads in July 2018, so both titles describe the same role.",
+    "The job title matters less than whether the specialist's methods match how Google Ads works today.",
+    "Match types, ad formats, campaign types, analytics and bidding have all changed since the AdWords era.",
+    "Accurate call and form tracking is the most important modern skill, because automated bidding learns from it.",
+    "Ask the 8 questions in this guide to find out if any specialist is current before you hire."
+  ],
   "sections": [
     {
       "paragraphs": [
-        "A **Google AdWords specialist** and a **Google Ads specialist** are the same role. Google renamed AdWords to Google Ads in July 2018, so anyone who manages paid search campaigns on Google today works in Google Ads, whatever their job title or profile says. The old name survives because many business owners, job posts and freelancer profiles still use it.",
-        "The title is not the real question. The real question is whether the person's skills stayed current. Since the rename, Google has retired old ad formats and keyword match types, replaced Universal Analytics with GA4, folded older campaign types into Performance Max and made automated bidding the normal way to run an account. This guide explains what changed, why it matters for your budget, and how to tell if the specialist you are talking to works the way Google Ads works now."
+        "A **Google AdWords specialist** and a Google Ads specialist do the same job. Google renamed AdWords to Google Ads in July 2018, so both titles describe the person who manages your paid search campaigns on Google.",
+        "The old name survives because many business owners, job posts and freelancer profiles still use it. That is fine. The real question is whether the specialist's skills kept up with the platform. Since 2018, Google has changed match types, ad formats, campaign types, analytics and bidding.",
+        "This guide is for business owners hiring Google Ads help. You will learn what changed, why it affects your budget, and 8 questions that show if a specialist is current. It draws on my 3+ years managing Google Ads for US home service businesses."
       ]
     },
     {
-      "title": "Same Job, New Name: What Happened in 2018",
+      "title": "Is a Google AdWords Specialist the Same Thing?",
       "paragraphs": [
-        "In 2018 Google simplified its advertising brands. The changes that matter for most business owners were:",
-        "- **Google AdWords became Google Ads.** The platform you log into, the billing and your campaign history stayed the same. Google still keeps a help page titled [Google AdWords is now Google Ads](https://support.google.com/google-ads/answer/9028765) for people arriving with the old name.\n- **AdWords Express became Smart campaigns**, the simplified option inside Google Ads for very small advertisers.\n- **AdWords Editor became Google Ads Editor**, the desktop tool specialists use for bulk changes.\n- **DoubleClick products moved into Google Marketing Platform and Google Ad Manager**, which serve large advertisers and publishers rather than local service businesses.",
-        "So if you are comparing a \"Google AdWords specialist\" with a \"Google Ads specialist\" on a freelance site or in a job post, you are not comparing two different services. You are comparing two labels for the person who plans, builds and optimizes your Google PPC campaigns. If you want the full picture of that job, I covered it in [what a Google Ads specialist does](/blog/what-does-a-google-ads-specialist-do)."
+        "Yes. A Google AdWords specialist is the same role as a Google Ads specialist, because the platform itself was renamed in 2018. Your account, billing and campaign history carried over unchanged.",
+        "Google still keeps a help page titled [Google AdWords is now Google Ads](https://support.google.com/google-ads/answer/9028765) for people who search the old name. The 2018 rebrand also renamed a few related tools:",
+        "- **Google AdWords became Google Ads.** This is the platform you log into today.\n- **AdWords Express became Smart campaigns.** It is the simplified option for very small advertisers.\n- **AdWords Editor became Google Ads Editor.** Specialists use it for bulk changes.\n- **DoubleClick products moved into Google Marketing Platform.** These serve large advertisers, not most local businesses.",
+        "So two profiles with different titles are not offering different services. Both plan, build and optimize Google PPC campaigns. For the full job description, read [what a Google Ads specialist does](/blog/what-does-a-google-ads-specialist-do)."
       ]
     },
     {
-      "title": "Why People Still Search for a Google AdWords Specialist",
+      "title": "Why Do People Still Say AdWords?",
       "paragraphs": [
-        "Old names stick around for a long time. There are a few practical reasons you still see \"AdWords\" in 2026:",
-        "- **Habit.** Business owners who ran ads before 2018 learned the old name and still use it.\n- **Old job descriptions and templates.** Hiring documents get copied forward year after year without anyone updating the platform name.\n- **Search visibility.** Some freelancers and agencies keep \"AdWords\" in their titles because people still type it into search bars and freelance marketplaces.\n- **Long careers.** Someone who started before the rename may describe their experience as \"AdWords and Google Ads\" to show how long they have been doing the work.",
-        "None of these are red flags on their own. A specialist who uses both names on their profile may simply be helping people find them. What you want to know is whether their methods are from 2016 or from today."
+        "People still say AdWords mostly out of habit. Many business owners learned the old name before 2018 and never switched.",
+        "There are a few other common reasons:",
+        "- **Old job descriptions.** Hiring templates get copied forward for years without updates.\n- **Search visibility.** Some freelancers keep \"AdWords\" in their titles because buyers still search for it.\n- **Long careers.** People who started before 2018 may list both names to show their experience.",
+        "None of these is a red flag on its own. A Google AdWords specialist may simply be helping clients find them. What you need to know is whether their methods come from 2016 or from today."
       ]
     },
     {
-      "title": "What Has Changed in the Platform Since the AdWords Era",
+      "title": "What Changed Since the AdWords Era?",
       "paragraphs": [
-        "The rename was cosmetic. The changes that came after it were not. These are the shifts that most affect how a local service business account should be run:",
+        "Almost every core part of the platform changed after the rename. These are the shifts that most affect a local service business account.",
         "### Keyword match types work differently",
-        "Broad match modifier, a favorite tool of AdWords-era specialists, was retired. Google moved its behavior into phrase match in 2021 and stopped letting advertisers create new broad match modifier keywords later that year. Match types now rely more on the meaning of a search than on exact word order, which makes weekly search term reviews and negative keywords even more important than before.",
-        "### Ads are built from pieces, not written one at a time",
-        "Since June 30, 2022, advertisers can no longer create or edit expanded text ads. The standard Search ad is now the [responsive search ad](https://support.google.com/google-ads/answer/7684791), where you supply multiple headlines and descriptions and Google tests combinations. Good ad work today means writing headlines that each make sense on their own, pinning only when necessary, and reading asset performance rather than running simple A/B tests between two fixed ads.",
+        "Broad match modifier was a favorite AdWords-era tool. Google merged its behavior into phrase match in 2021 and later stopped new broad match modifier keywords. Today, match types follow the meaning of a search more than exact words. That makes weekly search term reviews and negative keywords more important.",
+        "### Ads are built from pieces",
+        "Since June 30, 2022, advertisers cannot create or edit expanded text ads. The standard Search ad is now the [responsive search ad](https://support.google.com/google-ads/answer/7684791). You supply several headlines and descriptions, and Google tests combinations. Good ad work now means writing headlines that each stand on their own.",
         "### Older campaign types became Performance Max",
-        "Smart Shopping and Local campaigns were upgraded to Performance Max in 2022. Performance Max can show ads across Search, YouTube, Display, Discover, Gmail and Maps from one campaign. It can work well for some service businesses, but only with clean conversion data and clear guidance about which leads count.",
+        "Google upgraded Smart Shopping and Local campaigns to Performance Max in 2022. Performance Max can show ads on Search, YouTube, Display, Discover, Gmail and Maps from one campaign. It only works well with clean conversion data.",
         "### Universal Analytics is gone",
-        "Universal Analytics stopped processing data in July 2023, and GA4 replaced it. GA4 is built on events instead of the old goal and session model, so goals and imports set up years ago no longer work. Many accounts still carry broken or duplicated conversion actions from that switch.",
-        "### Automated bidding is the default, not the exception",
-        "In the AdWords era, many specialists managed manual bids keyword by keyword. Today most accounts use smart bidding strategies such as Maximize Conversions or Target CPA, which learn from your conversion data. That shifts the specialist's job from setting bids to feeding the system accurate signals: which conversions are real leads, which are secondary, and what a good lead is worth.",
+        "Universal Analytics stopped processing data in July 2023, and GA4 replaced it. GA4 uses events instead of the old goals. Many accounts still carry broken or duplicated conversion actions from that switch.",
+        "### Automated bidding is the default",
+        "AdWords-era specialists often set manual bids keyword by keyword. Most accounts now use smart bidding, such as Maximize Conversions or Target CPA. The specialist's job has shifted from setting bids to feeding the system accurate conversion data.",
         "### AI features keep expanding",
-        "Google keeps adding automated features to Search campaigns, including AI Max for Search campaigns, introduced in 2025. A current specialist knows what these features do, when to test them, and what controls to keep in place so automation does not spend your budget on searches you would never choose."
+        "Google keeps adding automation to Search campaigns, including AI Max for Search campaigns, introduced in 2025. A current specialist knows when to test these features. They also keep controls in place so automation does not waste your budget."
       ]
     },
     {
-      "title": "AdWords-Era Habits vs How a Current Google Ads Specialist Works",
+      "title": "AdWords Habits vs Current Google Ads Practice",
       "paragraphs": [
-        "Here is a side-by-side comparison you can use when you talk to anyone about managing your account. The \"then\" items were not mistakes; they were normal practice years ago. They just do not fit the platform anymore.",
-        "- **Keywords:** Then, huge lists of broad match modifier keywords. Now, tighter themes per service, with match types chosen by how much data and control the account has.\n- **Ads:** Then, two expanded text ads per ad group with a simple split test. Now, responsive search ads with strong, varied headlines, plus call assets, sitelinks and location assets.\n- **Bidding:** Then, manual cost-per-click bids adjusted by hand. Now, smart bidding driven by accurate primary conversions, with manual control used only where it makes sense.\n- **Measurement:** Then, Universal Analytics goals imported into the account. Now, GA4, Google Tag Manager, Google Ads call tracking and enhanced conversions, with primary and secondary conversions set deliberately.\n- **Campaign types:** Then, Search plus Smart Shopping or Local campaigns. Now, Search as the core for most service businesses, with Performance Max tested only when tracking is solid.\n- **Reporting:** Then, clicks, impressions and click-through rate. Now, leads, cost per lead, calls versus forms and lead quality by service.",
-        "If someone describes their process mostly in the \"then\" language, ask follow-up questions. They may have current skills and just explain things the old way, or they may not have kept up."
+        "The table below compares common AdWords-era habits with how a current specialist works. The old habits were normal practice years ago. They just do not fit the platform anymore.",
+        "| Area | AdWords-era habit | Current Google Ads practice |\n|---|---|---|\n| Keywords | Huge broad match modifier lists | Tight themes per service, match types chosen by data and control |\n| Ads | Two expanded text ads per ad group | Responsive search ads plus call, sitelink and location assets |\n| Bidding | Manual cost-per-click bids | Smart bidding driven by accurate primary conversions |\n| Measurement | Universal Analytics goals | GA4, Google Tag Manager, call tracking and enhanced conversions |\n| Campaign types | Search plus Smart Shopping or Local | Search first, Performance Max tested once tracking is solid |\n| Reporting | Clicks, impressions and CTR | Leads, cost per lead, calls vs forms and lead quality |",
+        "If someone describes their process mostly in the old language, ask follow-up questions. They may have current skills and explain things the old way. Or they may not have kept up."
       ]
     },
     {
-      "title": "A Real Example of Modern Conversion Setup",
+      "title": "A Real Example of Modern Call Tracking",
       "paragraphs": [
-        "One of the clearest differences between old and current practice is how phone calls are counted. A common older setup counted every tap on a phone number as a lead. That inflates results and teaches automated bidding to chase taps instead of real conversations.",
-        "In my [mobile tire service Google Ads case study](/portfolio/tire-service-google-ads), calls from ads and calls from the website were tracked and set as primary conversions, while taps on the phone number were tracked as a secondary conversion, so they stayed visible without driving bidding. Qualified call leads were also counted separately from all calls. Over 30 days the account produced 630 phone calls, 373 of them call leads, at a CA$10.65 cost per conversion.",
-        "The point is not the number. It is that the setup separated real leads from noise, which is exactly what modern Google Ads bidding depends on. If you are not sure how your own calls and forms are counted, my [Google Ads conversion tracking service](/services/google-ads-conversion-tracking) starts with that review."
+        "Call tracking shows the gap between old and current practice most clearly. Many older setups counted every tap on a phone number as a lead. That inflates results and teaches automated bidding to chase taps instead of real conversations.",
+        "In my [mobile tire service Google Ads case study](/portfolio/tire-service-google-ads), calls from ads and calls from the website were primary conversions. Taps on the phone number were tracked as a secondary conversion, so they stayed visible without driving bidding. Over 30 days, the account produced 630 phone calls, 373 of them call leads, at a CA$10.65 cost per conversion.",
+        "The point is not the number. The setup separated real leads from noise, and modern bidding depends on that. My [Google Ads conversion tracking service](/services/google-ads-conversion-tracking) starts with exactly this review."
       ]
     },
     {
-      "title": "8 Questions to Check If an AdWords Specialist Is Current",
+      "title": "8 Questions to Test Any AdWords Specialist",
       "paragraphs": [
-        "You do not need to be technical to ask these. Listen for specific, practical answers rather than buzzwords.",
-        "1. **How do you decide between broad, phrase and exact match for a new account?** A current answer mentions data volume, smart bidding and search term reviews. An outdated one mentions broad match modifier.\n2. **How do you write responsive search ads?** Look for headlines that work on their own, a mix of services, benefits and trust points, and careful use of pinning.\n3. **Which conversions would you set as primary for my business?** They should talk about real calls, form submissions and bookings, and keep softer actions secondary.\n4. **How do you track phone calls?** Expect calls from ads, calls from the website and call length thresholds, not just clicks on a phone number.\n5. **How do you use GA4 and Google Tag Manager with Google Ads?** They should explain how events become conversions and how they avoid double counting.\n6. **When would you use Performance Max for a service business, and when would you avoid it?** A good answer includes conditions, not a blanket yes or no.\n7. **How often do you review search terms?** For most local service accounts, weekly is a sensible rhythm.\n8. **Are your Google Ads certifications current?** [Google Ads certifications](https://support.google.com/google-ads/answer/9702955) are earned through Skillshop and have to be renewed, so a current one shows recent study. It does not replace proof of results.",
-        "For a longer list built around hiring, see my guide on [how to hire a Google Ads expert](/blog/how-to-hire-a-google-ads-expert)."
+        "These questions show whether a specialist is current. You do not need to be technical to ask them. Listen for specific, practical answers.",
+        "1. **How do you choose match types for a new account?** A current answer mentions data volume, smart bidding and search term reviews.\n2. **How do you write responsive search ads?** Look for headlines that work alone and careful use of pinning.\n3. **Which conversions would you set as primary for my business?** Expect real calls, forms and bookings, with softer actions kept secondary.\n4. **How do you track phone calls?** Expect calls from ads, calls from the website and call length thresholds.\n5. **How do you connect GA4 and Google Tag Manager to Google Ads?** They should explain how they avoid double counting.\n6. **When would you use Performance Max for a service business?** A good answer includes conditions, not a blanket yes or no.\n7. **How often do you review search terms?** Weekly is a sensible rhythm for most local service accounts.\n8. **Are your certifications current?** [Google Ads certifications](https://support.google.com/google-ads/answer/9702955) come from Skillshop and must be renewed.",
+        "For a longer hiring checklist, see [how to hire a Google Ads expert](/blog/how-to-hire-a-google-ads-expert)."
       ]
     },
     {
-      "title": "Red Flags That Matter More Than the Job Title",
+      "title": "Which Red Flags Matter More Than Titles?",
       "paragraphs": [
-        "Whether someone calls themselves an AdWords specialist, a Google Ads specialist or a PPC manager, watch for these signs:",
-        "- They promise first position or a fixed number of leads before seeing your account\n- They report clicks and impressions but cannot tell you your cost per lead\n- They want the account created under their own login instead of yours\n- They cannot explain which actions count as conversions in your account\n- They never mention negative keywords or search term reviews\n- They describe Google Analytics features that only existed in Universal Analytics",
-        "The last one is a quiet but useful test. Anyone still talking about Universal Analytics goals in 2026 has not worked hands-on with current measurement."
+        "How someone works matters far more than what they call themselves. Watch for these warning signs in any Google AdWords specialist, Google Ads specialist or PPC manager:",
+        "- They promise first position or a fixed number of leads before seeing your account.\n- They report clicks and impressions but cannot tell you your cost per lead.\n- They want the account created under their own login instead of yours.\n- They cannot explain which actions count as conversions.\n- They never mention negative keywords or search term reviews.\n- They describe Google Analytics features that only existed in Universal Analytics.",
+        "The last sign is a quiet but useful test. Anyone still talking about Universal Analytics goals has not worked hands-on with current measurement."
       ]
     },
     {
       "title": "What This Means If You Are Hiring",
       "paragraphs": [
-        "Search for both names if you like. You will find more profiles that way. Then judge every candidate the same way: current skills, clear tracking, honest reporting, and real examples you can check. For home service businesses, add one more filter. Ask how they handle calls, service areas and lead quality, because those three things decide whether Google Ads produces booked jobs or just traffic.",
-        "If you already have someone running your account and you are not sure whether the setup is current, a [Google Ads audit](/services/google-ads-audit) is the fastest way to find out. It checks tracking, structure, match types, search terms and campaign settings against how the platform works today."
+        "Search for both names to see more profiles. Then judge every candidate the same way: current skills, clear tracking, honest reporting and real examples.",
+        "Home service businesses should add one more filter. Ask how the specialist handles calls, service areas and lead quality. Those three things decide whether ads produce booked jobs or just traffic.",
+        "Already working with someone? A [Google Ads audit](/services/google-ads-audit) is the fastest way to check the setup. It reviews tracking, structure, match types, search terms and settings against how the platform works today."
       ]
     },
     {
       "title": "Frequently Asked Questions",
       "paragraphs": [
-        "**Is a Google AdWords specialist the same as a Google Ads specialist?** Yes. Google renamed AdWords to Google Ads in 2018. Both titles describe someone who manages paid campaigns on Google. The difference that matters is whether their skills are up to date.",
-        "**Does Google AdWords still exist?** Not under that name. Google AdWords became Google Ads in July 2018. Existing accounts, campaigns and history carried over to Google Ads.",
-        "**Is AdWords certification still valid?** AdWords-branded certifications are from before 2018, and Google Ads certifications need to be renewed. Look for a current Google Ads certification from Skillshop, and treat it as a baseline rather than proof of results.",
-        "**Should I avoid someone who calls themselves an AdWords specialist?** Not automatically. Many experienced people keep the old name because clients still search for it. Ask how they handle responsive search ads, GA4 and conversion tracking to see whether their methods are current.",
-        "**What is the most important skill for a Google Ads specialist today?** Accurate conversion tracking. Automated bidding learns from the conversions you report, so a specialist who measures real calls and leads correctly gives every other optimization a better chance of working."
+        "**Is a Google AdWords specialist the same as a Google Ads specialist?** Yes. Google renamed AdWords to Google Ads in July 2018, so both titles describe the same role. Either one plans, builds and optimizes paid campaigns on Google. The difference that matters is whether the person's skills match the platform as it works today.",
+        "**Does Google AdWords still exist?** Not under that name. Google AdWords became Google Ads in July 2018. Existing accounts, campaigns, billing and history all carried over to Google Ads automatically. The AdWords brand is gone, but many people still use the old name when they search for help.",
+        "**Is an AdWords certification still valid?** No. AdWords-branded certifications date from before 2018, and Google Ads certifications must be renewed to stay current. Look for an active Google Ads certification from Skillshop. Treat it as a baseline of knowledge, not as proof that someone gets results.",
+        "**Should I avoid someone who calls themselves an AdWords specialist?** Not automatically. Many experienced specialists keep the old name because clients still search for it. Ask how they handle responsive search ads, GA4 and conversion tracking. Their answers will show whether their methods are current or stuck in the AdWords era.",
+        "**What is the most important skill for a Google Ads specialist today?** Accurate conversion tracking. Automated bidding learns from the conversions you report. A specialist who measures real calls and leads correctly gives every other optimization a better chance of working. Weak tracking quietly wastes budget, even when campaigns look busy.",
+        "**How much does a Google AdWords specialist cost?** Pricing depends on account size, scope and experience. Common models are a monthly retainer, a percentage of ad spend or a one-time setup fee. Compare what is included, especially tracking and reporting. My guide to [Google Ads consultant cost](/blog/google-ads-consultant-cost) explains each model in detail."
       ]
     },
     {
-      "title": "Work With a Specialist Who Works the Way Google Ads Works Now",
+      "title": "The Bottom Line on AdWords vs Google Ads",
       "paragraphs": [
-        "Whatever name you search for, you want hands-on management built on current tools and accurate tracking. I am a [certified Google Ads specialist](/) with 3+ years of experience managing Google PPC campaigns for US home service businesses. If you want a clear view of where your account stands, [book a free consultation](/contact) or start with a [Google Ads audit](/services/google-ads-audit)."
+        "A Google AdWords specialist and a Google Ads specialist are the same role under two names. Judge any candidate on current skills, accurate tracking and honest reporting, not on the title.",
+        "I am a [certified Google Ads specialist](/) with 3+ years of experience managing Google PPC campaigns for US home service businesses. Want a clear view of where your account stands? [Book a free consultation](/contact) or start with a [Google Ads audit](/services/google-ads-audit)."
       ]
     }
   ],
-  "readTime": 10
+  "readTime": 9
 };
 
 export default post;

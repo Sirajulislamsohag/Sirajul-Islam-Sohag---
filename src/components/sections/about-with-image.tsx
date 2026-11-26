@@ -36,6 +36,17 @@ With 3+ years of experience, I’ve helped 100+ businesses worldwide generate qu
  <br/>
 Every campaign starts with a clear understanding of the business and its customers. From campaign structure and targeting to bidding, ad performance, and conversion tracking, I focus on every detail that can make ad spend work harder and deliver better results.
             </p>
+            <p className="text-[var(--text-secondary)] leading-relaxed mt-4">
+              Hiring for the first time? Read how a{' '}
+              <Link href="/blog/google-adwords-specialist" className="text-primary font-medium underline underline-offset-4 hover:opacity-80">
+                Google AdWords specialist compares to a Google Ads specialist
+              </Link>
+              , or browse all my{' '}
+              <Link href="/services" className="text-primary font-medium underline underline-offset-4 hover:opacity-80">
+                Google Ads services
+              </Link>
+              .
+            </p>
           </ScrollReveal>
 
           {/* Stats Grid */}

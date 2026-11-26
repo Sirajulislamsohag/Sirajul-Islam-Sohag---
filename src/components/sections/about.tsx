@@ -64,6 +64,17 @@ export function About() {
           <TextReveal variant="fade-up" delay={0.2} as="p" className="section-subheading text-lg leading-relaxed">
             I'm Sirajul Islam Sohag (Sirajul Sohag), a Google Ads and analytics specialist. With 3+ years of hands-on experience in performance marketing, I combine deep data analytics with creative strategy to build marketing engines that generate consistent, high-ROI revenue for 100+ brands worldwide.
           </TextReveal>
+          <p className="text-[var(--text-secondary)] leading-relaxed mt-4">
+            Still seeing the old title?{' '}
+            <Link href="/blog/google-adwords-specialist" className="text-primary font-medium underline underline-offset-4 hover:opacity-80">
+              Google AdWords specialist vs Google Ads specialist
+            </Link>{' '}
+            explains why it is the same role, and my{' '}
+            <Link href="/services" className="text-primary font-medium underline underline-offset-4 hover:opacity-80">
+              Google Ads services
+            </Link>{' '}
+            page shows what I can do for you.
+          </p>
         </div>
 
         {/* Stats Banner Grid (Imageless Visual Hero Component) */}
