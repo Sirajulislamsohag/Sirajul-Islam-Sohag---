@@ -10,7 +10,7 @@ const post: StaticBlogPost = {
   author: 'Sirajul Islam Sohag',
   readTime: 11,
   publishedAt: '2026-11-21T15:50:41.000Z',
-  updatedAt: '2026-11-24T15:50:30.000Z',
+  updatedAt: '2026-11-27T16:00:49.000Z',
   thumbnailAlt:
     'Comparison of six Google PPC campaign types: Search, Performance Max, Shopping, Display, Demand Gen and Video',
   seo: {
@@ -106,6 +106,7 @@ const post: StaticBlogPost = {
         "Google's help page on the [Local Services Ads transition](https://support.google.com/google-ads/answer/17213585) lists three phases. Select US home and storefront service advertisers start in August 2026. Service-area businesses without storefronts and more complex accounts follow in late 2026, and other countries and categories in 2027.",
         'Google says the first phase covers trades such as plumbing, HVAC, electrical, roofing, pest control and house cleaning. Existing campaigns migrate automatically, but old performance reports will not carry over. Download your historical reports before your account moves.',
         'This is not the same as a normal Performance Max campaign. Google says a pay-per-lead campaign has no keywords and serves only on Google Search and Google Maps. It also needs a verified Google Business Profile.',
+        'If you run a cleaning company, this [house cleaning Google Ads guide](/blog/house-cleaning-google-ads) compares pay-per-lead ads with a Search campaign side by side.',
       ],
     },
     {

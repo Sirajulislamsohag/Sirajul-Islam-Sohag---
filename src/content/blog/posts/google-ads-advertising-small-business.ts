@@ -9,7 +9,7 @@ const post: StaticBlogPost = {
   tags: ['Google Ads Advertising', 'Small Business PPC', 'Local Lead Generation'],
   author: 'Sirajul Islam Sohag',
   publishedAt: '2026-11-19T15:48:12.000Z',
-  updatedAt: '2026-11-26T13:30:00.000Z',
+  updatedAt: '2026-11-27T16:00:49.000Z',
   thumbnailAlt: 'Google Ads advertising for small businesses - starter plan guide by Sirajul Islam Sohag',
   seo: {
     metaTitle: 'Google Ads Advertising for Small Businesses',
@@ -55,6 +55,7 @@ const post: StaticBlogPost = {
         '1. **Check click costs in your area.** Use Keyword Planner inside Google Ads to see the estimated cost per click for your main service keywords in your service area.\n2. **Decide how many clicks a day you need to learn anything.** Too few clicks a day and it takes months to know whether the campaign works.\n3. **Multiply clicks per day by cost per click.** That is your starting daily budget.\n4. **Check it against the value of a customer.** If the monthly amount is more than you would pay for the leads it can realistically produce, narrow the keywords or the area rather than spreading the same money thinner.',
         'Example only, not a benchmark: if Keyword Planner shows clicks around $6 in your area and you want about 8 clicks a day, a starting budget is roughly $48 a day. If that is too much, cut the service area to your best neighborhoods or focus on one service instead of lowering the budget until the campaign barely runs.',
         'Also know how Google spends a daily budget. According to Google\'s help page [about average daily budgets](https://support.google.com/google-ads/answer/6385083), spend on a single day can go above your average daily budget, up to two times it for most campaigns, but over a month you will not be charged more than about 30.4 times the average daily budget. So think of the daily budget as a monthly limit divided by 30.4, not a hard daily cap.',
+        'For a worked example that starts from customer value instead of click costs, see this guide to [house cleaning Google Ads keywords, budget and setup](/blog/house-cleaning-google-ads).',
       ],
     },
     {
