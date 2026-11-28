@@ -26,7 +26,7 @@ Category values must be exactly one of these three pillar names.
 | 12 | Google Campaign Manager vs Google Ads, Explained | google-campaign-manager-explained | google campaign manager | Info | Google PPC Campaign Management | /services/google-ads-management |
 | 13 | Google Ads Expert or More Budget? Signs to Know | google-ads-expert-signs | google ads expert | Commercial | Google Ads Expertise | /services/google-ads-audit |
 | 14 | House Cleaning Google Ads: Keywords, Budget and Setup | house-cleaning-google-ads | house cleaning google ads | Info | Google Lead Generation | /google-ads-for-cleaning-businesses, /services/google-ads-management |
-| 15 | Google Ads Manager vs In-House Hire: Cost and Control | google-ads-manager-in-house | google ads manager | Commercial | Google PPC Campaign Management | /services/google-ads-management |
+| 15 | Google Ads Manager vs In-House Hire: Cost and Control | google-ads-manager-vs-employee | google ads manager | Commercial | Google PPC Campaign Management | /services/google-ads-management |
 | 16 | Google Ads Advertising Budget: How to Set It for Leads | google-ads-advertising-budget | google ads advertising budget | Info | Google PPC Campaign Management | /services/google-ads-management |
 | 17 | Google Lead Generation for HVAC Companies | google-lead-generation-hvac | google lead generation for hvac | Info | Google Lead Generation | /google-ads-for-hvac |
 | 18 | Google PPC Campaign Structure for Local Services | google-ppc-campaign-structure | google ppc campaign structure | Info | Google PPC Campaign Management | /google-ads-for-local-businesses, /portfolio/home-services-google-ads |

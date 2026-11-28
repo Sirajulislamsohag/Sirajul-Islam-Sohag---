@@ -10,7 +10,7 @@ const post: StaticBlogPost = {
   author: 'Sirajul Islam Sohag',
   readTime: 9,
   publishedAt: '2026-11-17T15:47:05.000Z',
-  updatedAt: '2026-11-24T15:50:30.000Z',
+  updatedAt: '2026-11-28T15:55:46.000Z',
   thumbnailAlt: 'Monthly Google Ads manager calendar with weekly optimization tasks and a lead report',
   seo: {
     metaTitle: 'What Does a Google Ads Manager Do Every Month?',
@@ -101,7 +101,7 @@ const post: StaticBlogPost = {
         '- **Bid and target adjustments:** balances lead volume with cost per lead\n- **Ad and asset testing:** keeps ads relevant to current offers',
         '### Every month',
         '- **Location, device and schedule review:** cuts clicks you cannot convert\n- **Landing page review:** turns more clicks into leads\n- **Report and lead quality review:** connects ad spend to real jobs',
-        'You do not need to understand every task in detail. You just need to see evidence that they are being done.',
+        'You do not need to understand every task in detail. You just need to see evidence that they are being done. If you are weighing who should do this work, compare the [full cost of an in-house hire against an outside manager](/blog/google-ads-manager-vs-employee).',
       ],
     },
     {

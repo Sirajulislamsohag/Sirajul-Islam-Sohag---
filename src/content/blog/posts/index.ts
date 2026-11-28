@@ -17,6 +17,7 @@ import googleLeadGenerationRoofers from './google-lead-generation-roofers';
 import googleCampaignManagerExplained from './google-campaign-manager-explained';
 import googleAdsExpertSigns from './google-ads-expert-signs';
 import houseCleaningGoogleAds from './house-cleaning-google-ads';
+import googleAdsManagerInHouse from './google-ads-manager-vs-employee';
 // Each new post: create ./<slug>.ts exporting a StaticBlogPost as default, then add it below.
 
 export const POSTS: StaticBlogPost[] = [
@@ -38,4 +39,5 @@ export const POSTS: StaticBlogPost[] = [
   googleCampaignManagerExplained,
   googleAdsExpertSigns,
   houseCleaningGoogleAds,
+  googleAdsManagerInHouse,
 ];

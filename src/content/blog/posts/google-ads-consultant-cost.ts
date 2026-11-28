@@ -10,7 +10,7 @@ const post: StaticBlogPost = {
   author: "Sirajul Islam Sohag",
   readTime: 10,
   publishedAt: "2026-11-22T15:47:40.000Z",
-  updatedAt: "2026-11-26T15:53:39.000Z",
+  updatedAt: "2026-11-28T15:55:46.000Z",
   thumbnailAlt:
     "Google Ads consultant cost breakdown showing management fee, ad spend and extras for a US service business",
   seo: {
@@ -100,7 +100,7 @@ const post: StaticBlogPost = {
       paragraphs: [
         "A consultant often costs less than a full-time hire and gives you direct access to the person doing the work. An agency adds a team and often a higher fee, while an in-house hire adds salary, benefits and training.",
         "| Option | Typical cost basis | Sourced benchmark | Who does the work | Flexibility |\n|---|---|---|---|---|\n| Freelance consultant | Flat, hourly or percentage | Varies by consultant | The person you hire | Monthly or project terms |\n| PPC agency | Retainer or percentage | $100 to $149 per hour (Clutch, 2026) | Account manager and team | Often longer contracts |\n| In-house marketer | Salary plus benefits | $78,760 median wage (BLS, May 2025) | Your employee | Hard to scale down |",
-        "The BLS figure is a median wage for a broad marketing group, not a Google Ads specialist salary. It also excludes benefits, software and training. For a deeper look at the trade-offs, read my comparison of a [Google Ads consultant vs agency](/blog/google-ads-consultant-vs-agency).",
+        "The BLS figure is a median wage for a broad marketing group, not a Google Ads specialist salary. It also excludes benefits, software and training. For a worked example with benefits included, see my [in-house hire vs outside manager cost comparison](/blog/google-ads-manager-vs-employee). For a deeper look at the trade-offs, read my comparison of a [Google Ads consultant vs agency](/blog/google-ads-consultant-vs-agency).",
       ],
     },
     {
